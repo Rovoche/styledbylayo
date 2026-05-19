@@ -1067,7 +1067,12 @@
 
   <!-- HERO -->
   <header class="hero" id="home">
-    <div class="hero-bg"></div>
+    <div class="hero-bg hero-slideshow" aria-hidden="true">
+      <div class="hero-slide active" style="background-image:url('kas-wedding-look11.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('kas-couple-look4.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('Kas-portrait-colored-look3.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('kas-wedding-look9.jpg')"></div>
+    </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-tag"><span class="hero-tag-line"></span> Adebola Samuel · Surulere Lagos</div>
@@ -1213,7 +1218,7 @@
 
         <div class="story-grid">
           <article class="story-card reveal reveal-delay-1">
-            <img src="kas-couple-look4.jpg" alt="Couple anniversary shoot" loading="lazy" />
+            <img src="kas-couple-look6.jpg" alt="Couple anniversary shoot" loading="lazy" />
             <div class="story-copy">
               <span>Anniversary</span>
               <h3>Couple portraits with warmth.</h3>
@@ -1222,7 +1227,7 @@
           </article>
 
           <article class="story-card reveal reveal-delay-2">
-            <img src="kas-wedding-look9.jpg" alt="Wedding photography" loading="lazy" />
+            <img src="kas-wedding-look11.jpg" alt="Wedding photography" loading="lazy" />
             <div class="story-copy">
               <span>Wedding</span>
               <h3>Wedding moments with emotion.</h3>
@@ -1248,7 +1253,7 @@
         <div class="gallery-head reveal">
           <div>
             <div class="label"><span class="label-line"></span> Gallery</div>
-            <h2 class="display-title">A reason to book.</h2>
+            <h2 class="display-title">Selected frames.</h2>
           </div>
           <a class="btn-ghost" href="https://www.instagram.com/lensesbykas/" target="_blank" rel="noopener">Instagram ↗</a>
         </div>
@@ -1348,6 +1353,24 @@
         burger.setAttribute('aria-expanded', 'false');
       });
     });
+
+
+    // HERO SLIDESHOW
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    let heroSlideIndex = 0;
+
+    function showHeroSlide(index) {
+      heroSlides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+    }
+
+    if (heroSlides.length > 1) {
+      setInterval(() => {
+        heroSlideIndex = (heroSlideIndex + 1) % heroSlides.length;
+        showHeroSlide(heroSlideIndex);
+      }, 4200);
+    }
 
     // SCROLL REVEAL
     const reveals = document.querySelectorAll('.reveal');
