@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lenses by Kas | Weddings & Portraits in Surulere, Lagos</title>
+  <meta name="description" content="Lenses by Kas is a premium photography brand in Surulere, Lagos by Adebola Samuel, offering weddings, portraits, anniversary shoots, and event photography." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink: #08090e;
+      --ink-2: #0e101a;
+      --cream: #f6f0e4;
+      --cream-dim: rgba(246,240,228,0.62);
+      --cream-ghost: rgba(246,240,228,0.22);
+      --gold: #c9973a;
+      --gold-light: #e8c26a;
+      --gold-pale: rgba(201,151,58,0.14);
+      --line: rgba(246,240,228,0.1);
+      --line-soft: rgba(246,240,228,0.06);
+      --max: 1140px;
+      --r: 28px;
+      --r-sm: 18px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Outfit", sans-serif;
+      background: var(--ink);
+      color: var(--cream);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ::selection { background: var(--gold); color: var(--ink); }
+
+    /* ── LOADER ── */
+    #loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--ink);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      transition: opacity 0.7s ease, visibility 0.7s ease;
+    }
+
+    #loader.done {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      color: var(--cream);
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+
+    .loader-bar-wrap {
+      width: 120px;
+      height: 1px;
+      background: var(--line);
+      overflow: hidden;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.5s forwards;
+    }
+
+    .loader-bar {
+      height: 100%;
+      width: 0;
+      background: var(--gold);
+      animation: loadBar 1.4s 0.6s cubic-bezier(.4,0,.2,1) forwards;
+    }
+
+    @keyframes loadBar {
+      to { width: 100%; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* ── GRAIN ── */
+    .grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.12;
+      z-index: 9998;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 500;
+      padding: 20px 0;
+      transition: background 0.4s, border-color 0.4s, padding 0.4s;
+      border-bottom: 1px solid transparent;
+    }
+
+    nav.scrolled {
+      background: rgba(8,9,14,0.82);
+      backdrop-filter: blur(24px);
+      border-color: var(--line-soft);
+      padding: 14px 0;
+    }
+
+    .nav-inner {
+      width: min(100% - 36px, var(--max));
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      letter-spacing: 0.16em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+    }
+
+    .nav-links a { transition: color 0.2s; }
+    .nav-links a:hover { color: var(--cream); }
+
+    .nav-cta {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--cream-dim);
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+
+    .nav-cta:hover {
+      color: var(--cream);
+      border-color: var(--gold);
+      background: var(--gold-pale);
+    }
+
+    .burger {
+      display: none;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: transparent;
+      cursor: pointer;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .burger span {
+      width: 18px; height: 1.5px;
+      background: var(--cream);
+      border-radius: 999px;
+      transition: 0.25s;
+    }
+
+    .mob-menu {
+      position: fixed;
+      top: 72px; left: 16px; right: 16px;
+      z-index: 499;
+      background: rgba(10,11,18,0.96);
+      backdrop-filter: blur(28px);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 10px;
+      display: none;
+    }
+
+    .mob-menu.open { display: block; }
+
+    .mob-menu a {
+      display: block;
+      padding: 14px 16px;
+      color: var(--cream-dim);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--line-soft);
+      transition: color 0.2s;
+    }
+
+    .mob-menu a:last-child { border-bottom: 0; }
+    .mob-menu a:hover { color: var(--cream); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('kas-wedding-look11.jpg') center / cover no-repeat;
+      transform-origin: center;
+      animation: heroPan 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroPan {
+      from { transform: scale(1.06) translate(0, 0); }
+      to { transform: scale(1.12) translate(-2%, -1.5%); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg,
+          rgba(8,9,14,0.38) 0%,
+          rgba(8,9,14,0.1) 40%,
+          rgba(8,9,14,0.72) 72%,
+          rgba(8,9,14,1) 100%
+        );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(100% - 36px, var(--max));
+      margin-inline: auto;
+      padding-bottom: 72px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.8s 2.1s forwards;
+    }
+
+    .hero-tag-line {
+      width: 24px; height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(4.8rem, 16vw, 12rem);
+      font-weight: 300;
+      line-height: 0.86;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 1s 2.3s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--cream-dim);
+    }
+
+    .hero-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s 2.6s forwards;
+    }
+
+    .hero-sub {
+      font-size: 0.88rem;
+      color: var(--cream-dim);
+      max-width: 340px;
+      font-weight: 300;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    /* ── BUTTONS ── */
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--ink);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: transform 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-gold:hover { transform: translateY(-2px); background: var(--gold-light); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--cream-dim);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: transform 0.2s, color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-ghost:hover {
+      transform: translateY(-2px);
+      color: var(--cream);
+      border-color: rgba(246,240,228,0.3);
+    }
+
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 999px;
+      background: #1fbe5e;
+      color: #04140a;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: transform 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-wa:hover { transform: translateY(-2px); background: #2de875; }
+
+    /* ── TICKER ── */
+    .ticker {
+      overflow: hidden;
+      border-block: 1px solid var(--line-soft);
+      background: rgba(255,255,255,0.025);
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 0;
+      width: max-content;
+      animation: scroll 26s linear infinite;
+    }
+
+    .ticker-track span {
+      padding: 14px 18px;
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      white-space: nowrap;
+    }
+
+    .ticker-track b { color: var(--gold); margin: 0 4px; }
+
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── LAYOUT ── */
+    .wrap {
+      width: min(100% - 36px, var(--max));
+      margin-inline: auto;
+    }
+
+    section { padding: 96px 0; }
+
+    /* ── SECTION LABEL ── */
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.64rem;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+
+    .label-line { width: 20px; height: 1px; background: var(--gold); }
+
+    .display-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(3rem, 7vw, 6.4rem);
+      font-weight: 300;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── INTRO ── */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 56px;
+    }
+
+    .intro-text-panel {
+      padding: 42px;
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      background: rgba(255,255,255,0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .intro-text-panel p {
+      color: var(--cream-dim);
+      font-size: 0.96rem;
+      font-weight: 300;
+      margin-bottom: 18px;
+      line-height: 1.75;
+    }
+
+    .intro-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .pill {
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+    }
+
+    .intro-img-panel {
+      border-radius: var(--r);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      position: relative;
+      min-height: 400px;
+    }
+
+    .intro-img-panel img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .intro-img-panel:hover img { transform: scale(1.05); }
+
+    .float-card {
+      position: absolute;
+      left: 18px; right: 18px; bottom: 18px;
+      background: rgba(8,9,14,0.7);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 16px 18px;
+      font-size: 0.82rem;
+      color: var(--cream-dim);
+    }
+
+    .float-card strong { display: block; color: var(--cream); margin-bottom: 3px; font-size: 0.9rem; }
+
+    /* ── SERVICES ── */
+    .services-section {
+      background: radial-gradient(circle at 30% 50%, rgba(201,151,58,0.06), transparent 55%),
+                  var(--ink-2);
+    }
+
+    .services-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: end;
+      margin-bottom: 52px;
+    }
+
+    .services-desc {
+      color: var(--cream-dim);
+      font-size: 0.9rem;
+      font-weight: 300;
+      max-width: 380px;
+      align-self: end;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .svc-card {
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      overflow: hidden;
+      background: rgba(255,255,255,0.038);
+      transition: transform 0.3s ease, border-color 0.3s;
+      cursor: default;
+    }
+
+    .svc-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(201,151,58,0.38);
+    }
+
+    .svc-img {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+    }
+
+    .svc-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      filter: saturate(0.9);
+    }
+
+    .svc-card:hover .svc-img img {
+      transform: scale(1.07);
+      filter: saturate(1.05);
+    }
+
+    .svc-num {
+      position: absolute;
+      top: 14px; left: 14px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      background: rgba(8,9,14,0.6);
+      backdrop-filter: blur(12px);
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .svc-info {
+      padding: 20px 22px 24px;
+    }
+
+    .svc-info h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.65rem;
+      font-weight: 400;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .svc-info p {
+      color: var(--cream-dim);
+      font-size: 0.8rem;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* ── MOOD STRIP ── */
+    .mood {
+      position: relative;
+      overflow: hidden;
+      background: #060810;
+      padding: 0;
+    }
+
+    .mood-inner {
+      display: grid;
+      grid-template-columns: 0.7fr 1.3fr;
+      min-height: 560px;
+    }
+
+    .mood-copy {
+      padding: 72px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--line-soft);
+      background: radial-gradient(circle at 30% 60%, rgba(105,184,255,0.07), transparent 55%);
+    }
+
+    .mood-copy p {
+      color: var(--cream-dim);
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.8;
+      margin-top: 20px;
+      max-width: 300px;
+    }
+
+    .mood-photos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .mood-photo {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .mood-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease, filter 0.4s;
+      filter: saturate(0.85) brightness(0.9);
+    }
+
+    .mood-photo:hover img {
+      transform: scale(1.06);
+      filter: saturate(1) brightness(1);
+    }
+
+    .mood-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(8,9,14,0.6) 100%);
+      pointer-events: none;
+    }
+
+    /* ── GALLERY ── */
+    .gallery-section { background: var(--ink-2); }
+
+    .gallery-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+
+    .mosaic {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 160px;
+      gap: 10px;
+    }
+
+    .m-item {
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid var(--line-soft);
+      position: relative;
+      cursor: default;
+    }
+
+    .m-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease, filter 0.4s;
+      filter: saturate(0.9);
+    }
+
+    .m-item:hover img {
+      transform: scale(1.08);
+      filter: saturate(1.05);
+    }
+
+    .m-item::after {
+      content: attr(data-l);
+      position: absolute;
+      bottom: 12px; left: 12px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      padding: 6px 10px;
+      background: rgba(8,9,14,0.52);
+      backdrop-filter: blur(12px);
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .m-w { grid-column: span 5; grid-row: span 2; }
+    .m-t { grid-column: span 3; grid-row: span 3; }
+    .m-s { grid-column: span 4; grid-row: span 2; }
+    .m-m { grid-column: span 4; grid-row: span 3; }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .about-card {
+      padding: 48px;
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      background: rgba(255,255,255,0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .about-card p {
+      color: var(--cream-dim);
+      font-size: 0.92rem;
+      font-weight: 300;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 32px;
+    }
+
+    .stat {
+      padding: 18px 14px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--line-soft);
+      border-radius: 18px;
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--gold-light);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+    }
+
+    .about-photo {
+      border-radius: var(--r);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      position: relative;
+      min-height: 520px;
+    }
+
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ── CONTACT ── */
+    .contact-section { padding-bottom: 64px; }
+
+    .contact-panel {
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: 56px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(31,190,94,0.08), transparent 42%),
+        rgba(255,255,255,0.04);
+      backdrop-filter: blur(10px);
+    }
+
+    .contact-panel p {
+      color: var(--cream-dim);
+      font-size: 0.9rem;
+      font-weight: 300;
+      margin-top: 16px;
+      max-width: 480px;
+      line-height: 1.8;
+    }
+
+    .contact-actions { display: grid; gap: 10px; }
+
+    .info-chip {
+      padding: 16px 20px;
+      border: 1px solid var(--line-soft);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .info-chip span {
+      display: block;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 3px;
+    }
+
+    .info-chip strong { font-size: 0.9rem; font-weight: 400; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--line-soft);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 0.74rem;
+      color: var(--cream-dim);
+      font-weight: 300;
+    }
+
+    .footer-inner b { color: var(--cream); font-weight: 500; }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .reveal.in { opacity: 1; transform: none; }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .intro-grid,
+      .about-grid,
+      .services-head { grid-template-columns: 1fr; }
+
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .mood-inner { grid-template-columns: 1fr; }
+      .mood-copy { padding: 48px 36px; border-right: 0; border-bottom: 1px solid var(--line-soft); }
+      .mood-photos { grid-template-columns: repeat(3, 1fr); min-height: 340px; }
+      .mood-photo img { height: 340px; }
+
+      .contact-panel {
+        grid-template-columns: 1fr;
+        padding: 40px;
+      }
+
+      .mosaic { grid-template-columns: repeat(6, 1fr); }
+      .m-w { grid-column: span 4; }
+      .m-t { grid-column: span 2; }
+      .m-s { grid-column: span 3; }
+      .m-m { grid-column: span 3; }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links, .nav-cta { display: none; }
+      .burger { display: inline-flex; }
+
+      section { padding: 72px 0; }
+
+      .hero-h1 { font-size: clamp(4.4rem, 20vw, 7rem); }
+
+      /* Mobile hero shows image visually */
+      .hero { min-height: 100svh; align-items: flex-end; }
+      .hero-bg { background-position: center top; }
+      .hero-overlay {
+        background: linear-gradient(180deg,
+          rgba(8,9,14,0.2) 0%,
+          rgba(8,9,14,0.08) 30%,
+          rgba(8,9,14,0.6) 60%,
+          rgba(8,9,14,0.96) 100%
+        );
+      }
+
+      .hero-content { padding-bottom: 52px; }
+      .hero-row { flex-direction: column; align-items: flex-start; gap: 18px; }
+      .hero-btns { width: 100%; display: grid; grid-template-columns: 1fr 1fr; }
+      .btn-gold, .btn-ghost, .btn-wa { justify-content: center; padding: 13px 18px; font-size: 0.68rem; }
+
+      .intro-text-panel { padding: 28px 24px; }
+      .intro-img-panel { min-height: 320px; }
+
+      .services-grid { grid-template-columns: 1fr; gap: 10px; }
+
+      .services-head { gap: 16px; }
+
+      .mood-photos { min-height: 240px; }
+      .mood-photo img { height: 240px; }
+
+      .mosaic { display: flex; flex-direction: column; gap: 10px; }
+      .m-item { height: 260px; border-radius: 20px; }
+      .m-w, .m-t, .m-s, .m-m { grid-column: unset; grid-row: unset; }
+
+      .about-card { padding: 28px 24px; }
+      .about-photo { min-height: 340px; }
+      .stats { grid-template-columns: repeat(3, 1fr); }
+
+      .contact-panel { padding: 28px 24px; }
+
+      .gallery-head { flex-direction: column; align-items: flex-start; gap: 18px; }
+
+      .display-title { font-size: clamp(2.8rem, 10vw, 4.8rem); }
+    }
+
+
+    /* ── LENSES BY KAS ADDITIONS ── */
+    .stories { background: var(--ink); }
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 48px;
+    }
+    .story-card {
+      border-radius: var(--r);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      align-items: flex-end;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .story-card:hover { transform: translateY(-6px); border-color: rgba(201,151,58,0.38); }
+    .story-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+    .story-card:hover img { transform: scale(1.06); }
+    .story-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 36%, rgba(8,9,14,0.88) 100%);
+    }
+    .story-copy { position: relative; z-index: 2; padding: 24px; }
+    .story-copy span {
+      display: inline-flex;
+      margin-bottom: 10px;
+      color: var(--gold-light);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .story-copy h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2.1rem;
+      line-height: 0.95;
+      font-weight: 300;
+      margin-bottom: 8px;
+    }
+    .story-copy p {
+      color: var(--cream-dim);
+      font-size: 0.82rem;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+    .about-photo img { object-position: center top; }
+    @media (max-width: 1024px) { .story-grid { grid-template-columns: 1fr; } .story-card { min-height: 440px; } }
+
+  </style>
+</head>
+
+<body>
+  <div id="loader">
+    <div class="loader-logo">Lenses by Kas</div>
+    <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+  </div>
+
+  <div class="grain"></div>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <div class="nav-inner">
+      <a href="#" class="logo"><span class="logo-dot"></span>Lenses by Kas</a>
+
+      <div class="nav-links">
+        <a href="#gallery">Gallery</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+      </div>
+
+      <a class="nav-cta" href="https://wa.me/2348081116729" target="_blank" rel="noopener">Book Now</a>
+
+      <button class="burger" id="burgerBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mob-menu" id="mobMenu">
+    <a href="#gallery">Gallery</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Book on WhatsApp</a>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-tag"><span class="hero-tag-line"></span> Adebola Samuel · Surulere Lagos</div>
+      <h1 class="hero-h1">Weddings in<br><em>Focus.</em></h1>
+      <div class="hero-row">
+        <p class="hero-sub">Wedding, portrait, anniversary, and event photography in Surulere, Lagos, captured with warmth, polish, and emotion.</p>
+        <div class="hero-btns">
+          <a class="btn-wa" href="https://wa.me/2348081116729?text=Hello%20Lenses%20by%20Kas%2C%20I%20would%20like%20to%20book%20a%20photography%20session." target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Book Now
+          </a>
+          <a class="btn-ghost" href="#gallery">View Work</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>Weddings <b>·</b></span><span>Portraits <b>·</b></span><span>Anniversary Shoots <b>·</b></span><span>Couples <b>·</b></span><span>Events <b>·</b></span><span>Surulere Lagos <b>·</b></span><span>WhatsApp Booking <b>·</b></span>
+      <span>Weddings <b>·</b></span><span>Portraits <b>·</b></span><span>Anniversary Shoots <b>·</b></span><span>Couples <b>·</b></span><span>Events <b>·</b></span><span>Surulere Lagos <b>·</b></span><span>WhatsApp Booking <b>·</b></span>
+    </div>
+  </div>
+
+  <main>
+    <!-- INTRO -->
+    <section id="intro">
+      <div class="wrap">
+        <div class="reveal">
+          <div class="label"><span class="label-line"></span> The Work</div>
+          <h2 class="display-title">Romance, portraits<br>and quiet details.</h2>
+        </div>
+        <div class="intro-grid">
+          <div class="intro-text-panel reveal reveal-delay-1">
+            <div>
+              <p>Lenses by Kas captures weddings, portraits, and couple moments with a refined eye. The approach is intimate, polished, and built around preserving the feeling of the day.</p>
+              <p>This demo gives the brand a stronger first impression: cinematic, mobile-friendly, premium, and easy to book through WhatsApp or Instagram.</p>
+            </div>
+            <div class="intro-pills">
+              <span class="pill">Premium feel</span>
+              <span class="pill">Mobile-first</span>
+              <span class="pill">WhatsApp booking</span>
+              <span class="pill">Clear services</span>
+            </div>
+          </div>
+          <div class="intro-img-panel reveal reveal-delay-2">
+            <img src="kas-couple-look4.jpg" alt="Lenses by Kas photography" loading="lazy" />
+            <div class="float-card">
+              <strong>Anniversary storytelling.</strong>
+              Couple sessions presented with softness, intimacy, and a premium editorial feel.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="services-section">
+      <div class="wrap">
+        <div class="services-head">
+          <div class="reveal">
+            <div class="label"><span class="label-line"></span> Services</div>
+            <h2 class="display-title">What clients<br>can book.</h2>
+          </div>
+          <p class="services-desc reveal reveal-delay-1">
+            The site makes the offer clear: weddings, portraits, anniversary sessions, and event coverage without making visitors dig through Instagram.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="svc-card reveal reveal-delay-1">
+            <div class="svc-img">
+              <img src="Kas-portrait-colored-look3.jpg" alt="Portraits" loading="lazy" />
+              <span class="svc-num">01</span>
+            </div>
+            <div class="svc-info">
+              <h3>Portraits</h3>
+              <p>Clean individual portraits for birthdays, personal branding, lifestyle, and profile-ready images.</p>
+            </div>
+          </article>
+
+          <article class="svc-card reveal reveal-delay-2">
+            <div class="svc-img">
+              <img src="kas-wedding-look7.jpg" alt="Events" loading="lazy" />
+              <span class="svc-num">02</span>
+            </div>
+            <div class="svc-info">
+              <h3>Weddings</h3>
+              <p>Elegant wedding coverage for ceremonies, receptions, bridal moments, and emotional details.</p>
+            </div>
+          </article>
+
+          <article class="svc-card reveal reveal-delay-3">
+            <div class="svc-img">
+              <img src="kas-couple-look5.jpg" alt="Lifestyle" loading="lazy" />
+              <span class="svc-num">03</span>
+            </div>
+            <div class="svc-info">
+              <h3>Couples</h3>
+              <p>Anniversary and couple sessions that feel romantic, intentional, and easy to remember.</p>
+            </div>
+          </article>
+
+          <article class="svc-card reveal reveal-delay-4">
+            <div class="svc-img">
+              <img src="kas-wedding-look10.jpg" alt="Couple Sessions" loading="lazy" />
+              <span class="svc-num">04</span>
+            </div>
+            <div class="svc-info">
+              <h3>Events</h3>
+              <p>Coverage for intimate events, celebrations, and special moments that deserve lasting photos.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOOD STRIP -->
+    <section class="mood" id="mood" style="padding:0;">
+      <div class="mood-inner">
+        <div class="mood-copy reveal">
+          <div class="label"><span class="label-line"></span> The Mood</div>
+          <h2 class="display-title" style="font-size:clamp(2.6rem,5vw,5rem);">Soft light.<br>Sharp memory.</h2>
+          <p>An editorial pause that gives the site atmosphere and makes the work feel curated, not like a regular photo dump.</p>
+        </div>
+        <div class="mood-photos">
+          <div class="mood-photo reveal"><img src="kas-wedding-bw-look8.jpg" alt="" loading="lazy" /></div>
+          <div class="mood-photo reveal reveal-delay-1"><img src="Kas-portrait-BW-Look2.jpg" alt="" loading="lazy" /></div>
+          <div class="mood-photo reveal reveal-delay-2"><img src="kas-couple-look6.jpg" alt="" loading="lazy" /></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- FEATURED STORIES -->
+    <section class="stories">
+      <div class="wrap">
+        <div class="reveal">
+          <div class="label"><span class="label-line"></span> Featured Stories</div>
+          <h2 class="display-title">Three ways<br>Kas frames love.</h2>
+        </div>
+
+        <div class="story-grid">
+          <article class="story-card reveal reveal-delay-1">
+            <img src="kas-couple-look4.jpg" alt="Couple anniversary shoot" loading="lazy" />
+            <div class="story-copy">
+              <span>Anniversary</span>
+              <h3>Couple portraits with warmth.</h3>
+              <p>Soft, romantic images for couples celebrating their story and connection.</p>
+            </div>
+          </article>
+
+          <article class="story-card reveal reveal-delay-2">
+            <img src="kas-wedding-look9.jpg" alt="Wedding photography" loading="lazy" />
+            <div class="story-copy">
+              <span>Wedding</span>
+              <h3>Wedding moments with emotion.</h3>
+              <p>Elegant frames for ceremonies, smiles, quiet glances, and once-in-a-lifetime details.</p>
+            </div>
+          </article>
+
+          <article class="story-card reveal reveal-delay-3">
+            <img src="Kas-portrait-colored-look3.jpg" alt="Portrait photography" loading="lazy" />
+            <div class="story-copy">
+              <span>Portrait</span>
+              <h3>Portraits with presence.</h3>
+              <p>Clean portraits that help clients look confident, personal, and polished.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="gallery-section">
+      <div class="wrap">
+        <div class="gallery-head reveal">
+          <div>
+            <div class="label"><span class="label-line"></span> Gallery</div>
+            <h2 class="display-title">A reason to book.</h2>
+          </div>
+          <a class="btn-ghost" href="https://www.instagram.com/lensesbykas/" target="_blank" rel="noopener">Instagram ↗</a>
+        </div>
+
+        <div class="mosaic">
+          <div class="m-item m-w reveal" data-l="Cover"><img src="kas-wedding-look11.jpg" alt="" loading="lazy" /></div>
+          <div class="m-item m-t reveal reveal-delay-1" data-l="Portrait"><img src="KAS-OWNER-LOOK1.jpg" alt="" loading="lazy" /></div>
+          <div class="m-item m-s reveal reveal-delay-2" data-l="Lifestyle"><img src="kas-wedding-look9.jpg" alt="" loading="lazy" /></div>
+          <div class="m-item m-m reveal reveal-delay-1" data-l="Moments"><img src="kas-couple-look5.jpg" alt="" loading="lazy" /></div>
+          <div class="m-item m-s reveal reveal-delay-2" data-l="Details"><img src="kas-couple-look4.jpg" alt="" loading="lazy" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="wrap">
+        <div class="about-grid">
+          <div class="about-card reveal">
+            <div>
+              <div class="label"><span class="label-line"></span> About</div>
+              <h2 class="display-title" style="margin-bottom:24px;">Adebola<br>Samuel.</h2>
+              <p>Adebola Samuel, known through Lenses by Kas, is a Surulere-based photographer focused on weddings, portraits, and moments that deserve to be remembered with care.</p>
+              <p>The brand direction is classy and personal: strong enough for weddings, warm enough for couple shoots, and clean enough for portraits and fast bookings.</p>
+            </div>
+            <div class="stats">
+              <div class="stat"><strong>91</strong><span>Posts</span></div>
+              <div class="stat"><strong>2.6k</strong><span>Followers</span></div>
+              <div class="stat"><strong>24/7</strong><span>Booking</span></div>
+            </div>
+          </div>
+          <div class="about-photo reveal reveal-delay-2">
+            <img src="KAS-OWNER-LOOK1.jpg" alt="Adebola Samuel, photographer behind Lenses by Kas" loading="lazy" />
+            <div class="float-card">
+              <strong>Meet Kas.</strong> A clear founder section makes the brand feel more human, credible, and easier to trust.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact-section">
+      <div class="wrap">
+        <div class="contact-panel reveal">
+          <div>
+            <div class="label"><span class="label-line"></span> Book a Session</div>
+            <h2 class="display-title">Ready to plan<br>your shoot?</h2>
+            <p>Send your shoot type, date, location, and the kind of photography you want. Lenses by Kas can follow up with availability, package details, and next steps.</p>
+          </div>
+          <div class="contact-actions">
+            <a class="btn-wa" href="https://wa.me/2348081116729?text=Hello%20Lenses%20by%20Kas%2C%20I%20would%20like%20to%20book%20a%20photography%20session." target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              Book via WhatsApp
+            </a>
+            <a class="btn-ghost" href="https://www.instagram.com/lensesbykas/" target="_blank" rel="noopener">Visit Instagram</a>
+            <div class="info-chip">
+              <span>Booking details</span>
+              <strong>Phone: 08081116729 · Surulere, Lagos.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© 2026 <b>Lenses by Kas.</b></span>
+      <span>Concept preview by <b>Built by Sammie</b>. Final website can be completed after approval.</span>
+    </div>
+  </footer>
+
+  <script>
+    // LOADER
+    const loader = document.getElementById('loader');
+    function finishLoader() { if (loader) loader.classList.add('done'); }
+    document.addEventListener('DOMContentLoaded', () => setTimeout(finishLoader, 1700));
+    setTimeout(finishLoader, 2800);
+
+    // NAV SCROLL
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    // BURGER
+    const burger = document.getElementById('burgerBtn');
+    const menu = document.getElementById('mobMenu');
+    burger.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open);
+    });
+    menu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        menu.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // SCROLL REVEAL
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
+    reveals.forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
