@@ -1,1583 +1,2244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Styledbylayo — Premium Fashion House</title>
-  <meta name="description" content="A premium Lagos fashion house creating bridal, custom, ready-to-wear pieces and fashion education." />
-  <meta property="og:title" content="Styledbylayo — Premium Fashion House" />
-  <meta property="og:description" content="Bridal, custom, ready-to-wear, worldwide shipping and fashion academy." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="butterfly-beaded-evening-gown.1.jpg" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Styledbylayo | Haute Couture, Bridal &amp; SBLFA Academy Lagos</title>
+  <meta name="description" content="A world-class Lagos-based haute couture fashion house presenting bespoke bridal artistry, eveningwear, ready-to-wear, custom menswear, and the prestigious SBL Fashion Academy (SBLFA).">
+  
+  <!-- Premium Fonts from Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Manrope:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    /* Dark Luxury Editorial Styling Variables */
     :root {
-      --black: #070605;
-      --charcoal: #11100e;
-      --brown: #21140c;
-      --brown-soft: #2d1b10;
-      --ivory: #f7f0e6;
-      --ivory-soft: #fbf7ef;
-      --cream: #efe0c8;
+      --bg-color: #070605;
+      --card-bg: #0d0c0a;
+      --text-color: #f7f0e6;
+      --text-muted: rgba(247, 240, 230, 0.6);
+      --text-dim: rgba(247, 240, 230, 0.35);
       --gold: #c9a96e;
-      --gold-soft: #e5cca0;
-      --gold-dim: #8c6b3e;
-      --muted: #8b7a66;
-      --line: rgba(201,169,110,0.22);
-      --ease: cubic-bezier(0.76, 0, 0.24, 1);
-      --ease-soft: cubic-bezier(0.44, 0, 0.18, 1);
-      --serif: "Cormorant Garamond", serif;
-      --sans: "Manrope", sans-serif;
+      --gold-dark: #a8874e;
+      --gold-light: #e0ca9b;
+      --border-color: rgba(201, 169, 110, 0.15);
+      --sans-font: 'Manrope', sans-serif;
+      --serif-font: 'Cormorant Garamond', serif;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body {
-      background: var(--black);
-      color: var(--ivory);
-      font-family: var(--sans);
-      overflow-x: hidden;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--sans-font);
+      font-weight: 300;
       -webkit-font-smoothing: antialiased;
     }
-    img, video { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-    button { cursor: pointer; border: none; background: none; font-family: inherit; }
-    ::selection { background: var(--gold); color: var(--black); }
 
-    /* ============================================================
-       INTRO
-    ============================================================ */
-    .intro {
-      position: fixed;
-      inset: 0;
-      z-index: 99999;
-      display: grid;
-      place-items: center;
-      background:
-        radial-gradient(circle at 50% 45%, rgba(201,169,110,0.14), transparent 28%),
-        linear-gradient(135deg, #0a0705, #1b1008 48%, #050403);
+    body {
+      overflow-x: hidden;
+      background-color: var(--bg-color);
+    }
+
+    body.preloading {
       overflow: hidden;
-      animation: introLeave 1.1s var(--ease) 4.0s forwards;
-      pointer-events: none;
     }
-    .intro::before {
-      content: '';
-      position: absolute;
-      width: 130vmax; height: 130vmax;
-      background: conic-gradient(from 80deg, transparent, rgba(201,169,110,0.07), transparent, rgba(255,255,255,0.03), transparent);
-      opacity: 0;
-      animation: veilTurn 4.4s ease forwards;
-    }
-    .intro-inner {
-      position: relative; z-index: 2;
-      display: grid; place-items: center; text-align: center; padding: 30px;
-    }
-    .intro-logo-shell {
-      position: relative;
-      width: min(240px, 55vw); height: min(240px, 55vw);
-      display: grid; place-items: center;
-      opacity: 0; transform: scale(0.88);
-      animation: introLogoShell 2.5s var(--ease) 0.4s forwards;
-    }
-    .intro-logo-shell::before {
-      content: '';
-      position: absolute; inset: -16px;
-      border-radius: 999px;
-      border: 1px solid rgba(201,169,110,0.22);
-      transform: scale(0.82); opacity: 0;
-      animation: ringReveal 2.4s var(--ease) 0.6s forwards;
-    }
-    .intro-logo {
-      width: 100%; opacity: 0;
-      filter: invert(1) sepia(0.12) brightness(0.9) drop-shadow(0 0 30px rgba(201,169,110,0.18));
-      animation: introLogoFade 2.6s ease forwards;
-    }
-    .intro-tag {
-      margin-top: 24px;
-      color: rgba(229,204,160,0.68);
-      font-size: 0.58rem; letter-spacing: 0.34em; text-transform: uppercase;
-      opacity: 0; transform: translateY(10px);
-      animation: fadeUp 0.9s ease 1.6s forwards;
-    }
-    .intro-line {
-      margin-top: 16px; width: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(229,204,160,0.75), transparent);
-      animation: introLine 1.3s var(--ease) 1.3s forwards;
-    }
-    @keyframes introLogoShell { 0%{opacity:0;transform:scale(0.88)} 55%{opacity:1;transform:scale(1)} 100%{opacity:1;transform:scale(1.02)} }
-    @keyframes introLogoFade  { 0%{opacity:0;filter:invert(1) blur(6px) brightness(0.7)} 45%{opacity:0.85;filter:invert(1) blur(0) brightness(0.9)} 100%{opacity:0.72;filter:invert(1) sepia(0.12) brightness(0.86) drop-shadow(0 0 38px rgba(201,169,110,0.2))} }
-    @keyframes ringReveal     { 0%{opacity:0;transform:scale(0.78)} 55%{opacity:1;transform:scale(1)} 100%{opacity:0.4;transform:scale(1.07)} }
-    @keyframes introLine      { to { width: min(240px, 56vw); } }
-    @keyframes veilTurn       { 0%{opacity:0;transform:rotate(0) scale(0.8)} 40%{opacity:1} 100%{opacity:0.16;transform:rotate(42deg) scale(1)} }
-    @keyframes introLeave     { to { opacity: 0; visibility: hidden; } }
-    @keyframes fadeUp         { to { opacity: 1; transform: translateY(0); } }
 
-    /* ============================================================
-       NAV — GHOST: visible on hero, fades away mid-scroll,
-               reappears on scroll-up (peek behaviour)
-    ============================================================ */
-    .site-header {
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-color);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--gold);
+    }
+
+    /* 1. Intro / Preloader */
+    #preloader {
       position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 2000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--bg-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 1.2s;
+    }
+
+    #preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .preloader-content {
+      text-align: center;
+      max-width: 250px;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: preloaderReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.3s;
+    }
+
+    .preloader-logo {
+      width: 105px;
+      height: auto;
+      margin-bottom: 30px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .preloader-tagline {
+      font-family: var(--serif-font);
+      font-size: 1.15rem;
+      letter-spacing: 0.15em;
+      color: var(--text-color);
+      margin-bottom: 25px;
+      font-weight: 300;
+      text-transform: uppercase;
+    }
+
+    .preloader-status {
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      opacity: 0.8;
+      margin-bottom: 30px;
+    }
+
+    .preloader-bar-container {
+      width: 140px;
+      height: 1px;
+      background-color: rgba(201, 169, 110, 0.15);
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .preloader-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 0%;
+      background-color: var(--gold);
+      animation: progressFill 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+
+    @keyframes preloaderReveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes progressFill {
+      to {
+        width: 100%;
+      }
+    }
+
+    /* 2. Header / Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(247, 240, 230, 0.05);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
+      background-color: rgba(7, 6, 5, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    header.header-hidden {
+      transform: translateY(-100%);
+    }
+
+    header.header-scrolled {
+      background-color: rgba(7, 6, 5, 0.96);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-container {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .nav-container {
+        padding: 25px 48px;
+      }
+    }
+
+    .logo-container {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 28px clamp(20px, 4vw, 56px);
-      background: transparent;
-      border: none;
-      backdrop-filter: none;
-      pointer-events: none;
-      /* opacity + transform controlled by JS states */
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.55s ease, transform 0.55s ease, padding 0.4s ease;
     }
 
-    /* Mid-scroll: hidden */
-    .site-header.nav-hidden {
-      opacity: 0;
-      transform: translateY(-8px);
-      pointer-events: none;
-    }
-
-    /* Peeking back in on scroll-up: slim pill bar */
-    .site-header.nav-peek {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-      padding: 14px clamp(20px, 4vw, 56px);
-    }
-    /* Very subtle pill background only when peeking */
-    .site-header.nav-peek .nav-inner {
-      background: rgba(7,6,5,0.72);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(201,169,110,0.13);
-      border-radius: 2px;
-      padding: 10px 20px;
-    }
-
-    /* Wrapper that gets the pill bg */
-    .nav-inner {
-      width: 100%;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 24px;
-      transition: background 0.45s ease, border-color 0.45s ease, padding 0.4s ease;
-      pointer-events: auto;
-    }
-
-    .brand-mark {
-      display: inline-flex; align-items: center;
-      flex-shrink: 0;
-    }
-    .brand-mark img {
-      width: 44px; height: 44px;
+    .logo-img {
+      height: 38px;
+      width: auto;
       object-fit: contain;
-      filter: invert(1) sepia(0.08) brightness(0.9) drop-shadow(0 4px 14px rgba(0,0,0,0.45));
-      opacity: 0.88;
-      transition: opacity 0.3s;
     }
-    .brand-mark:hover img { opacity: 0.55; }
 
-    /* Desktop nav links */
-    .nav-links {
-      display: flex; gap: 34px; list-style: none;
+    @media (min-width: 768px) {
+      .logo-img {
+        height: 48px;
+      }
     }
-    .nav-links a {
-      font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
-      color: rgba(247,240,230,0.65); font-weight: 500;
-      transition: color 0.3s;
-      position: relative;
-    }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: -3px; left: 0;
-      width: 0; height: 1px; background: var(--gold);
-      transition: width 0.3s var(--ease);
-    }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-links a:hover::after { width: 100%; }
 
-    .nav-cta {
-      font-size: 0.56rem; letter-spacing: 0.2em; text-transform: uppercase;
-      font-weight: 600; color: var(--gold-soft);
-      border: 1px solid rgba(229,204,160,0.34);
-      padding: 9px 20px;
-      background: transparent;
-      transition: background 0.3s, color 0.3s, border-color 0.3s;
-      flex-shrink: 0;
-    }
-    .nav-cta:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
-
-    /* Hamburger — mobile only */
-    .hamburger {
+    .nav-menu {
       display: none;
-      width: 44px; height: 44px;
-      border: 1px solid rgba(229,204,160,0.28);
-      align-items: center; justify-content: center;
-      flex-direction: column; gap: 5px;
-      background: transparent;
-      transition: border-color 0.25s ease, background 0.25s ease;
-      flex-shrink: 0;
-    }
-    .hamburger:hover { border-color: rgba(229,204,160,0.55); }
-    .hamburger span {
-      display: block; width: 17px; height: 1px;
-      background: var(--ivory);
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-
-    .mobile-panel {
-      position: fixed; inset: 0; z-index: 1800;
-      background:
-        radial-gradient(circle at 50% 30%, rgba(201,169,110,0.09), transparent 32%),
-        rgba(7,6,5,0.97);
-      backdrop-filter: blur(20px);
-      display: grid; place-items: center;
-      opacity: 0; pointer-events: none; visibility: hidden;
-      transition: opacity 0.35s ease, visibility 0.35s ease;
-    }
-    .mobile-panel.open { opacity: 1; pointer-events: auto; visibility: visible; }
-    .mobile-panel nav { display: grid; gap: 22px; text-align: center; }
-    .mobile-panel a {
-      font-family: var(--serif);
-      font-size: clamp(2.4rem, 10vw, 5rem);
-      line-height: 0.95; color: var(--ivory);
-      transition: color 0.25s;
-    }
-    .mobile-panel a:hover { color: var(--gold-soft); }
-    .mobile-close {
-      position: absolute; top: 26px; right: 28px;
-      font-family: var(--serif); font-size: 2rem; font-weight: 300;
-      color: rgba(247,240,230,0.45);
-      width: 48px; height: 48px; display: grid; place-items: center;
-      cursor: pointer; z-index: 2001;
+      align-items: center;
+      gap: 35px;
     }
 
-    @media (max-width: 960px) {
-      .nav-links, .nav-cta { display: none; }
-      .hamburger { display: flex; }
+    @media (min-width: 1024px) {
+      .nav-menu {
+        display: flex;
+      }
     }
 
-    /* ============================================================
-       HERO — CINEMATIC SLIDESHOW (from code 1)
-    ============================================================ */
-    #hero {
-      position: relative; width: 100%;
-      height: 100svh; min-height: 620px;
-      overflow: hidden;
-    }
-    .hero-slides { position: absolute; inset: 0; }
-    .hero-slide {
-      position: absolute; inset: 0; opacity: 0;
-      transition: opacity 1.6s var(--ease-soft);
-    }
-    .hero-slide.active { opacity: 1; }
-
-    .slide-bg {
-      position: absolute; inset: -6%;
-      background-size: cover; background-position: center top;
-      transform: scale(1.1);
-      transition: transform 9s ease-out;
-    }
-    .hero-slide.active .slide-bg { transform: scale(1); }
-
-    /* Desktop: show garment body, not just face */
-    .hero-slide:nth-child(1) .slide-bg { background-image: url('butterfly-beaded-evening-gown.1.jpg'); background-position: center 35%; }
-    .hero-slide:nth-child(2) .slide-bg { background-image: url('gold-sculpted-evening-gown.1.jpg'); background-position: center 30%; }
-    .hero-slide:nth-child(3) .slide-bg { background-image: url('emerald-beaded-couture-gown.1.jpg'); background-position: center 32%; }
-    .hero-slide:nth-child(4) .slide-bg { background-image: url('pink-green-beaded-mini-dress.1.jpg'); background-position: center 28%; }
-    .hero-slide:nth-child(5) .slide-bg { background-image: url('black-embroidered-menswear-suit.1.jpg'); background-position: center 30%; }
-
-    @media (max-width: 768px) {
-      .hero-slide:nth-child(1) .slide-bg,
-      .hero-slide:nth-child(2) .slide-bg,
-      .hero-slide:nth-child(3) .slide-bg,
-      .hero-slide:nth-child(4) .slide-bg,
-      .hero-slide:nth-child(5) .slide-bg { background-position: center top; }
+    .nav-link {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-color);
+      transition: color 0.3s ease;
+      position: relative;
+      padding: 5px 0;
     }
 
-    .hero-slide:nth-child(1)::after { content:''; position:absolute; inset:0; background:linear-gradient(160deg,rgba(5,18,10,0.42) 0%,rgba(8,8,8,0.70) 100%); }
-    .hero-slide:nth-child(2)::after { content:''; position:absolute; inset:0; background:linear-gradient(160deg,rgba(20,14,3,0.38) 0%,rgba(8,8,8,0.72) 100%); }
-    .hero-slide:nth-child(3)::after { content:''; position:absolute; inset:0; background:linear-gradient(160deg,rgba(5,5,10,0.40) 0%,rgba(8,8,8,0.70) 100%); }
-    .hero-slide:nth-child(4)::after { content:''; position:absolute; inset:0; background:linear-gradient(160deg,rgba(20,5,12,0.36) 0%,rgba(8,8,8,0.72) 100%); }
-    .hero-slide:nth-child(5)::after { content:''; position:absolute; inset:0; background:linear-gradient(160deg,rgba(10,10,10,0.38) 0%,rgba(8,8,8,0.72) 100%); }
-
-    /* Slide contents */
-    .slide-content {
-      position: absolute; bottom: 96px; left: clamp(24px,6vw,90px);
-      max-width: 780px; pointer-events: none; opacity: 0;
-      z-index: 4;
-    }
-    .slide-content.active { opacity: 1; pointer-events: all; }
-
-    .slide-content .eyebrow {
-      font-family: var(--sans);
-      font-size: 0.58rem; font-weight: 600;
-      letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--gold-soft);
-      display: inline-flex; align-items: center; gap: 12px;
-      margin-bottom: 18px;
-      opacity: 0; transform: translateX(-14px);
-      transition: opacity 0.7s ease 0.4s, transform 0.7s var(--ease) 0.4s;
-    }
-    .slide-content .eyebrow::before {
-      content: ''; width: 36px; height: 1px; background: var(--gold-soft);
-    }
-    .slide-content.active .eyebrow { opacity: 1; transform: translateX(0); }
-
-    .slide-headline {
-      font-family: var(--serif);
-      font-size: clamp(3.4rem, 9vw, 8.2rem);
-      font-weight: 300; line-height: 0.96;
-      letter-spacing: -0.04em;
-      color: var(--ivory); overflow: hidden;
-    }
-    .slide-headline .h-line {
-      display: block;
-      clip-path: inset(0 100% 0 0);
-      transition: clip-path 1.0s var(--ease);
-    }
-    .slide-headline .h-line:nth-child(2) { transition-delay: 0.12s; }
-    .slide-content.active .slide-headline .h-line { clip-path: inset(0 0% 0 0); }
-    .slide-headline em { font-style: italic; color: var(--gold-soft); }
-
-    .slide-sub {
-      font-size: 0.82rem; color: rgba(247,240,230,0.7);
-      line-height: 1.9; font-weight: 300;
-      margin: 22px 0 32px; max-width: 560px;
-      opacity: 0; transform: translateY(10px);
-      transition: opacity 0.7s ease 0.65s, transform 0.7s var(--ease) 0.65s;
-    }
-    .slide-content.active .slide-sub { opacity: 1; transform: translateY(0); }
-
-    .slide-btns {
-      display: flex; gap: 12px; flex-wrap: wrap;
-      opacity: 0; transform: translateY(10px);
-      transition: opacity 0.6s ease 0.82s, transform 0.6s var(--ease) 0.82s;
-    }
-    .slide-content.active .slide-btns { opacity: 1; transform: translateY(0); }
-
-    .btn-gold {
-      display: inline-block; padding: 13px 32px;
-      background: var(--gold-soft); color: var(--black);
-      font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
-      font-weight: 700; transition: background 0.3s, transform 0.3s;
-    }
-    .btn-gold:hover { background: var(--ivory); transform: translateY(-2px); }
-    .btn-outline-w {
-      display: inline-block; padding: 13px 32px;
-      border: 1px solid rgba(229,204,160,0.45); color: var(--gold-soft);
-      font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
-      font-weight: 600;
-      background: rgba(7,6,5,0.08); backdrop-filter: blur(6px);
-      transition: border-color 0.3s, color 0.3s, transform 0.3s;
-    }
-    .btn-outline-w:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
-
-    /* Hero UI — counter + progress */
-    .hero-ui {
-      position: absolute; z-index: 5;
-      bottom: 44px; right: clamp(20px,5vw,64px);
-      display: flex; align-items: center; gap: 14px;
-    }
-    .hero-counter {
-      font-family: var(--serif);
-      font-size: 0.82rem; color: rgba(247,240,230,0.45);
-      letter-spacing: 0.08em;
-    }
-    .hero-counter .cur { color: var(--gold); font-size: 1.05rem; }
-    .hero-progress-bar {
-      width: 72px; height: 1px;
-      background: rgba(247,240,230,0.12); overflow: hidden;
-    }
-    .hero-progress-fill { height: 100%; background: var(--gold); width: 0%; transition: width 0.15s linear; }
-
-    /* Arrows */
-    .hero-arrows {
-      position: absolute; z-index: 5;
-      right: clamp(20px,5vw,60px); top: 50%;
-      transform: translateY(-50%);
-      display: flex; flex-direction: column; gap: 10px;
-    }
-    .hero-arrow {
-      width: 40px; height: 40px;
-      border: 1px solid rgba(229,204,160,0.28);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--gold); font-size: 0.8rem;
-      cursor: pointer;
-      background: rgba(7,6,5,0.2);
-      backdrop-filter: blur(8px);
-      transition: background 0.3s, border-color 0.3s;
-    }
-    .hero-arrow:hover { background: rgba(201,169,110,0.14); border-color: var(--gold); }
-
-    /* Vertical dots */
-    .hero-dots {
-      position: absolute; z-index: 5;
-      left: clamp(16px,3vw,40px); top: 50%;
-      transform: translateY(-50%);
-      display: flex; flex-direction: column; gap: 10px;
-    }
-    .hero-dot {
-      width: 1px; height: 26px;
-      background: rgba(247,240,230,0.16);
-      cursor: pointer; position: relative; overflow: hidden;
-      transition: height 0.3s;
-    }
-    .hero-dot.active { height: 46px; }
-    .hero-dot::after {
-      content: ''; position: absolute; inset: 0;
-      background: var(--gold); transform: scaleY(0);
-      transform-origin: top; transition: transform 0s;
-    }
-    .hero-dot.active::after {
-      transform: scaleY(1);
-      transition: transform 6s linear;
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: var(--gold);
+      transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* Scroll hint */
-    .hero-scroll-hint {
-      position: absolute; bottom: 46px; left: clamp(24px,6vw,90px);
-      z-index: 5; display: flex; align-items: center; gap: 10px;
-      opacity: 0; animation: fadeIn 1s ease 5s forwards;
-    }
-    .hero-scroll-hint span {
-      font-size: 0.52rem; letter-spacing: 0.25em; text-transform: uppercase;
-      color: rgba(247,240,230,0.38);
-    }
-    .scroll-line {
-      width: 38px; height: 1px;
-      background: linear-gradient(to right, var(--gold), transparent);
-      animation: scrollLinePulse 2.2s ease-in-out infinite 5.5s;
-    }
-    @keyframes scrollLinePulse { 0%,100%{transform:scaleX(0.4);opacity:0.4} 50%{transform:scaleX(1);opacity:1} }
-    @keyframes fadeIn { to { opacity: 1; } }
-
-    /* ============================================================
-       MARQUEE DIVIDER — replaces story/offer section
-    ============================================================ */
-    .marquee-section {
-      position: relative; overflow: hidden;
-      padding: 0;
-      background: var(--black);
-      border-top: 1px solid rgba(201,169,110,0.12);
-      border-bottom: 1px solid rgba(201,169,110,0.12);
-    }
-    .marquee-track {
-      display: flex; width: max-content;
-      animation: marqueeScroll 28s linear infinite;
-      padding: 22px 0;
-    }
-    .marquee-track:hover { animation-play-state: paused; }
-    .marquee-item {
-      display: flex; align-items: center; gap: 0;
-      white-space: nowrap; padding-right: 0;
-    }
-    .marquee-word {
-      font-family: var(--serif);
-      font-size: clamp(1.1rem, 2.8vw, 1.7rem);
-      font-weight: 300;
-      letter-spacing: 0.04em;
-      color: rgba(247,240,230,0.28);
-      padding: 0 clamp(18px, 3vw, 38px);
-      transition: color 0.3s;
-    }
-    .marquee-word.em {
-      font-style: italic;
+    .nav-link:hover {
       color: var(--gold);
     }
-    .marquee-sep {
-      color: rgba(201,169,110,0.3);
-      font-size: 0.35rem;
-      padding: 0;
-    }
-    @keyframes marqueeScroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+
+    .nav-link:hover::after {
+      width: 100%;
     }
 
-    /* ============================================================
-       SIGNATURE COLLECTION
-    ============================================================ */
-    .section {
-      padding: clamp(72px, 10vw, 130px) clamp(22px, 6vw, 90px);
-    }
-    .section-light { background: var(--ivory-soft); color: var(--black); }
-    .section-dark  { background: var(--black); color: var(--ivory); }
-
-    .section-kicker {
-      font-size: 0.64rem; letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--gold-soft); font-weight: 700; margin-bottom: 12px;
-    }
-    .section-title {
-      font-family: var(--serif);
-      font-size: clamp(3rem, 8vw, 6.8rem);
-      line-height: 0.93; letter-spacing: -0.05em; font-weight: 300;
-    }
-    .section-intro {
-      color: rgba(255,255,255,0.58); line-height: 1.9;
-      max-width: 680px; margin-top: 22px;
+    .nav-cta {
+      border: 1px solid var(--gold);
+      padding: 10px 22px;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      transition: all 0.4s ease;
     }
 
-    .signature-head {
-      display: flex; justify-content: space-between;
-      align-items: flex-end; gap: 28px; margin-bottom: 50px;
-    }
-    .signature-hint {
-      font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(247,240,230,0.26); font-weight: 400;
-      text-align: right; max-width: 200px; line-height: 1.6;
+    .nav-cta:hover {
+      background-color: var(--gold);
+      color: #070605;
     }
 
-    .collection-list { display: grid; gap: 16px; }
+    /* Mobile Menu Toggle */
+    .mobile-menu-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 14px;
+      z-index: 1002;
+    }
 
-    .piece {
-      border: 1px solid rgba(229,204,160,0.14);
-      background: linear-gradient(135deg, rgba(255,255,255,0.028), transparent);
+    @media (min-width: 1024px) {
+      .mobile-menu-btn {
+        display: none;
+      }
+    }
+
+    .burger-line {
+      width: 100%;
+      height: 1px;
+      background-color: var(--text-color);
+      transition: transform 0.4s ease, opacity 0.3s ease;
+    }
+
+    .mobile-menu-btn.active .burger-line:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .mobile-menu-btn.active .burger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu-btn.active .burger-line:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile Overlay Menu */
+    .mobile-nav-panel {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--bg-color);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      transform: translateX(100%);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-nav-panel.active {
+      transform: translateX(0);
+    }
+
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .mobile-link {
+      font-family: var(--serif-font);
+      font-size: 1.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.3s;
+    }
+
+    .mobile-link:hover, .mobile-link.active {
+      color: var(--gold);
+    }
+
+    .mobile-nav-footer {
+      text-align: center;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    /* 3. Hero Section */
+    .hero-container {
+      position: relative;
+      height: 100vh;
+      min-height: 650px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       overflow: hidden;
     }
-    .piece-button {
-      width: 100%; display: grid;
-      grid-template-columns: 190px 1fr auto;
-      gap: 26px; align-items: center;
-      text-align: left; padding: 16px;
-      color: var(--ivory);
-    }
-    .piece-thumb {
-      height: 220px; overflow: hidden; background: var(--brown);
-    }
-    .piece-thumb img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center top;
-      transition: 0.6s ease;
-    }
-    .piece:hover .piece-thumb img { transform: scale(1.05); }
 
-    .piece-meta small {
-      color: var(--gold-soft); letter-spacing: 0.22em;
-      text-transform: uppercase; font-size: 0.58rem;
-    }
-    .piece-meta h3 {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 4.5vw, 4rem);
-      font-weight: 300; letter-spacing: -0.03em;
-      line-height: 0.95; margin: 9px 0 12px;
-    }
-    .piece-meta p {
-      color: rgba(255,255,255,0.58); line-height: 1.75;
-      max-width: 580px; font-size: 0.88rem;
-    }
-    .piece-toggle {
-      width: 48px; height: 48px;
-      border: 1px solid rgba(229,204,160,0.32);
-      display: grid; place-items: center;
-      color: var(--gold-soft); font-size: 1.35rem;
-      flex-shrink: 0;
-      transition: 0.25s ease;
-    }
-    .piece.open .piece-toggle {
-      transform: rotate(45deg);
-      background: var(--gold-soft); color: var(--black);
-    }
-    .piece-gallery {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.85s var(--ease);
-    }
-    .piece.open .piece-gallery { max-height: 1600px; }
-    .piece-gallery-inner {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 5px; padding: 0 16px 16px;
-    }
-    .piece-gallery-inner img {
-      width: 100%; height: clamp(320px, 42vw, 580px);
-      object-fit: cover; object-position: center top;
-      opacity: 0; transform: translateY(18px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
-      transition-delay: var(--delay, 0s);
-      cursor: zoom-in;
-    }
-    .piece-gallery-inner img:hover { filter: brightness(1.07); }
-    .piece.open .piece-gallery-inner img { opacity: 1; transform: translateY(0); }
-
-    /* Lightbox */
-    .lightbox {
-      position: fixed; inset: 0; z-index: 99998;
-      display: grid; place-items: center;
-      background: rgba(7,6,5,0.95);
-      opacity: 0; visibility: hidden; pointer-events: none;
-      transition: 0.3s ease; padding: 20px;
-    }
-    .lightbox.open { opacity: 1; visibility: visible; pointer-events: auto; }
-    .lightbox img {
-      max-width: min(100%, 960px); max-height: 90vh;
-      object-fit: contain; box-shadow: 0 36px 100px rgba(0,0,0,0.5);
-    }
-    .lightbox-close {
-      position: fixed; top: 22px; right: 24px; z-index: 99999;
-      width: 46px; height: 46px; display: grid; place-items: center;
-      color: var(--ivory); border: 1px solid rgba(229,204,160,0.3);
-      background: rgba(255,255,255,0.04);
-      font-size: 1.5rem; font-family: var(--serif); cursor: pointer;
+    /* Media Layers */
+    .hero-video-layer, .hero-slider-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
     }
 
-    /* ============================================================
-       MOTION — MINIMAL, PREMIUM
-    ============================================================ */
-    .motion {
+    .hero-video-layer {
+      opacity: 1;
+      transition: opacity 1.8s ease-in-out;
+    }
+
+    .hero-video-layer.faded-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .hero-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.38) contrast(1.05);
+    }
+
+    .hero-slider-layer {
+      opacity: 0;
+      transition: opacity 1.8s ease-in-out;
+    }
+
+    .hero-slider-layer.active {
+      opacity: 1;
+    }
+
+    .hero-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.6s ease-in-out;
+      filter: brightness(0.35) contrast(1.02);
+    }
+
+    .hero-slide.current {
+      opacity: 1;
+    }
+
+    /* Hero Vignettes overlay */
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: radial-gradient(circle, transparent 20%, rgba(7, 6, 5, 0.4) 60%, rgba(7, 6, 5, 0.9) 100%),
+                  linear-gradient(to top, var(--bg-color) 0%, transparent 40%, transparent 60%, var(--bg-color) 100%);
+      pointer-events: none;
+    }
+
+    /* Frame Overlay */
+    .editorial-frame {
+      position: absolute;
+      inset: 16px;
+      border: 1px solid rgba(201, 169, 110, 0.12);
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    @media (min-width: 768px) {
+      .editorial-frame {
+        inset: 32px;
+      }
+    }
+
+    /* Hero Typographical Overlay */
+    .hero-content {
       position: relative;
-      height: 92vh; min-height: 600px;
-      display: grid; place-items: center; overflow: hidden;
-    }
-    .motion video {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%; object-fit: cover;
-      opacity: 0.68;
-    }
-    .motion::before {
-      content: '';
-      position: absolute; inset: 0; z-index: 1;
-      background:
-        linear-gradient(90deg, rgba(7,6,5,0.82), rgba(7,6,5,0.32), rgba(7,6,5,0.72)),
-        radial-gradient(circle at 62% 50%, rgba(201,169,110,0.1), transparent 32%);
-    }
-    /* Corner brackets only — no full border box */
-    .motion-corner {
-      position: absolute; z-index: 2; pointer-events: none;
-    }
-    .motion-corner--tl { top: 36px; left: 36px; border-top: 1px solid rgba(229,204,160,0.3); border-left: 1px solid rgba(229,204,160,0.3); width: 60px; height: 60px; }
-    .motion-corner--tr { top: 36px; right: 36px; border-top: 1px solid rgba(229,204,160,0.3); border-right: 1px solid rgba(229,204,160,0.3); width: 60px; height: 60px; }
-    .motion-corner--bl { bottom: 36px; left: 36px; border-bottom: 1px solid rgba(229,204,160,0.3); border-left: 1px solid rgba(229,204,160,0.3); width: 60px; height: 60px; }
-    .motion-corner--br { bottom: 36px; right: 36px; border-bottom: 1px solid rgba(229,204,160,0.3); border-right: 1px solid rgba(229,204,160,0.3); width: 60px; height: 60px; }
-
-    .motion-content {
-      position: relative; z-index: 3;
+      z-index: 5;
       text-align: center;
-      padding: 0 clamp(22px, 6vw, 90px);
+      padding: 0 24px;
+      max-width: 1000px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
     }
-    .motion-eyebrow {
-      font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase;
-      color: rgba(229,204,160,0.5); font-weight: 500; margin-bottom: 20px;
+
+    .hero-badge {
+      font-size: 0.65rem;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 25px;
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroEntrance 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.8s;
+    }
+
+    .hero-title {
+      font-family: var(--serif-font);
+      font-size: 3.25rem;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      line-height: 0.95;
+      text-transform: uppercase;
+      color: var(--text-color);
+      margin-bottom: 25px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroEntrance 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 1s;
+    }
+
+    @media (min-width: 500px) {
+      .hero-title {
+        font-size: 4.5rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .hero-title {
+        font-size: 6.5rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .hero-title {
+        font-size: 9.5rem;
+        letter-spacing: -0.03em;
+      }
+    }
+
+    .hero-tagline {
+      font-family: var(--serif-font);
+      font-size: 1.1rem;
+      font-style: italic;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 45px;
+      line-height: 1.6;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroEntrance 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 1.2s;
+    }
+
+    @media (min-width: 768px) {
+      .hero-tagline {
+        font-size: 1.45rem;
+      }
+    }
+
+    .hero-button-container {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroEntrance 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 1.4s;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      background-color: var(--gold);
+      color: var(--bg-color);
+      letter-spacing: 0.28em;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 18px 40px;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-btn:hover {
+      background-color: var(--text-color);
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    }
+
+    @keyframes heroEntrance {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 4. Marquee Strip */
+    .marquee-container {
+      background-color: #000;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      padding: 15px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      z-index: 10;
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      animation: marqueeRunning 32s linear infinite;
+    }
+
+    .marquee-item {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(247, 240, 230, 0.7);
+      margin-right: 50px;
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .marquee-bullet {
+      color: var(--gold);
+      font-size: 0.4rem;
+    }
+
+    @keyframes marqueeRunning {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* 5. Signature Collection (Full-Bleed Editorial Layout) */
+    .section-spacing {
+      padding: 100px 24px;
+    }
+
+    @media (min-width: 768px) {
+      .section-spacing {
+        padding: 160px 48px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .section-spacing {
+        padding: 200px 10%;
+      }
+    }
+
+    .editorial-header {
+      max-width: 750px;
+      margin-bottom: 60px;
+    }
+
+    @media (min-width: 1024px) {
+      .editorial-header {
+        margin-bottom: 100px;
+      }
+    }
+
+    .editorial-badge {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 20px;
       display: block;
     }
-    .motion-content h2 {
-      font-family: var(--serif);
-      font-size: clamp(5rem, 14vw, 11rem);
-      font-weight: 300; line-height: 0.86;
-      letter-spacing: -0.065em;
-    }
-    .motion-content h2 em { color: var(--gold-soft); font-style: italic; }
 
-    /* ============================================================
-       ACADEMY — LOGO + PHOTO CAROUSEL
-    ============================================================ */
-    .academy {
-      background:
-        radial-gradient(circle at 68% 18%, rgba(201,169,110,0.09), transparent 32%),
-        linear-gradient(160deg, #100907, #1e1108 50%, #070605);
-      color: var(--ivory);
-      position: relative; overflow: hidden;
+    .editorial-title {
+      font-family: var(--serif-font);
+      font-size: 2.8rem;
+      line-height: 1.05;
+      text-transform: uppercase;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      margin-bottom: 30px;
+    }
+
+    @media (min-width: 768px) {
+      .editorial-title {
+        font-size: 4rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .editorial-title {
+        font-size: 5.25rem;
+      }
+    }
+
+    .editorial-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 580px;
+    }
+
+    /* Core Exhibition Grid */
+    .exhibition-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 120px;
+    }
+
+    @media (min-width: 1024px) {
+      .exhibition-layout {
+        gap: 180px;
+      }
+    }
+
+    /* Active Exhibition Item */
+    .exhibition-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (min-width: 1024px) {
+      .exhibition-item {
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 90px;
+      }
+
+      .exhibition-item.reversed {
+        grid-template-columns: 0.9fr 1.1fr;
+      }
+
+      .exhibition-item.reversed .exhibition-visual {
+        order: 2;
+      }
+      .exhibition-item.reversed .exhibition-details {
+        order: 1;
+      }
+    }
+
+    /* Visual Display Column */
+    .exhibition-visual {
+      position: relative;
+    }
+
+    .exhibition-main-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background-color: #0b0a09;
+      border: 1px solid rgba(247, 240, 230, 0.05);
+      cursor: zoom-in;
+    }
+
+    .exhibition-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .exhibition-main-wrap:hover .exhibition-img {
+      transform: scale(1.04);
+    }
+
+    /* Multi Angles / Thumbnails under master view */
+    .exhibition-angles {
+      display: flex;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .angle-thumbnail {
+      flex: 1;
+      aspect-ratio: 4/5;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid transparent;
+      cursor: pointer;
+      position: relative;
+      transition: opacity 0.3s, border-color 0.4s;
+    }
+
+    .angle-thumbnail:hover {
+      opacity: 0.9;
+    }
+
+    .angle-thumbnail.active {
+      border-color: var(--gold);
+    }
+
+    .angle-overlay-text {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      font-size: 0.5rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #fff;
+      background-color: rgba(7, 6, 5, 0.65);
+      padding: 2px 6px;
+    }
+
+    /* Details Column */
+    .exhibition-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .exhibition-serial {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .exhibition-name {
+      font-family: var(--serif-font);
+      font-size: 2.1rem;
+      line-height: 1.1;
+      text-transform: uppercase;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      color: var(--text-color);
+      margin-bottom: 25px;
+    }
+
+    @media (min-width: 768px) {
+      .exhibition-name {
+        font-size: 3rem;
+      }
+    }
+
+    .exhibition-editorial-body {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 35px;
+    }
+
+    /* Specifications list */
+    .specifications-table {
+      border-top: 1px solid rgba(247, 240, 230, 0.08);
+      margin-bottom: 40px;
+    }
+
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(247, 240, 230, 0.08);
+      padding: 14px 0;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+    }
+
+    .spec-label {
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+
+    .spec-value {
+      color: var(--text-color);
+      font-weight: 400;
+    }
+
+    /* Action Cta */
+    .exhibition-cta {
+      align-self: flex-start;
+      border-bottom: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding-bottom: 6px;
+      transition: color 0.3s, border-color 0.3s, padding-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .exhibition-cta:hover {
+      color: var(--text-color);
+      border-color: var(--text-color);
+      padding-left: 10px;
+    }
+
+    /* 6. Cinematic Motion Section */
+    .cinematic-motion-section {
+      position: relative;
+      height: 70vh;
+      min-height: 480px;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cinematic-backdrop-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      filter: brightness(0.28) grayscale(0.2);
+    }
+
+    .cinematic-vignette {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(to top, var(--bg-color) 0%, transparent 20%, transparent 80%, var(--bg-color) 100%);
+      pointer-events: none;
+    }
+
+    .cinematic-container {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      padding: 0 24px;
+      max-width: 780px;
+    }
+
+    .cinematic-container span {
+      font-size: 0.65rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 25px;
+      display: block;
+    }
+
+    .cinematic-quote {
+      font-family: var(--serif-font);
+      font-size: 1.8rem;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--text-color);
+    }
+
+    @media (min-width: 768px) {
+      .cinematic-quote {
+        font-size: 2.5rem;
+      }
+    }
+
+    /* 7. Academy Section */
+    .academy-bg {
+      background-color: var(--card-bg);
+      border-top: 1px solid rgba(201, 169, 110, 0.08);
+      border-bottom: 1px solid rgba(201, 169, 110, 0.08);
     }
 
     .academy-grid {
-      position: relative; z-index: 1;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(40px, 7vw, 100px);
+      grid-template-columns: 1fr;
+      gap: 50px;
       align-items: center;
-      margin-bottom: clamp(52px, 7vw, 90px);
     }
 
-    /* Left — logo panel */
-    .academy-logo-panel {
+    @media (min-width: 1024px) {
+      .academy-grid {
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 90px;
+      }
+    }
+
+    .academy-logo {
+      width: 160px;
+      height: auto;
+      margin-bottom: 30px;
+    }
+
+    .academy-quote {
+      font-family: var(--serif-font);
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--gold);
+      line-height: 1.6;
+      border-left: 1px solid var(--gold);
+      padding-left: 20px;
+      margin-bottom: 35px;
+    }
+
+    /* Academy Slider Showcase */
+    .academy-viewer {
       position: relative;
-      display: flex; align-items: center; justify-content: center;
-      aspect-ratio: 1/1; max-height: 520px;
-      background: #1e0e06;
-    }
-    .academy-logo-panel::before {
-      content: '';
-      position: absolute; inset: 0;
-      border-radius: 50%;
-      background: radial-gradient(circle at 50% 50%, rgba(201,169,110,0.13), transparent 65%);
-      opacity: 0;
-      transform: scale(0.7);
-      transition: opacity 1.4s ease, transform 1.4s ease;
-    }
-    .academy-logo-panel.in-view::before { opacity: 1; transform: scale(1); }
-
-    /* Thin orbiting ring */
-    .academy-logo-panel::after {
-      content: '';
-      position: absolute;
-      width: 86%; height: 86%;
-      border-radius: 50%;
-      border: 1px solid rgba(201,169,110,0.14);
-      opacity: 0;
-      transform: scale(0.82);
-      transition: opacity 1.2s ease 0.3s, transform 1.2s ease 0.3s;
-    }
-    .academy-logo-panel.in-view::after { opacity: 1; transform: scale(1); }
-
-    .academy-main-logo {
-      position: relative; z-index: 2;
-      width: 70%; max-width: 320px;
-      opacity: 0; transform: translateY(20px) scale(0.94);
-      filter: brightness(10) drop-shadow(0 0 32px rgba(255,255,255,0.08));
-      transition: opacity 1.1s var(--ease) 0.2s, transform 1.1s var(--ease) 0.2s;
-    }
-    .academy-logo-panel.in-view .academy-main-logo {
-      opacity: 0.95; transform: translateY(0) scale(1);
     }
 
-    /* Right — copy */
-    .academy-copy .section-kicker { color: var(--gold-soft); margin-bottom: 14px; }
-    .academy-copy h2 {
-      font-family: var(--serif);
-      font-size: clamp(3rem, 6.5vw, 6.2rem);
-      line-height: 0.9; letter-spacing: -0.05em; font-weight: 300;
-      margin-bottom: 20px;
-    }
-    .academy-copy h2 em { color: var(--gold-soft); font-style: italic; }
-    .academy-copy > p {
-      color: rgba(255,255,255,0.60); line-height: 1.95;
-      max-width: 560px; margin-bottom: 34px;
-    }
-    .academy-pillars {
-      display: grid; gap: 0;
-      border-top: 1px solid rgba(229,204,160,0.13);
-      margin-bottom: 34px;
-    }
-    .academy-pillar {
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 20px; padding: 16px 0;
-      border-bottom: 1px solid rgba(229,204,160,0.09);
-    }
-    .academy-pillar-name {
-      font-family: var(--serif);
-      font-size: clamp(1.1rem, 2.4vw, 1.45rem); font-weight: 400;
-    }
-    .academy-pillar-tag {
-      font-size: 0.54rem; letter-spacing: 0.18em;
-      text-transform: uppercase; color: rgba(229,204,160,0.4);
-    }
-
-    /* Photo carousel — full-width strip below the grid */
-    .academy-carousel-wrap {
-      position: relative; overflow: hidden;
-      border-top: 1px solid rgba(229,204,160,0.1);
-      padding-top: clamp(36px, 5vw, 60px);
-    }
-
-    /* Fade edges */
-    .academy-carousel-wrap::before,
-    .academy-carousel-wrap::after {
-      content: ''; position: absolute; top: 0; bottom: 0; width: clamp(60px, 10vw, 130px);
-      z-index: 2; pointer-events: none;
-    }
-    .academy-carousel-wrap::before {
-      left: 0;
-      background: linear-gradient(to right, #100907, transparent);
-    }
-    .academy-carousel-wrap::after {
-      right: 0;
-      background: linear-gradient(to left, #100907, transparent);
-    }
-
-    .academy-carousel-label {
-      font-size: 0.56rem; letter-spacing: 0.3em; text-transform: uppercase;
-      color: rgba(229,204,160,0.38); font-weight: 500;
-      margin-bottom: 22px;
-      padding-left: clamp(22px, 6vw, 90px);
-    }
-
-    .academy-strip {
-      display: flex; gap: clamp(10px, 1.5vw, 18px);
-      width: max-content;
-      animation: stripDrift 32s linear infinite;
-      padding: 0 clamp(22px, 6vw, 90px) clamp(8px, 2vw, 16px);
-    }
-    .academy-strip:hover { animation-play-state: paused; }
-
-    .academy-strip-photo {
-      flex-shrink: 0;
-      width: clamp(200px, 22vw, 320px);
-      aspect-ratio: 3/4;
+    .academy-slider-frame {
+      position: relative;
+      aspect-ratio: 16/10;
+      background-color: var(--bg-color);
       overflow: hidden;
+      border: 1px solid rgba(247, 240, 230, 0.06);
+    }
+
+    .academy-image-track {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .academy-slide-img {
+      min-width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .academy-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .academy-nav-btn {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(247, 240, 230, 0.1);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s ease;
+      color: var(--text-color);
+    }
+
+    .academy-nav-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .academy-index {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: var(--text-dim);
+    }
+
+    .academy-current-index {
+      color: var(--gold);
+    }
+
+    .academy-meta {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-top: 15px;
+      text-transform: uppercase;
+      font-weight: 400;
+      text-align: center;
+    }
+
+    /* 8. Worldwide Global Reach Section */
+    .global-reach-section {
+      text-align: center;
+      border-bottom: 1px solid rgba(247, 240, 230, 0.04);
+    }
+
+    .global-subtitle {
+      max-width: 600px;
+      margin: 0 auto 80px;
+    }
+
+    .global-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    @media (min-width: 768px) {
+      .global-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .global-card {
+      background-color: #0b0a09;
+      border: 1px solid rgba(201, 169, 110, 0.06);
+      padding: 50px 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .global-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--border-color);
+    }
+
+    .global-card-icon {
+      font-family: var(--serif-font);
+      font-size: 2.2rem;
+      color: var(--gold);
+      margin-bottom: 25px;
+    }
+
+    .global-card-title {
+      font-family: var(--serif-font);
+      font-size: 1.3rem;
+      letter-spacing: 0.05rem;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .global-card-text {
+      font-size: 0.8rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    /* 9. Final CTA (Consultation Booking Module) */
+    .cta-module {
+      position: relative;
+      background-color: #090807;
+      border-bottom: 1px solid var(--border-color);
+      text-align: center;
+    }
+
+    .cta-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta-stars {
+      color: var(--gold);
+      letter-spacing: 0.25em;
+      font-size: 0.75rem;
+      margin-bottom: 30px;
+    }
+
+    .cta-title {
+      font-family: var(--serif-font);
+      font-size: 2.8rem;
+      line-height: 1.1;
+      text-transform: uppercase;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      margin-bottom: 35px;
+    }
+
+    @media (min-width: 768px) {
+      .cta-title {
+        font-size: 4.5rem;
+      }
+    }
+
+    .booking-channels {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin-top: 50px;
+    }
+
+    .booking-btn {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background-color: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 20px 42px;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .booking-btn:hover {
+      background-color: var(--gold);
+      color: #070605;
+      transform: scale(1.02);
+    }
+
+    .booking-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    .cta-subtext {
+      margin-top: 30px;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+
+    /* 10. Footer */
+    footer {
+      background-color: #040303;
+      padding: 80px 24px;
+      border-top: 1px solid rgba(247, 240, 230, 0.03);
+    }
+
+    @media (min-width: 768px) {
+      footer {
+        padding: 100px 48px;
+      }
+    }
+
+    .footer-grid {
+      max-width: 1600px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 60px;
+    }
+
+    @media (min-width: 1024px) {
+      .footer-grid {
+        grid-template-columns: 1.2fr 0.8fr 1fr;
+        gap: 100px;
+      }
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .footer-logo {
+      height: 48px;
+      margin-bottom: 25px;
+    }
+
+    .footer-motto {
+      font-family: var(--serif-font);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 30px;
+      max-width: 320px;
+    }
+
+    .footer-star-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .footer-col-title {
+      font-family: var(--serif-font);
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+      color: var(--gold);
+    }
+
+    .footer-links-list {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer-link {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.3s;
+    }
+
+    .footer-link:hover {
+      color: var(--gold);
+    }
+
+    .footer-address {
+      font-style: normal;
+      font-size: 0.8rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+
+    .footer-address strong {
+      display: block;
+      color: var(--text-color);
+      margin-bottom: 6px;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .footer-bottom {
+      max-width: 1600px;
+      margin: 80px auto 0;
+      padding-top: 30px;
+      border-top: 1px solid rgba(247, 240, 230, 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    .footer-copy {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+    }
+
+    .footer-credit {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    /* Interactive Lightbox Viewer */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(7, 6, 5, 0.98);
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    #lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(247, 240, 230, 0.15);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--text-color);
+      transition: all 0.3s;
+      z-index: 2010;
+    }
+
+    .lightbox-close:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .lightbox-wrap {
+      max-width: 90%;
+      max-height: 80%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       position: relative;
     }
-    .academy-strip-photo img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center top;
-      filter: brightness(0.82) saturate(0.88);
-      transition: filter 0.6s ease, transform 0.8s ease;
-    }
-    .academy-strip-photo:hover img {
-      filter: brightness(0.96) saturate(1.05);
-      transform: scale(1.04);
-    }
-    /* Subtle border on photos */
-    .academy-strip-photo::after {
-      content: ''; position: absolute; inset: 0;
-      border: 1px solid rgba(229,204,160,0.1);
-      pointer-events: none;
+
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 100vh;
+      object-fit: contain;
+      border: 1px solid rgba(247, 240, 230, 0.05);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
     }
 
-    @keyframes stripDrift {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* ============================================================
-       WORLDWIDE
-    ============================================================ */
-    .worldwide {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: clamp(40px, 7vw, 90px);
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: rgba(13, 12, 10, 0.6);
+      border: 1px solid rgba(247, 240, 230, 0.1);
+      display: flex;
+      justify-content: center;
       align-items: center;
-      background: var(--ivory-soft); color: var(--black);
-    }
-    .worldwide-image { position: relative; min-height: 660px; }
-    .worldwide-image .main-img {
-      width: 78%; height: 600px;
-      object-fit: cover; object-position: center top;
-      box-shadow: 0 28px 80px rgba(0,0,0,0.2);
-    }
-    .worldwide-image .float-img {
-      position: absolute; right: 0; bottom: 0;
-      width: 46%; height: 340px;
-      object-fit: cover; object-position: center top;
-      border: 10px solid var(--ivory-soft);
-      box-shadow: 0 22px 55px rgba(0,0,0,0.18);
-    }
-    .worldwide h2 {
-      font-family: var(--serif);
-      font-size: clamp(3.2rem, 7.5vw, 6.8rem);
-      line-height: 0.91; letter-spacing: -0.05em; font-weight: 300;
-      margin-bottom: 22px;
-    }
-    .worldwide p { color: var(--muted); line-height: 1.95; max-width: 580px; }
-    .worldwide-list {
-      margin-top: 32px; display: grid; gap: 0;
-      border-top: 1px solid rgba(0,0,0,0.12);
-    }
-    .worldwide-list div {
-      display: flex; justify-content: space-between; gap: 18px;
-      padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,0.12);
-      color: var(--muted);
-    }
-    .worldwide-list strong {
-      color: var(--black); font-family: var(--serif);
-      font-size: 1.15rem; font-weight: 400;
+      color: #fff;
+      transition: all 0.3s;
     }
 
-    /* ============================================================
-       FINAL CTA
-    ============================================================ */
-    .final-cta {
-      min-height: 76vh; display: grid; place-items: center;
-      text-align: center; position: relative; overflow: hidden; background: var(--black);
+    .lightbox-nav:hover {
+      border-color: var(--gold);
+      color: var(--gold);
     }
-    .final-slides { position: absolute; inset: 0; z-index: 0; }
-    .final-slides img {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; object-position: center 32%;
-      opacity: 0; transform: scale(1.05);
-      transition: opacity 1.2s ease, transform 7s ease;
-    }
-    @media (max-width: 768px) {
-      .final-slides img { object-position: center top; }
-    }
-    .final-slides img.active { opacity: 1; transform: scale(1); }
-    .final-cta::after {
-      content: ''; position: absolute; inset: 0; z-index: 1;
-      background:
-        linear-gradient(rgba(7,6,5,0.55), rgba(7,6,5,0.86)),
-        radial-gradient(circle at 50% 42%, rgba(201,169,110,0.1), transparent 36%);
-    }
-    .final-cta::before {
-      content: "Styledbylayo";
-      position: absolute; z-index: 2;
-      font-family: var(--serif); font-size: clamp(5rem, 17vw, 18rem);
-      color: rgba(255,255,255,0.04);
-      white-space: nowrap; letter-spacing: -0.08em;
-    }
-    .final-cta-inner {
-      position: relative; z-index: 3;
-      width: min(880px, calc(100% - 44px));
-    }
-    .final-cta .eyebrow {
-      display: inline-flex; align-items: center; gap: 12px;
-      font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--gold-soft); font-weight: 600; margin-bottom: 20px;
-    }
-    .final-cta .eyebrow::before { content: ''; width: 36px; height: 1px; background: var(--gold-soft); }
-    .final-cta h2 {
-      font-family: var(--serif);
-      font-size: clamp(3.8rem, 10vw, 9.5rem);
-      line-height: 0.88; letter-spacing: -0.06em; font-weight: 300;
-      margin-bottom: 22px;
-    }
-    .final-cta p {
-      margin: 0 auto 30px; max-width: 580px;
-      color: rgba(255,255,255,0.66); line-height: 1.9;
-    }
-    .final-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
-    /* ============================================================
-       FOOTER
-    ============================================================ */
-    footer {
-      background: var(--black); color: rgba(255,255,255,0.38);
-      border-top: 1px solid rgba(229,204,160,0.10);
-      padding: 26px clamp(22px, 6vw, 90px);
-      display: flex; justify-content: space-between; gap: 16px;
-      flex-wrap: wrap; font-size: 0.80rem;
+    .lightbox-prev {
+      left: -70px;
     }
-    footer a { color: var(--gold-soft); border-bottom: 1px solid rgba(229,204,160,0.35); }
 
-    /* ============================================================
-       REVEAL
-    ============================================================ */
-    .reveal {
-      opacity: 0; transform: translateY(30px);
-      transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+    .lightbox-next {
+      right: -70px;
     }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ============================================================
-       RESPONSIVE
-    ============================================================ */
-    @media (max-width: 960px) {
-      .academy-grid, .worldwide { grid-template-columns: 1fr; }
-      .academy-logo-panel { aspect-ratio: 16/9; max-height: 280px; }
-      .academy-main-logo { width: 44%; }
-      .worldwide-image { min-height: auto; }
-      .worldwide-image .main-img { width: 100%; height: 520px; }
-      .worldwide-image .float-img { position: relative; width: 54%; margin-left: auto; margin-top: -110px; right: auto; bottom: auto; }
-      .signature-head { display: block; }
-      .piece-button { grid-template-columns: 150px 1fr auto; gap: 16px; }
-      .piece-thumb { height: 180px; }
+    @media (max-width: 900px) {
+      .lightbox-prev {
+        left: 10px;
+      }
+      .lightbox-next {
+        right: 10px;
+      }
     }
-    @media (max-width: 620px) {
-      .hero-scroll-hint { display: none; }
-      .hero-arrows { display: none; }
-      .slide-content { left: 22px; right: 22px; bottom: 80px; }
-      .piece-button { grid-template-columns: 1fr; }
-      .piece-gallery-inner { grid-template-columns: 1fr; }
-      .piece-gallery-inner img { height: auto; max-height: 480px; }
-      .academy-logo-panel { display: none; }
-      .academy-strip-photo { width: clamp(160px, 42vw, 220px); }
-      .worldwide-image .main-img { height: 440px; }
-      .worldwide-image .float-img { width: 68%; }
-      footer { display: block; line-height: 1.8; }
+
+    .lightbox-caption {
+      margin-top: 25px;
+      text-align: center;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .lightbox-counter {
+      margin-top: 8px;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--text-dim);
     }
   </style>
 </head>
-<body>
+<body class="preloading">
 
-  <!-- Intro -->
-  <div class="intro" id="intro">
-    <div class="intro-inner">
-      <div class="intro-logo-shell">
-        <img src="SBL-Transperant-logo.png" alt="Styledbylayo" class="intro-logo">
+  <!-- 1. Intro / Preloader -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <img src="SBL-Transperant-logo.png" alt="Styledbylayo" class="preloader-logo">
+      <div class="preloader-tagline">Styledbylayo</div>
+      <div class="preloader-status">Seven Star Rated Brand</div>
+      <div class="preloader-bar-container">
+        <div class="preloader-bar"></div>
       </div>
-      <div class="intro-line"></div>
-      <div class="intro-tag">Seven Star Rated Fashion Brand</div>
     </div>
   </div>
 
-  <!-- Header -->
-  <header class="site-header" id="siteHeader">
-    <div class="nav-inner">
-      <a href="#top" class="brand-mark">
-        <img src="SBL-Transperant-logo.png" alt="Styledbylayo">
+  <!-- 2. Header / Navigation -->
+  <header id="main-header">
+    <div class="nav-container">
+      <a href="#top" class="logo-container" aria-label="Go to top">
+        <img src="SBL-Transperant-logo.png" alt="Styledbylayo" class="logo-img">
       </a>
-
-      <nav class="nav-links">
-        <li><a href="#signature">Collection</a></li>
-        <li><a href="#academy">Academy</a></li>
-        <li><a href="#worldwide">Worldwide</a></li>
+      <nav class="nav-menu">
+        <a href="#top" class="nav-link">Home</a>
+        <a href="#collections" class="nav-link">Signature Collection</a>
+        <a href="#academy" class="nav-link">SBLFA Academy</a>
+        <a href="#reach" class="nav-link">Global Reach</a>
+        <a href="https://www.instagram.com/styledbylayo/" target="_blank" rel="noopener" class="nav-cta"> Atelier Booking </a>
       </nav>
-
-      <a href="https://www.instagram.com/styledbylayo/" target="_blank" rel="noopener" class="nav-cta">Book Consultation</a>
-
-      <button class="hamburger" id="hamburger" aria-label="Open menu">
-        <span></span><span></span><span></span>
+      <!-- Mobile Menu Button -->
+      <button class="mobile-menu-btn" id="menu-toggle" aria-label="Toggle navigation menu">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
       </button>
     </div>
   </header>
 
-  <div class="mobile-panel" id="mobilePanel">
-    <button class="mobile-close" id="mobileClose">×</button>
-    <nav>
-      <a href="#signature">Collection</a>
-      <a href="#academy">Academy</a>
-      <a href="#worldwide">Worldwide</a>
-      <a href="https://www.instagram.com/styledbylayo/" target="_blank" rel="noopener">Book</a>
-    </nav>
+  <!-- Mobile Overlay Navigation -->
+  <div class="mobile-nav-panel" id="mobile-nav">
+    <div class="mobile-nav-links">
+      <a href="#top" class="mobile-link" onclick="toggleMobileNav()">Home</a>
+      <a href="#collections" class="mobile-link" onclick="toggleMobileNav()">Collections</a>
+      <a href="#academy" class="mobile-link" onclick="toggleMobileNav()">SBL Academy</a>
+      <a href="#reach" class="mobile-link" onclick="toggleMobileNav()">Global Reach</a>
+      <a href="https://www.instagram.com/styledbylayo/" target="_blank" rel="noopener" class="mobile-link" onclick="toggleMobileNav()">Book Atelier</a>
+    </div>
+    <div class="mobile-nav-footer">
+      Maison Styledbylayo Lagos<br>
+      <span style="font-size: 0.55rem; color: var(--gold); margin-top: 10px; display: inline-block; letter-spacing: 0.15em;">Seven Star Rated Fashion Brand</span>
+    </div>
   </div>
 
-  <!-- Hero -->
-  <main id="top">
-    <section id="hero">
-      <div class="hero-slides">
-        <div class="hero-slide active">
-          <div class="slide-bg"></div>
-        </div>
-        <div class="hero-slide">
-          <div class="slide-bg"></div>
-        </div>
-        <div class="hero-slide">
-          <div class="slide-bg"></div>
-        </div>
-        <div class="hero-slide">
-          <div class="slide-bg"></div>
-        </div>
-        <div class="hero-slide">
-          <div class="slide-bg"></div>
-        </div>
-      </div>
+  <!-- 3. Hero Section (Autoplay Video fading into Photo Slideshow) -->
+  <section id="top" class="hero-container">
+    <!-- Editorial frame outline -->
+    <div class="editorial-frame"></div>
 
-      <!-- Slide 1 content -->
-      <div class="slide-content active">
-        <span class="eyebrow">Lagos Fashion House</span>
-        <h2 class="slide-headline">
-          <span class="h-line">Styled for</span>
-          <span class="h-line"><em>presence.</em></span>
-        </h2>
-        <p class="slide-sub">Couture bridal, custom eveningwear and statements pieces for women who want to be remembered.</p>
-        <div class="slide-btns">
-          <a href="https://www.instagram.com/styledbylayo/" target="_blank" rel="noopener" class="btn-gold">Book Consultation</a>
-          <a href="#signature" class="btn-outline-w">View Collection</a>
-        </div>
-      </div>
+    <!-- Background Layer 1: Cinematographic Video loop -->
+    <div class="hero-video-layer" id="hero-video-wrap">
+      <video class="hero-video" autoplay muted loop playsinline id="intro-video">
+        <source src="butterfly-beaded-evening-gown.SBL.mp4" type="video/mp4">
+        <!-- Fallback video element -->
+        <source src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c05436384157ceb50ef3102d589b275d&profile_id=139" type="video/mp4">
+      </video>
+    </div>
 
-      <!-- Slide 2 content -->
-      <div class="slide-content">
-        <span class="eyebrow">Statement Gowns</span>
-        <h2 class="slide-headline">
-          <span class="h-line">Sculpted in</span>
-          <span class="h-line"><em>gold.</em></span>
-        </h2>
-        <p class="slide-sub">Elegant volume and metallic warmth shaped for celebrations, events and red-carpet energy.</p>
-        <div class="slide-btns">
-          <a href="#signature" class="btn-gold">Explore Pieces</a>
-        </div>
-      </div>
+    <!-- Background Layer 2: Transition slideshow behind video initially, fading forward after 8 seconds -->
+    <div class="hero-slider-layer" id="hero-slideshow">
+      <div class="hero-slide current" style="background-image: url('butterfly-beaded-evening-gown.1.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('emerald-beaded-couture-gown.1.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('gold-sculpted-evening-gown.1.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('black-embroidered-menswear-suit.1.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('pink-green-beaded-mini-dress.1.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('SaveClip.App_687606913_18578571397054548_8013286953504668932_n.jpg');"></div>
+    </div>
 
-      <!-- Slide 3 content -->
-      <div class="slide-content">
-        <span class="eyebrow">Couture Detail</span>
-        <h2 class="slide-headline">
-          <span class="h-line">Rich in</span>
-          <span class="h-line"><em>emerald.</em></span>
-        </h2>
-        <p class="slide-sub">Structure, silhouette and beadwork that speaks before you do.</p>
-        <div class="slide-btns">
-          <a href="#signature" class="btn-gold">View Collection</a>
-        </div>
-      </div>
+    <!-- Dark vignette gradient shields -->
+    <div class="hero-vignette"></div>
 
-      <!-- Slide 4 content -->
-      <div class="slide-content">
-        <span class="eyebrow">Party Statement</span>
-        <h2 class="slide-headline">
-          <span class="h-line">Colour in</span>
-          <span class="h-line"><em>motion.</em></span>
-        </h2>
-        <p class="slide-sub">Playful beading and movement built for parties, shoots and standout moments.</p>
-        <div class="slide-btns">
-          <a href="#signature" class="btn-gold">View Collection</a>
-        </div>
+    <!-- Foreground Headings -->
+    <div class="hero-content">
+      <span class="hero-badge">Style Luxury Atelier</span>
+      <h1 class="hero-title">Styledbylayo</h1>
+      <p class="hero-tagline">"Seven Star Rated Fashion Brand"<br><span style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.3em; display: inline-block; margin-top: 15px; font-style: normal; color: var(--gold)">Lagos Haute Couture &amp; Fine Atelier</span></p>
+      <div class="hero-button-container">
+        <a href="#collections" class="hero-btn">Show Collection</a>
       </div>
+    </div>
+  </section>
 
-      <!-- Slide 5 content -->
-      <div class="slide-content">
-        <span class="eyebrow">Custom Menswear</span>
-        <h2 class="slide-headline">
-          <span class="h-line">Tailored</span>
-          <span class="h-line"><em>presence.</em></span>
-        </h2>
-        <p class="slide-sub">Editorial tailoring with embroidered detail and bold silhouette for refined masculine presence.</p>
-        <div class="slide-btns">
-          <a href="#signature" class="btn-gold">View Collection</a>
-        </div>
-      </div>
-
-      <!-- Vertical dots -->
-      <div class="hero-dots" id="heroDots">
-        <div class="hero-dot active"></div>
-        <div class="hero-dot"></div>
-        <div class="hero-dot"></div>
-        <div class="hero-dot"></div>
-        <div class="hero-dot"></div>
-      </div>
-
-      <!-- Arrows -->
-      <div class="hero-arrows">
-        <div class="hero-arrow" id="heroPrev">&#8593;</div>
-        <div class="hero-arrow" id="heroNext">&#8595;</div>
-      </div>
-
-      <!-- Counter + progress -->
-      <div class="hero-ui">
-        <div class="hero-progress-bar"><div class="hero-progress-fill" id="heroProgressFill"></div></div>
-        <div class="hero-counter"><span class="cur" id="heroCur">01</span> / <span id="heroTotal">05</span></div>
-      </div>
-
-      <!-- Scroll hint -->
-      <div class="hero-scroll-hint">
-        <div class="scroll-line"></div>
-        <span>Scroll</span>
-      </div>
-    </section>
-  </main>
-
-  <!-- Marquee Divider -->
-  <section class="marquee-section" aria-hidden="true">
-    <div class="marquee-track" id="marqueeTrack">
+  <!-- 4. Marquee strip -->
+  <div class="marquee-container">
+    <div class="marquee-track">
       <div class="marquee-item">
-        <span class="marquee-word em">Bridal</span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-word">Custom Couture</span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-word em">Eveningwear</span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-word">Ready-to-Wear</span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-word em">Fashion Academy</span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-word">Worldwide Shipping</span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-word em">Lagos</span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-word">Menswear</span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-word em">Seven Star Rated</span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-word">Made to Order</span>
-        <span class="marquee-sep">·</span>
+        <span>Bridal</span><span class="marquee-bullet">✦</span>
+        <span>Custom Couture</span><span class="marquee-bullet">✦</span>
+        <span>Eveningwear</span><span class="marquee-bullet">✦</span>
+        <span>Ready-to-Wear</span><span class="marquee-bullet">✦</span>
+        <span>Fashion Academy</span><span class="marquee-bullet">✦</span>
+        <span>Worldwide Shipping</span><span class="marquee-bullet">✦</span>
+        <span>Lagos</span><span class="marquee-bullet">✦</span>
+        <span>Menswear</span><span class="marquee-bullet">✦</span>
+        <span>Seven Star Rated</span><span class="marquee-bullet">✦</span>
+        <span>Made to Order</span>
       </div>
-      <!-- Duplicate for seamless loop -->
-      <div class="marquee-item" aria-hidden="true">
-        <span class="marquee-word em">Bridal</span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-word">Custom Couture</span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-word em">Eveningwear</span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-word">Ready-to-Wear</span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-word em">Fashion Academy</span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-word">Worldwide Shipping</span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-word em">Lagos</span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-word">Menswear</span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-word em">Seven Star Rated</span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-word">Made to Order</span>
-        <span class="marquee-sep">·</span>
+      <div class="marquee-item">
+        <span>Bridal</span><span class="marquee-bullet">✦</span>
+        <span>Custom Couture</span><span class="marquee-bullet">✦</span>
+        <span>Eveningwear</span><span class="marquee-bullet">✦</span>
+        <span>Ready-to-Wear</span><span class="marquee-bullet">✦</span>
+        <span>Fashion Academy</span><span class="marquee-bullet">✦</span>
+        <span>Worldwide Shipping</span><span class="marquee-bullet">✦</span>
+        <span>Lagos</span><span class="marquee-bullet">✦</span>
+        <span>Menswear</span><span class="marquee-bullet">✦</span>
+        <span>Seven Star Rated</span><span class="marquee-bullet">✦</span>
+        <span>Made to Order</span>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Signature Collection -->
-  <section class="section section-dark" id="signature">
-    <div class="signature-head">
-      <div>
-        <div class="section-kicker reveal">Signature Collection</div>
-        <h2 class="section-title reveal">Each piece, its own moment.</h2>
-      </div>
-      <p class="signature-hint reveal">Tap a piece to unfold &mdash; tap any image to expand</p>
-    </div>
-
-    <div class="collection-list">
-
-      <article class="piece reveal open">
-        <button class="piece-button" type="button">
-          <div class="piece-thumb"><img src="butterfly-beaded-evening-gown.1.jpg" alt="Butterfly Beaded Evening Gown"></div>
-          <div class="piece-meta">
-            <small>Custom Eveningwear</small>
-            <h3>Butterfly Beaded Evening Gown</h3>
-            <p>A dramatic couture piece with sculpted beading, dimensional butterfly details and presence built for unforgettable entrances.</p>
-          </div>
-          <div class="piece-toggle">+</div>
-        </button>
-        <div class="piece-gallery">
-          <div class="piece-gallery-inner">
-            <img src="butterfly-beaded-evening-gown.1.jpg" style="--delay:.05s" alt="">
-            <img src="butterfly-beaded-evening-gown.2.jpg" style="--delay:.12s" alt="">
-            <img src="butterfly-beaded-evening-gown.3.jpg" style="--delay:.19s" alt="">
-          </div>
-        </div>
-      </article>
-
-      <article class="piece reveal">
-        <button class="piece-button" type="button">
-          <div class="piece-thumb"><img src="gold-sculpted-evening-gown.1.jpg" alt="Gold Sculpted Evening Gown"></div>
-          <div class="piece-meta">
-            <small>Statement Gown</small>
-            <h3>Gold Sculpted Evening Gown</h3>
-            <p>Elegant volume, sculpted fabric and a warm metallic presence shaped for celebrations, events and red-carpet energy.</p>
-          </div>
-          <div class="piece-toggle">+</div>
-        </button>
-        <div class="piece-gallery">
-          <div class="piece-gallery-inner">
-            <img src="gold-sculpted-evening-gown.1.jpg" style="--delay:.05s" alt="">
-            <img src="gold-sculpted-evening-gown.2.jpg" style="--delay:.12s" alt="">
-            <img src="gold-sculpted-evening-gown-back-view.3.jpg" style="--delay:.19s" alt="">
-          </div>
-        </div>
-      </article>
-
-      <article class="piece reveal">
-        <button class="piece-button" type="button">
-          <div class="piece-thumb"><img src="emerald-beaded-couture-gown.1.jpg" alt="Emerald Beaded Couture Gown"></div>
-          <div class="piece-meta">
-            <small>Couture Detail</small>
-            <h3>Emerald Beaded Couture Gown</h3>
-            <p>Rich emerald beadwork, structure and silhouette for a woman who wants the room to remember her before she speaks.</p>
-          </div>
-          <div class="piece-toggle">+</div>
-        </button>
-        <div class="piece-gallery">
-          <div class="piece-gallery-inner">
-            <img src="emerald-beaded-couture-gown.1.jpg" style="--delay:.05s" alt="">
-            <img src="emerald-beaded-couture-gown.3.jpg" style="--delay:.12s" alt="">
-            <img src="emerald-beaded-couture-gown-back-view-2.jpg" style="--delay:.19s" alt="">
-          </div>
-        </div>
-      </article>
-
-      <article class="piece reveal">
-        <button class="piece-button" type="button">
-          <div class="piece-thumb"><img src="pink-green-beaded-mini-dress.1.jpg" alt="Pink Green Beaded Mini Dress"></div>
-          <div class="piece-meta">
-            <small>Party Statement</small>
-            <h3>Pink Green Beaded Mini Dress</h3>
-            <p>A playful beaded statement with colour, movement and fashion confidence for parties, shoots and standout moments.</p>
-          </div>
-          <div class="piece-toggle">+</div>
-        </button>
-        <div class="piece-gallery">
-          <div class="piece-gallery-inner">
-            <img src="pink-green-beaded-mini-dress.1.jpg" style="--delay:.05s" alt="">
-            <img src="pink-green-beaded-mini-dress.2.jpg" style="--delay:.12s" alt="">
-            <img src="pink-green-beaded-mini-dress-side-view.3.jpg" style="--delay:.19s" alt="">
-          </div>
-        </div>
-      </article>
-
-      <article class="piece reveal">
-        <button class="piece-button" type="button">
-          <div class="piece-thumb"><img src="black-embroidered-menswear-suit.1.jpg" alt="Black Embroidered Menswear Suit"></div>
-          <div class="piece-meta">
-            <small>Custom Menswear</small>
-            <h3>Black Embroidered Menswear Suit</h3>
-            <p>Editorial tailoring with embroidered detail, wide-leg structure and a bold silhouette for refined masculine presence.</p>
-          </div>
-          <div class="piece-toggle">+</div>
-        </button>
-        <div class="piece-gallery">
-          <div class="piece-gallery-inner">
-            <img src="black-embroidered-menswear-suit.1.jpg" style="--delay:.05s" alt="">
-            <img src="black-embroidered-menswear-suit.2.jpg" style="--delay:.12s" alt="">
-            <img src="black-embroidered-menswear-suit.3.jpg" style="--delay:.19s" alt="">
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- Motion -->
-  <section class="motion">
-    <video autoplay muted loop playsinline>
-      <source src="butterfly-beaded-evening-gown.SBL.mp4" type="video/mp4">
-    </video>
-    <div class="motion-corner motion-corner--tl"></div>
-    <div class="motion-corner motion-corner--tr"></div>
-    <div class="motion-corner motion-corner--bl"></div>
-    <div class="motion-corner motion-corner--br"></div>
-    <div class="motion-content reveal">
-      <span class="motion-eyebrow">Styledbylayo in Motion</span>
-      <h2>Craft in <em>motion.</em></h2>
-    </div>
-  </section>
-
-  <!-- Academy -->
-  <section class="section academy" id="academy">
-    <div class="academy-grid">
-      <div class="academy-logo-panel" id="academyLogoPanel">
-        <img src="SBLFA-LOGO-Transperant-Acedemy1.png" alt="SBL Fashion Academy" class="academy-main-logo">
-      </div>
-      <div class="academy-copy">
-        <div class="section-kicker reveal">SBL Fashion Academy</div>
-        <h2 class="reveal">Africa's next generation of <em>fashion leaders.</em></h2>
-        <p class="reveal">
-          A subsidiary of Styledbylayo built on creativity and craft.
-          A premium presence for aspiring designers — a clear, credible and inspiring path to the next level.
-        </p>
-        <div class="academy-pillars reveal">
-          <div class="academy-pillar">
-            <span class="academy-pillar-name">Fashion School, Lagos</span>
-            <span class="academy-pillar-tag">Structured Training</span>
-          </div>
-          <div class="academy-pillar">
-            <span class="academy-pillar-name">Creativity & Craft</span>
-            <span class="academy-pillar-tag">Practical Growth</span>
-          </div>
-          <div class="academy-pillar">
-            <span class="academy-pillar-name">Future Leaders</span>
-            <span class="academy-pillar-tag">Fashion Legacy</span>
-          </div>
-        </div>
-        <a href="https://www.instagram.com/styledbylayo/" target="_blank" rel="noopener" class="btn-gold reveal">Explore Academy</a>
-      </div>
-    </div>
-
-    <!-- Photo carousel strip -->
-    <div class="academy-carousel-wrap reveal">
-      <p class="academy-carousel-label">Inside the Academy</p>
-      <div class="academy-strip" id="academyStrip">
-        <!-- Set 1 -->
-        <div class="academy-strip-photo"><img src="SBLFA-Acedemy2.jpg" alt="Academy session"></div>
-        <div class="academy-strip-photo"><img src="SBLFA-Acedemy3.jpg" alt="Academy session"></div>
-        <div class="academy-strip-photo"><img src="SBLFA-Acedemy4.jpg" alt="Academy session"></div>
-        <div class="academy-strip-photo"><img src="SBLFA-Acedemy5.jpg" alt="Academy session"></div>
-        <div class="academy-strip-photo"><img src="SBLFA-Acedemy2.jpg" alt="Academy session"></div>
-        <!-- Set 2 — duplicate for seamless loop -->
-        <div class="academy-strip-photo" aria-hidden="true"><img src="SBLFA-Acedemy2.jpg" alt=""></div>
-        <div class="academy-strip-photo" aria-hidden="true"><img src="SBLFA-Acedemy3.jpg" alt=""></div>
-        <div class="academy-strip-photo" aria-hidden="true"><img src="SBLFA-Acedemy4.jpg" alt=""></div>
-        <div class="academy-strip-photo" aria-hidden="true"><img src="SBLFA-Acedemy5.jpg" alt=""></div>
-        <div class="academy-strip-photo" aria-hidden="true"><img src="SBLFA-Acedemy2.jpg" alt=""></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Worldwide -->
-  <section class="section worldwide" id="worldwide">
-    <div class="worldwide-image reveal">
-      <img src="emerald-beaded-couture-gown.3.jpg" alt="Emerald couture gown" class="main-img">
-      <img src="butterfly-beaded-evening-gown.2.jpg" alt="Butterfly gown detail" class="float-img">
-    </div>
-    <div class="worldwide-copy">
-      <div class="section-kicker reveal" style="color:var(--gold-dim)">Made in Lagos. Worn Worldwide.</div>
-      <h2 class="reveal">Built for serious clients, at home and abroad.</h2>
-      <p class="reveal">
-        Diaspora, bridal and international clients need more than beautiful posts.
-        A trusted process, clear expectations and enough visual proof to feel confident before ordering.
+  <!-- 5. Signature Collection (Full-Bleed Editorial Layout) -->
+  <section id="collections" class="section-spacing">
+    <div class="editorial-header">
+      <span class="editorial-badge font-display">Collections</span>
+      <h2 class="editorial-title">The Masterwork Archive</h2>
+      <p class="editorial-desc">
+        We treat bespoke design as gallery-quality editorial art. Walk through our primary garments, capturing full-bleed luxury and alternative architectural views. Tap any main canvas to inspect high-resolution details.
       </p>
-      <div class="worldwide-list reveal">
-        <div><span>Consultation</span><strong>By Appointment</strong></div>
-        <div><span>Shipping</span><strong>Worldwide</strong></div>
-        <div><span>Experience</span><strong>Bridal · Custom · RTW</strong></div>
-        <div><span>Assurance</span><strong>Process · Proof · Gallery</strong></div>
+    </div>
+
+    <!-- Gallery List (Dynamic switching supported per piece) -->
+    <div class="exhibition-layout">
+
+      <!-- Garment 1: Butterfly Beaded -->
+      <div class="exhibition-item" id="garment-1">
+        <div class="exhibition-visual">
+          <div class="exhibition-main-wrap" onclick="openLightboxForGarment(1, 0)">
+            <img src="butterfly-beaded-evening-gown.1.jpg" alt="The Butterfly Beaded Evening Gown" class="exhibition-img" id="gown-img-1">
+          </div>
+          <div class="exhibition-angles">
+            <div class="angle-thumbnail active" style="background-image: url('butterfly-beaded-evening-gown.1.jpg');" onclick="switchGownView(1, 'butterfly-beaded-evening-gown.1.jpg', 0)">
+              <div class="angle-overlay-text">Front</div>
+            </div>
+            <div class="angle-thumbnail" style="background-image: url('butterfly-beaded-evening-gown.2.jpg');" onclick="switchGownView(1, 'butterfly-beaded-evening-gown.2.jpg', 1)">
+              <div class="angle-overlay-text">Detail</div>
+            </div>
+            <div class="angle-thumbnail" style="background-image: url('butterfly-beaded-evening-gown.3.jpg');" onclick="switchGownView(1, 'butterfly-beaded-evening-gown.3.jpg', 2)">
+              <div class="angle-overlay-text font-serif">Close-Up</div>
+            </div>
+          </div>
+        </div>
+        <div class="exhibition-details">
+          <div class="exhibition-serial">EDITION N° 01</div>
+          <h3 class="exhibition-name">The Butterfly Beaded Evening Gown</h3>
+          <p class="exhibition-editorial-body">
+            Crafted for ethereal beauty, this masterpiece hosts thousands of glass beads meticulously engineered on fine mesh, accented by custom architectural organza sleeve flares that command attention.
+          </p>
+          <div class="specifications-table">
+            <div class="spec-row">
+              <span class="spec-label">Artistry Type</span>
+              <span class="spec-value">Haute Couture Eveningwear</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Embellishments</span>
+              <span class="spec-value">Glass Bugle Beads, Swarovski Crystals</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Hours of Craft</span>
+              <span class="spec-value">320 Handworked Hours</span>
+            </div>
+          </div>
+          <a href="https://www.instagram.com/styledbylayo/" target="_blank" rel="noopener" class="exhibition-cta">Request Private Fitting</a>
+        </div>
+      </div>
+
+      <!-- Garment 2: Emerald Beaded -->
+      <div class="exhibition-item reversed" id="garment-2">
+        <div class="exhibition-visual">
+          <div class="exhibition-main-wrap" onclick="openLightboxForGarment(2, 0)">
+            <img src="emerald-beaded-couture-gown.1.jpg" alt="Emerald Beaded Couture Gown" class="exhibition-img" id="gown-img-2">
+          </div>
+          <div class="exhibition-angles">
+            <div class="angle-thumbnail active" style="background-image: url('emerald-beaded-couture-gown.1.jpg');" onclick="switchGownView(2, 'emerald-beaded-couture-gown.1.jpg', 0)">
+              <div class="angle-overlay-text">Model</div>
+            </div>
+            <div class="angle-thumbnail" style="background-image: url('emerald-beaded-couture-gown-back-view-2.jpg');" onclick="switchGownView(2, 'emerald-beaded-couture-gown-back-view-2.jpg', 1)">
+              <div class="angle-overlay-text">Low Back</div>
+            </div>
+            <div class="angle-thumbnail" style="background-image: url('emerald-beaded-couture-gown.3.jpg');" onclick="switchGownView(2, 'emerald-beaded-couture-gown.3.jpg', 2)">
+              <div class="angle-overlay-text">Texture</div>
+            </div>
+          </div>
+        </div>
+        <div class="exhibition-details">
+          <div class="exhibition-serial">EDITION N° 02</div>
+          <h3 class="exhibition-name">The Emerald Beaded Couture Gown</h3>
+          <p class="exhibition-editorial-body">
+            A celebration of deep jewel forest tones. This backless drape gown features hand-linked bead string arrays that flow naturally across the shoulder arches, creating kinetic movement with every step.
+          </p>
+          <div class="specifications-table">
+            <div class="spec-row">
+              <span class="spec-label">Couture Type</span>
+              <span class="spec-value">Backless Column Gown</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Embroidery</span>
+              <span class="spec-value">Nigerian Hand-Threading</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Draping System</span>
+              <span class="spec-value">Fluid Weight Suspension</span>
+            </div>
+          </div>
+          <a href="https://www.instagram.com/styledbylayo/" target="_blank" rel="noopener" class="exhibition-cta">Inquire Fitting</a>
+        </div>
+      </div>
+
+      <!-- Garment 3: Gold Sculpted -->
+      <div class="exhibition-item" id="garment-3">
+        <div class="exhibition-visual">
+          <div class="exhibition-main-wrap" onclick="openLightboxForGarment(3, 0)">
+            <img src="gold-sculpted-evening-gown.1.jpg" alt="Gold Sculpted Evening Gown" class="exhibition-img" id="gown-img-3">
+          </div>
+          <div class="exhibition-angles">
+            <div class="angle-thumbnail active" style="background-image: url('gold-sculpted-evening-gown.1.jpg');" onclick="switchGownView(3, 'gold-sculpted-evening-gown.1.jpg', 0)">
+              <div class="angle-overlay-text">Vogue Arc</div>
+            </div>
+            <div class="angle-thumbnail" style="background-image: url('gold-sculpted-evening-gown.2.jpg');" onclick="switchGownView(3, 'gold-sculpted-evening-gown.2.jpg', 1)">
+              <div class="angle-overlay-text">Profile</div>
+            </div>
+            <div class="angle-thumbnail" style="background-image: url('gold-sculpted-evening-gown-back-view.3.jpg');" onclick="switchGownView(3, 'gold-sculpted-evening-gown-back-view.3.jpg', 2)">
+              <div class="angle-overlay-text">Spine</div>
+            </div>
+          </div>
+        </div>
+        <div class="exhibition-details">
+          <div class="exhibition-serial">EDITION N° 03</div>
+          <h3 class="exhibition-name">The Gold Sculpted Evening Gown</h3>
+          <p class="exhibition-editorial-body">
+            Constructed with a structured built-in waist corset framework, this metallic masterpiece cascades like molten gold. Hand-pleated structural shoulder arcs represent modern Lagos majesty.
+          </p>
+          <div class="specifications-table">
+            <div class="spec-row">
+              <span class="spec-label">Structure</span>
+              <span class="spec-value">Atelier Interior Bone Corsetry</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Material</span>
+              <span class="spec-value">Metallic Liquid Lame, Silk Dupioni</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Silhouette</span>
+              <span class="spec-value">Sculptural Hourglass Gown</span>
+            </div>
+          </div>
+          <a href="https://www.instagram.com/styledbylayo/" target="_blank" rel="noopener" class="exhibition-cta">Request Couture Order</a>
+        </div>
+      </div>
+
+      <!-- Garment 4: Black Embroidered Menswear -->
+      <div class="exhibition-item reversed" id="garment-4">
+        <div class="exhibition-visual">
+          <div class="exhibition-main-wrap" onclick="openLightboxForGarment(4, 0)">
+            <img src="black-embroidered-menswear-suit.1.jpg" alt="Black Embroidered Menswear Suit" class="exhibition-img" id="gown-img-4">
+          </div>
+          <div class="exhibition-angles">
+            <div class="angle-thumbnail active" style="background-image: url('black-embroidered-menswear-suit.1.jpg');" onclick="switchGownView(4, 'black-embroidered-menswear-suit.1.jpg', 0)">
+              <div class="angle-overlay-text">Stature</div>
+            </div>
+            <div class="angle-thumbnail" style="background-image: url('black-embroidered-menswear-suit.2.jpg');" onclick="switchGownView(4, 'black-embroidered-menswear-suit.2.jpg', 1)">
+              <div class="angle-overlay-text">Lapel</div>
+            </div>
+            <div class="angle-thumbnail" style="background-image: url('black-embroidered-menswear-suit.3.jpg');" onclick="switchGownView(4, 'black-embroidered-menswear-suit.3.jpg', 2)">
+              <div class="angle-overlay-text">Cuff</div>
+            </div>
+          </div>
+        </div>
+        <div class="exhibition-details">
+          <div class="exhibition-serial">EDITION N° 04</div>
+          <h3 class="exhibition-name">Embroidery Menswear Suit</h3>
+          <p class="exhibition-editorial-body">
+            Prism-cut masculine tailoring in heavy bespoke crepe. Features dense golden embroidery framing the modern lapel lines, crafted for grooms, elite events, and high-impact international menswear showcases.
+          </p>
+          <div class="specifications-table">
+            <div class="spec-row">
+              <span class="spec-label">Cut Type</span>
+              <span class="spec-value">Double Breasted Slim-Crop</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Embroidery</span>
+              <span class="spec-value">Metallic Bullion Flat Stitching</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Atelier Service</span>
+              <span class="spec-value">Bespoke Millimeter Tailoring</span>
+            </div>
+          </div>
+          <a href="https://www.instagram.com/styledbylayo/" target="_blank" rel="noopener" class="exhibition-cta">Order Groom Suite</a>
+        </div>
+      </div>
+
+      <!-- Garment 5: Pink & Green Mini -->
+      <div class="exhibition-item" id="garment-5">
+        <div class="exhibition-visual">
+          <div class="exhibition-main-wrap" onclick="openLightboxForGarment(5, 0)">
+            <img src="pink-green-beaded-mini-dress.1.jpg" alt="Pink & Green Beaded Mini Dress" class="exhibition-img" id="gown-img-5">
+          </div>
+          <div class="exhibition-angles">
+            <div class="angle-thumbnail active" style="background-image: url('pink-green-beaded-mini-dress.1.jpg');" onclick="switchGownView(5, 'pink-green-beaded-mini-dress.1.jpg', 0)">
+              <div class="angle-overlay-text">Front</div>
+            </div>
+            <div class="angle-thumbnail" style="background-image: url('pink-green-beaded-mini-dress.2.jpg');" onclick="switchGownView(5, 'pink-green-beaded-mini-dress.2.jpg', 1)">
+              <div class="angle-overlay-text">Details</div>
+            </div>
+            <div class="angle-thumbnail" style="background-image: url('pink-green-beaded-mini-dress-side-view.3.jpg');" onclick="switchGownView(5, 'pink-green-beaded-mini-dress-side-view.3.jpg', 2)">
+              <div class="angle-overlay-text font-serif">Lateral</div>
+            </div>
+          </div>
+        </div>
+        <div class="exhibition-details">
+          <div class="exhibition-serial">EDITION N° 05</div>
+          <h3 class="exhibition-name">Pink &amp; Green Beaded Mini</h3>
+          <p class="exhibition-editorial-body">
+            An artistic, high-energy playful balance. Combining vibrant hot pink hues with deep emerald green crystal strings, this hand-beaded cocktail luxury mini has structural Nigerian contour lines.
+          </p>
+          <div class="specifications-table">
+            <div class="spec-row">
+              <span class="spec-label">Style</span>
+              <span class="spec-value">Luxury Cocktail / Ready-to-Wear</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Palette</span>
+              <span class="spec-value">Fluorescent Pink &amp; Chrome Green</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Materials</span>
+              <span class="spec-value">Beaded Netting &amp; Satin Slip</span>
+            </div>
+          </div>
+          <a href="https://www.instagram.com/styledbylayo/" target="_blank" rel="noopener" class="exhibition-cta">Acquire Cocktail Dress</a>
+        </div>
+      </div>
+
+      <!-- Garment 6: SaveClip Archive Gown -->
+      <div class="exhibition-item reversed" id="garment-6">
+        <div class="exhibition-visual">
+          <div class="exhibition-main-wrap" onclick="openLightboxForArchive()">
+            <img src="SaveClip.App_687606913_18578571397054548_8013286953504668932_n.jpg" alt="Maison Styledbylayo Atelier Gown" class="exhibition-img">
+          </div>
+        </div>
+        <div class="exhibition-details">
+          <div class="exhibition-serial">ATELIER MASTERPIECE</div>
+          <h3 class="exhibition-name">Lagos Archive Signature Gown</h3>
+          <p class="exhibition-editorial-body">
+            An exclusive highlight representing the heights of Lagos fashion. Perfect fitment, hand-embellished tulle mesh, and grand structural geometry that defines the Styledbylayo silhouette.
+          </p>
+          <div class="specifications-table">
+            <div class="spec-row">
+              <span class="spec-label">Atelier Class</span>
+              <span class="spec-value">Haute Couture Bridal &amp; Evening</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Fit Technique</span>
+              <span class="spec-value">Atelier Fitted Bodice Architecture</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Exclusivity</span>
+              <span class="spec-value">Single Curation Worldwide</span>
+            </div>
+          </div>
+          <a href="https://www.instagram.com/styledbylayo/" target="_blank" rel="noopener" class="exhibition-cta">Request Atelier Commission</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6. Motion Section (Second Cinematic Use of Video) -->
+  <section class="cinematic-motion-section">
+    <video class="cinematic-backdrop-video" autoplay muted loop playsinline>
+      <source src="butterfly-beaded-evening-gown.SBL.mp4" type="video/mp4">
+      <source src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c05436384157ceb50ef3102d589b275d&profile_id=139" type="video/mp4">
+    </video>
+    <div class="cinematic-vignette"></div>
+    <div class="cinematic-container">
+      <span>The Artisan Pulse</span>
+      <p class="cinematic-quote">
+        "The rhythm of fabric meets the architecture of dreams. Each bead is manually placed, each corset form engineered for unparalleled posture."
+      </p>
+    </div>
+  </section>
+
+  <!-- 7. Academy Section -->
+  <section id="academy" class="section-spacing academy-bg">
+    <div class="academy-grid">
+      <div class="academy-info">
+        <img src="SBLFA-LOGO-Transperant-Acedemy1.png" alt="SBL Fashion Academy Logo" class="academy-logo">
+        <span class="editorial-badge">Education Arm</span>
+        <h2 class="editorial-title" style="font-size: 2.5rem; margin-bottom: 25px;">SBL Fashion Academy (SBLFA)</h2>
+        <p class="academy-quote">
+          “Structured hands-on training aimed at shaping the next class of global fashion leaders.”
+        </p>
+        <p class="editorial-desc" style="margin-bottom: 35px;">
+          SBLFA is the premier educational academy based in Lagos, offering rigorous training for aspiring master couturiers. Our programs focus heavily on advanced pattern-making, proper bodice structure, meticulous draping, tambour beading integration, and global business practices.
+        </p>
+        <a href="https://www.instagram.com/styledbylayo/" target="_blank" rel="noopener" class="exhibition-cta">Inquire Academy Registration</a>
+      </div>
+
+      <!-- Academy Real Photos Viewport -->
+      <div class="academy-viewer">
+        <div class="academy-slider-frame">
+          <div class="academy-image-track" id="academy-track">
+            <img src="SBLFA-Acedemy2.jpg" alt="Academy class 2" class="academy-slide-img">
+            <img src="SBLFA-Acedemy3.jpg" alt="Academy class 3" class="academy-slide-img">
+            <img src="SBLFA-Acedemy4.jpg" alt="Academy class 4" class="academy-slide-img">
+            <img src="SBLFA-Acedemy5.jpg" alt="Academy class 5" class="academy-slide-img">
+            <img src="SBLFA-Acedemy6.jpg" alt="Academy class 6" class="academy-slide-img">
+            <img src="SBLFA-Acedemy7.jpg" alt="Academy class 7" class="academy-slide-img">
+            <img src="SBLFA-Acedemy8.jpg" alt="Academy class 8" class="academy-slide-img">
+          </div>
+        </div>
+        <div class="academy-controls">
+          <button class="academy-nav-btn" onclick="slideAcademy(-1)" aria-label="Previous academy view">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+          </button>
+          <div class="academy-index">
+            <span class="academy-current-index" id="academy-active-label">1</span> / 7
+          </div>
+          <button class="academy-nav-btn" onclick="slideAcademy(1)" aria-label="Next academy view">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+        </div>
+        <div class="academy-meta" id="academy-desc-label">
+          STUDENT DRAPING &amp; COUTURE SILHOUETTE ASSEMBLY
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Final CTA -->
-  <section class="final-cta" id="consultation">
-    <div class="final-slides" aria-hidden="true">
-      <img src="gold-sculpted-evening-gown-back-view.3.jpg" class="active" alt="">
-      <img src="butterfly-beaded-evening-gown.3.jpg" alt="">
-      <img src="emerald-beaded-couture-gown-back-view-2.jpg" alt="">
-    </div>
-    <div class="final-cta-inner reveal">
-      <div class="eyebrow">Begin the Experience</div>
-      <h2>Ready to create your look?</h2>
-      <p>Consultation, custom fitting and a premium experience — from Lagos, for the world.</p>
-      <div class="final-actions">
-        <a href="https://www.instagram.com/styledbylayo/" target="_blank" rel="noopener" class="btn-gold">Book Consultation</a>
-        <a href="#signature" class="btn-outline-w">View Collection</a>
+  <!-- 8. Worldwide Global Reach Section -->
+  <section id="reach" class="section-spacing global-reach-section">
+    <span class="editorial-badge">Logistics &amp; Services</span>
+    <h2 class="editorial-title">Worldwide Reach</h2>
+    <p class="editorial-desc global-subtitle">
+      Based in Lagos, Nigeria, SBL ships bespoke garment crates and luxury ready-to-wear lines globally. We guarantee perfect fitment through our digital custom measurement protocol.
+    </p>
+
+    <div class="global-grid">
+      <div class="global-card">
+        <div class="global-card-icon">I</div>
+        <h3 class="global-card-title">Secured Global Crates</h3>
+        <p class="global-card-text">
+          Our evening and wedding gowns are packed into cushioned wooden crates containing custom form hangers, ensuring seamless shipping via DHLExpress to North America, London, and worldwide destinations.
+        </p>
+      </div>
+      <div class="global-card">
+        <div class="global-card-icon">II</div>
+        <h3 class="global-card-title">Virtual Diagnostics</h3>
+        <p class="global-card-text">
+          Online consultation portals and video calls guide global clients through our detailed 35-millimeter anatomical calibration measurement protocol, securing absolute fitment prior to cutting patterns.
+        </p>
+      </div>
+      <div class="global-card">
+        <div class="global-card-icon">III</div>
+        <h3 class="global-card-title">Lagos Atelier</h3>
+        <p class="global-card-text">
+          Experience highly personalized appointments, custom fabric selections, and tambour frame walkthroughs by scheduling private fittings with our master couturiers.
+        </p>
       </div>
     </div>
   </section>
 
+  <!-- 9. Final CTA (Consultation Booking Module) -->
+  <section class="section-spacing cta-module">
+    <div class="cta-inner">
+      <div class="cta-stars">✦ ✦ ✦ ✦ ✦ ✦ ✦</div>
+      <h2 class="cta-title">Enter Styledbylayo</h2>
+      <p class="editorial-desc" style="margin: 0 auto 40px; max-width: 500px;">
+        Accepting commissions for bespoke brides, high-fashion eveningwear clients, and international suit orders. Experience luxury from Lagos.
+      </p>
+      <div class="booking-channels">
+        <a href="https://www.instagram.com/styledbylayo/" target="_blank" rel="noopener" class="booking-btn">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.04.148-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051C.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44a1.44a 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+          </svg>
+          Chat on Instagram
+        </a>
+      </div>
+      <p class="cta-subtext">MAISON STYLEDBYLAYO® · SEVEN STAR RATED</p>
+    </div>
+  </section>
+
+  <!-- 10. Footer -->
   <footer>
-    <p>Styledbylayo premium website concept.</p>
-    <p>Demo concept by <a href="https://builtbysammie.github.io/portfolio/" target="_blank" rel="noopener">Built by Sammie</a>.</p>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="SBL-Transperant-logo.png" alt="Styledbylayo" class="footer-logo">
+        <p class="footer-motto">
+          Formulating rare bespoke designs, tailored silhouettes, and training future design icons of haute couture.
+        </p>
+        <span class="footer-star-label">✦ Seven Star Rated Haute Couture House</span>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Navigation</h4>
+        <ul class="footer-links-list">
+          <li><a href="#top" class="footer-link">Home</a></li>
+          <li><a href="#collections" class="footer-link">Lookbook</a></li>
+          <li><a href="#academy" class="footer-link">Academy (SBLFA)</a></li>
+          <li><a href="#reach" class="footer-link">Global Logistics</a></li>
+          <li><a href="https://www.instagram.com/styledbylayo/" target="_blank" rel="noopener" class="footer-link">Atelier Booking</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Primary Atelier</h4>
+        <address class="footer-address">
+          <strong>Lagos Atelier &amp; Academy</strong>
+          Maison Styledbylayo,<br>
+          Haute Couture Center,<br>
+          Lagos, Nigeria.<br>
+          <span style="font-size: 0.72rem; display: inline-block; margin-top: 15px; color: var(--gold);">Direct Inquiries: @styledbylayo</span>
+        </address>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        &copy; 2026 Styledbylayo. All Rights Reserved. Nigeria &amp; Worldwide delivery.
+      </p>
+      <p class="footer-credit">
+        Demo concept by ROVOCHÉ
+      </p>
+    </div>
   </footer>
 
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
-    <img src="" alt="" id="lightboxImg">
+  <!-- Interactive Lightbox Markup -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image details viewer">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close lightbox">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+    <div class="lightbox-wrap">
+      <button class="lightbox-nav lightbox-prev" onclick="lightboxPrev()" aria-label="Previous view">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <img src="" alt="" class="lightbox-image" id="lightbox-img">
+      <button class="lightbox-nav lightbox-next" onclick="lightboxNext()" aria-label="Next view">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m9 18 6-6-9-6"/></svg>
+      </button>
+    </div>
+    <div class="lightbox-caption" id="lightbox-caption">Butterfly Beaded Evening Gown</div>
+    <div class="lightbox-counter" id="lightbox-counter">1 / 3</div>
   </div>
 
+  <!-- Vanilla JS Engine -->
   <script>
-    /* ---- Intro ---- */
+    // Asset Manifests corresponding with HTML markup
+    const garmentsData = {
+      1: {
+        images: [
+          'butterfly-beaded-evening-gown.1.jpg',
+          'butterfly-beaded-evening-gown.2.jpg',
+          'butterfly-beaded-evening-gown.3.jpg'
+        ],
+        name: "The Butterfly Beaded Evening Gown",
+        descriptions: ["Front View", "Detail Beadwork Profile", "Close-Up Sleeve Architecture"]
+      },
+      2: {
+        images: [
+          'emerald-beaded-couture-gown.1.jpg',
+          'emerald-beaded-couture-gown-back-view-2.jpg',
+          'emerald-beaded-couture-gown.3.jpg'
+        ],
+        name: "Emerald Beaded Couture Gown",
+        descriptions: ["Model Fitting View", "Low-Back Drapery Detail", "Artisanal Beaded Fabric Texture"]
+      },
+      3: {
+        images: [
+          'gold-sculpted-evening-gown.1.jpg',
+          'gold-sculpted-evening-gown.2.jpg',
+          'gold-sculpted-evening-gown-back-view.3.jpg'
+        ],
+        name: "The Gold Sculpted Evening Gown",
+        descriptions: ["Vogue Arc Silhouette", "Atelier Corsetry Profile", "Sculptural Draping Spine View"]
+      },
+      4: {
+        images: [
+          'black-embroidered-menswear-suit.1.jpg',
+          'black-embroidered-menswear-suit.2.jpg',
+          'black-embroidered-menswear-suit.3.jpg'
+        ],
+        name: "Embroidery Menswear Suit",
+        descriptions: ["Slim Double Breasted Form", "Metallic Lapel Bead Detail", "Bespoke Fold Cuff Assembly"]
+      },
+      5: {
+        images: [
+          'pink-green-beaded-mini-dress.1.jpg',
+          'pink-green-beaded-mini-dress.2.jpg',
+          'pink-green-beaded-mini-dress-side-view.3.jpg'
+        ],
+        name: "Pink & Green Beaded Mini",
+        descriptions: ["Front Silhouette View", "Embellished Netting Details", "Lateral Side-View Assembly"]
+      },
+      6: {
+        images: [
+          'SaveClip.App_687606913_18578571397054548_8013286953504668932_n.jpg'
+        ],
+        name: "Lagos Archive Signature Gown",
+        descriptions: ["Atelier Grand Fitted Curation"]
+      }
+    };
+
+    const academyData = [
+      { label: "MASTER COURTIER CLASS", text: "TAMBOUR EMBELLISHMENT TECHNIQUE & WEAVING FRAMEWORK" },
+      { label: "PATTERN STRUCTURE", text: "ADVANCED DRAUGHTING & BODY SCULPTING ALGEBRA" },
+      { label: "THE ATELIER SALON", text: "NIGERIAN GEOMETRIC DRAPING CONVENTIONS AND GRAINLINES" },
+      { label: "TEXTILE FLOW", text: "TENSION MATRIX CALIBRATION & FIT-UP REHEARSALS" },
+      { label: "RUNWAY PREPARATION", text: "LAGOS FASHION RUNWAY CALIBRATION & EDITORIAL WEAR" },
+      { label: "HISTORIC DESIGN", text: "HISTORICAL PATTERN GEOMETRY STUDIES FOR BRIDAL CRENSHAM" },
+      { label: "SEWING EXCELLENCE", text: "HAND SEAMS AND MILTRON EMBROIDERY ASSEMBLIES" }
+    ];
+
+    // Academy slider state
+    let activeAcademySlide = 0;
+    const academySlidesCount = 7;
+
+    // Lightbox state tracking
+    let currentLightboxGarmentId = 1;
+    let currentLightboxImageIndex = 0;
+
+    // Preloader and Body scroll restore
     window.addEventListener('load', () => {
+      const loader = document.getElementById('preloader');
       setTimeout(() => {
-        const intro = document.getElementById('intro');
-        if (intro) intro.style.display = 'none';
-      }, 5500);
+        loader.classList.add('hidden');
+        document.body.classList.remove('preloading');
+      }, 2300);
     });
 
-    /* ---- Nav ghost/peek scroll behaviour ---- */
-    const header = document.getElementById('siteHeader');
-    const HERO_HEIGHT = () => document.getElementById('top').offsetHeight;
-    let lastScrollY = 0;
-    let ticking = false;
-
-    function updateNav() {
-      const y = window.scrollY;
-      const heroEnd = HERO_HEIGHT();
-
-      if (y < heroEnd * 0.55) {
-        /* On/near hero — fully visible, no background */
-        header.classList.remove('nav-hidden', 'nav-peek');
-      } else if (y > lastScrollY) {
-        /* Scrolling DOWN past hero — fade out */
-        header.classList.add('nav-hidden');
-        header.classList.remove('nav-peek');
-      } else if (lastScrollY - y > 6) {
-        /* Scrolling UP — peek back with pill bg */
-        header.classList.remove('nav-hidden');
-        header.classList.add('nav-peek');
-      }
-
-      lastScrollY = y;
-      ticking = false;
-    }
+    // Header hide on scroll down, peek on scroll up
+    let lastScrollTop = 0;
+    const header = document.getElementById('main-header');
 
     window.addEventListener('scroll', () => {
-      if (!ticking) { requestAnimationFrame(updateNav); ticking = true; }
-    }, { passive: true });
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Background shading trigger
+      if (scrollTop > 50) {
+        header.classList.add('header-scrolled');
+      } else {
+        header.classList.remove('header-scrolled');
+      }
 
-    /* ---- Mobile menu ---- */
-    const hamburger = document.getElementById('hamburger');
-    const mobilePanel = document.getElementById('mobilePanel');
-    const mobileClose = document.getElementById('mobileClose');
-
-    function openMenu() { hamburger.classList.add('open'); mobilePanel.classList.add('open'); document.body.style.overflow = 'hidden'; }
-    function closeMenu() { hamburger.classList.remove('open'); mobilePanel.classList.remove('open'); document.body.style.overflow = ''; }
-
-    hamburger.addEventListener('click', () => mobilePanel.classList.contains('open') ? closeMenu() : openMenu());
-    mobileClose.addEventListener('click', closeMenu);
-    mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-
-    /* ---- Hero slideshow ---- */
-    const heroSlides = Array.from(document.querySelectorAll('#hero .hero-slide'));
-    const slideContents = Array.from(document.querySelectorAll('.slide-content'));
-    const heroDots = Array.from(document.querySelectorAll('.hero-dot'));
-    const heroCur = document.getElementById('heroCur');
-    const heroTotal = document.getElementById('heroTotal');
-    const progressFill = document.getElementById('heroProgressFill');
-    const SLIDE_DURATION = 6000;
-    let heroIndex = 0;
-    let progressAnim = null;
-    let slideInterval = null;
-
-    heroTotal.textContent = String(heroSlides.length).padStart(2, '0');
-
-    function goToSlide(n) {
-      heroSlides[heroIndex].classList.remove('active');
-      slideContents[heroIndex].classList.remove('active');
-      heroDots[heroIndex].classList.remove('active');
-
-      heroIndex = (n + heroSlides.length) % heroSlides.length;
-
-      heroSlides[heroIndex].classList.add('active');
-      slideContents[heroIndex].classList.add('active');
-      heroDots[heroIndex].classList.add('active');
-      heroCur.textContent = String(heroIndex + 1).padStart(2, '0');
-
-      // Progress bar
-      progressFill.style.transition = 'none';
-      progressFill.style.width = '0%';
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          progressFill.style.transition = `width ${SLIDE_DURATION}ms linear`;
-          progressFill.style.width = '100%';
-        });
-      });
-    }
-
-    function startInterval() {
-      clearInterval(slideInterval);
-      slideInterval = setInterval(() => goToSlide(heroIndex + 1), SLIDE_DURATION);
-    }
-
-    document.getElementById('heroNext').addEventListener('click', () => { goToSlide(heroIndex + 1); startInterval(); });
-    document.getElementById('heroPrev').addEventListener('click', () => { goToSlide(heroIndex - 1); startInterval(); });
-    heroDots.forEach((dot, i) => dot.addEventListener('click', () => { goToSlide(i); startInterval(); }));
-
-    goToSlide(0);
-    startInterval();
-
-    /* ---- Scroll reveal ---- */
-    const ro = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.11 });
-    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
-
-    /* ---- Signature collection accordion ---- */
-    document.querySelectorAll('.piece').forEach(piece => {
-      piece.querySelector('.piece-button').addEventListener('click', () => {
-        const isOpen = piece.classList.contains('open');
-        document.querySelectorAll('.piece').forEach(p => p.classList.remove('open'));
-        if (!isOpen) piece.classList.add('open');
-      });
+      // Hide or show
+      if (scrollTop > lastScrollTop && scrollTop > 150) {
+        header.classList.add('header-hidden');
+      } else {
+        header.classList.remove('header-hidden');
+      }
+      lastScrollTop = scrollTop;
     });
 
-    /* ---- Academy logo panel in-view ---- */
-    const academyLogoPanel = document.getElementById('academyLogoPanel');
-    if (academyLogoPanel) {
-      new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) academyLogoPanel.classList.add('in-view'); });
-      }, { threshold: 0.25 }).observe(academyLogoPanel);
+    // Mobile Navigation Drawer Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+      document.body.classList.toggle('preloading');
+    });
+
+    function toggleMobileNav() {
+      menuToggle.classList.remove('active');
+      mobileNav.classList.remove('active');
+      document.body.classList.remove('preloading');
     }
 
-    /* ---- Gallery lightbox ---- */
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxClose = document.getElementById('lightboxClose');
+    // Hero: Transition video to Photo slideshow automatic handler after 8 seconds
+    const introVideo = document.getElementById('intro-video');
+    const videoWrap = document.getElementById('hero-video-wrap');
+    const heroSlideshow = document.getElementById('hero-slideshow');
+    let heroSlides = document.querySelectorAll('.hero-slide');
+    let activeHeroSlideIdx = 0;
+    let heroSliderIntervalId = null;
 
-    document.querySelectorAll('.piece-gallery-inner img').forEach(img => {
-      img.addEventListener('click', e => {
-        e.stopPropagation();
-        lightboxImg.src = img.src;
-        lightbox.classList.add('open');
-        document.body.style.overflow = 'hidden';
+    setTimeout(() => {
+      // Fade out the video, revealing standard high fashion slides behind
+      videoWrap.classList.add('faded-out');
+      heroSlideshow.classList.add('active');
+      
+      // Start photo slider loop
+      heroSliderIntervalId = setInterval(() => {
+        heroSlides[activeHeroSlideIdx].classList.remove('current');
+        activeHeroSlideIdx = (activeHeroSlideIdx + 1) % heroSlides.length;
+        heroSlides[activeHeroSlideIdx].classList.add('current');
+      }, 5000);
+    }, 8500);
+
+    // Signature Collection Option Toggles - swaps display states on click
+    function switchGownView(garmentId, imgSource, imageIndex) {
+      // Update Main image
+      const gImg = document.getElementById(`gown-img-${garmentId}`);
+      if (gImg) {
+        gImg.src = imgSource;
+      }
+
+      // Handle thumbnail borders
+      const section = document.getElementById(`garment-${garmentId}`);
+      const thumbnails = section.querySelectorAll('.angle-thumbnail');
+      thumbnails.forEach((thumb, idx) => {
+        if (idx === imageIndex) {
+          thumb.classList.add('active');
+        } else {
+          thumb.classList.remove('active');
+        }
       });
-    });
+    }
+
+    // Academy Slide Animator
+    function slideAcademy(direction) {
+      activeAcademySlide = activeAcademySlide + direction;
+      if (activeAcademySlide < 0) {
+        activeAcademySlide = academySlidesCount - 1;
+      } else if (activeAcademySlide >= academySlidesCount) {
+        activeAcademySlide = 0;
+      }
+
+      // Animate track
+      const track = document.getElementById('academy-track');
+      track.style.transform = `translateX(-${activeAcademySlide * 100}%)`;
+
+      // Update Labels
+      document.getElementById('academy-active-label').innerText = activeAcademySlide + 1;
+      
+      const meta = academyData[activeAcademySlide];
+      document.getElementById('academy-desc-label').innerHTML = `<strong>${meta.label}</strong> — ${meta.text}`;
+    }
+
+    // Lightbox Control Portal
+    const lightboxEl = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+
+    function openLightboxForGarment(garmentId, initialIndex = 0) {
+      currentLightboxGarmentId = garmentId;
+      currentLightboxImageIndex = initialIndex;
+      updateLightboxState();
+      lightboxEl.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function openLightboxForArchive() {
+      currentLightboxGarmentId = 6;
+      currentLightboxImageIndex = 0;
+      updateLightboxState();
+      lightboxEl.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
 
     function closeLightbox() {
-      lightbox.classList.remove('open');
-      lightboxImg.src = '';
-      if (!mobilePanel.classList.contains('open')) document.body.style.overflow = '';
+      lightboxEl.classList.remove('active');
+      document.body.style.overflow = '';
     }
-    lightboxClose.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLightbox(); closeMenu(); } });
 
-    /* ---- Final CTA slideshow ---- */
-    const finalSlides = Array.from(document.querySelectorAll('.final-slides img'));
-    let finalIdx = 0;
-    if (finalSlides.length) {
-      setInterval(() => {
-        finalSlides[finalIdx].classList.remove('active');
-        finalIdx = (finalIdx + 1) % finalSlides.length;
-        finalSlides[finalIdx].classList.add('active');
-      }, 5200);
+    function updateLightboxState() {
+      const data = garmentsData[currentLightboxGarmentId];
+      const imgPath = data.images[currentLightboxImageIndex];
+      const captionText = data.descriptions[currentLightboxImageIndex] || "Atelier Archive Curation";
+
+      lightboxImg.src = imgPath;
+      lightboxCaption.innerHTML = `<strong>${data.name}</strong><br><span style="font-size: 0.65rem; color: #fff; opacity: .7">${captionText}</span>`;
+      lightboxCounter.innerText = `${currentLightboxImageIndex + 1} / ${data.images.length}`;
+      
+      // Hide navigation arrows if there is only one image in the loop
+      const prevBtn = document.querySelector('.lightbox-prev');
+      const nextBtn = document.querySelector('.lightbox-next');
+      if (data.images.length <= 1) {
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+      } else {
+        prevBtn.style.display = 'flex';
+        nextBtn.style.display = 'flex';
+      }
     }
+
+    function lightboxPrev() {
+      const data = garmentsData[currentLightboxGarmentId];
+      currentLightboxImageIndex--;
+      if (currentLightboxImageIndex < 0) {
+        currentLightboxImageIndex = data.images.length - 1;
+      }
+      updateLightboxState();
+    }
+
+    function lightboxNext() {
+      const data = garmentsData[currentLightboxGarmentId];
+      currentLightboxImageIndex++;
+      if (currentLightboxImageIndex >= data.images.length) {
+        currentLightboxImageIndex = 0;
+      }
+      updateLightboxState();
+    }
+
+    // Keyboard controls for Lightbox (Left, Right, Escape)
+    document.addEventListener('keydown', (e) => {
+      if (!lightboxEl.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') lightboxPrev();
+      if (e.key === 'ArrowRight') lightboxNext();
+    });
   </script>
 </body>
 </html>

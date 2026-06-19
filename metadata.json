@@ -1,0 +1,6 @@
+{
+  "name": "Styledbylayo",
+  "description": "A world-class luxury couture fashion editorial website showcasing bespoke bridal artistry, eveningwear, custom menswear, and the couture academy.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
