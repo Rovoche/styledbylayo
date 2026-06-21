@@ -1,0 +1,296 @@
+---
+// Hero.astro
+---
+
+<header class="absolute top-0 left-0 w-full z-40 px-6 py-6 lg:px-12 flex justify-between items-center bg-gradient-to-b from-black/50 via-transparent to-transparent">
+  <div class="flex items-center">
+    <a href="#" class="group flex items-center gap-3">
+      <!-- High contrast elegant vector logo or SVG -->
+      <span class="font-display text-2xl lg:text-3xl font-light tracking-[0.2em] text-luxury-cream hover:text-luxury-gold transition-colors duration-300">
+        STYLED BY LAYO
+      </span>
+    </a>
+  </div>
+  
+  <nav class="hidden md:flex space-x-8 lg:space-x-12 text-xs uppercase tracking-[0.25em] font-sans font-light text-luxury-cream">
+    <a href="#signature" class="hover:text-luxury-gold transition-colors duration-300">Signature</a>
+    <a href="#archive" class="hover:text-luxury-gold transition-colors duration-300">Archive</a>
+    <a href="#editorial" class="hover:text-luxury-gold transition-colors duration-300">Editorial Stories</a>
+    <a href="#academy" class="hover:text-luxury-gold transition-colors duration-300">Academy</a>
+    <a href="#craft" class="hover:text-luxury-gold transition-colors duration-300">Our Craft</a>
+  </nav>
+
+  <div class="flex items-center space-x-6">
+    <a 
+      href="#contact" 
+      class="border border-luxury-gold/40 px-5 py-2 text-[10px] uppercase tracking-[0.2em] font-sans text-luxury-cream hover:bg-luxury-gold hover:text-black transition-all duration-500"
+    >
+      Inquire
+    </a>
+    
+    <!-- Mobile Menu Toggle -->
+    <button id="mobile-menu-toggle" aria-label="Toggle menu" class="md:hidden flex flex-col justify-between h-4 w-6 z-50">
+      <span class="w-full h-[1px] bg-luxury-cream transition-transform duration-300 origin-top"></span>
+      <span class="w-full h-[1px] bg-luxury-cream transition-opacity duration-300"></span>
+      <span class="w-full h-[1px] bg-luxury-cream transition-transform duration-300 origin-bottom"></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Navigation Menu Dropdown -->
+<div id="mobile-nav" class="fixed inset-0 bg-[#070605] z-45 flex flex-col justify-center items-center space-y-8 uppercase tracking-[0.3em] font-light text-luxury-cream text-lg transition-all duration-500 transform -translate-y-full md:hidden">
+  <a href="#signature" class="mobile-link hover:text-luxury-gold">Signature</a>
+  <a href="#archive" class="mobile-link hover:text-luxury-gold">Archive</a>
+  <a href="#editorial" class="mobile-link hover:text-luxury-gold">Editorial Stories</a>
+  <a href="#academy" class="mobile-link hover:text-luxury-gold">Academy</a>
+  <a href="#craft" class="mobile-link hover:text-luxury-gold">Our Craft</a>
+  <a href="#contact" class="mobile-link border border-luxury-gold/50 px-8 py-3 text-sm tracking-[0.25em] text-luxury-gold hover:bg-luxury-gold hover:text-black">Inquire</a>
+</div>
+
+<section class="relative h-screen min-h-[600px] w-full bg-luxury-dark overflow-hidden flex flex-col justify-end">
+  <!-- Slide Containers -->
+  <div class="absolute inset-0 z-10 w-full h-full" id="hero-slider">
+    <!-- Slide 1: High Quality Editorial Video -->
+    <div class="hero-slide active absolute inset-0 w-full h-full opacity-100 transition-opacity duration-1000 ease-in-out">
+      <div class="absolute inset-0 bg-black/40 z-[2]"></div>
+      <!-- Video Loop from external secure luxury references -->
+      <video 
+        class="absolute inset-0 w-full h-full object-cover"
+        autoplay 
+        muted 
+        loop 
+        playsinline
+        referrerpolicy="no-referrer"
+        src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c05436384157ceb50ef3102d589b275d&profile_id=139"
+      ></video>
+      <div class="absolute inset-x-0 bottom-24 lg:bottom-28 z-10 text-center px-4 max-w-4xl mx-auto flex flex-col items-center">
+        <span class="text-[10px] md:text-xs uppercase tracking-[0.5em] text-luxury-gold mb-3 font-sans font-semibold">Couture Presentation</span>
+        <h1 class="text-4xl md:text-6xl lg:text-8xl font-thin tracking-wide text-luxury-cream font-editorial mb-4 leading-tight italic">
+          The Butterfly Gown
+        </h1>
+        <p class="text-xs md:text-sm tracking-[0.15em] text-luxury-cream/80 max-w-lg mx-auto font-sans font-light leading-relaxed">
+          Intricately Hand-Beaded Three-Dimensional Evening Silhouette
+        </p>
+      </div>
+    </div>
+
+    <!-- Slide 2: Photo Slide (Gold Sculpted Gown) -->
+    <div class="hero-slide absolute inset-0 w-full h-full opacity-0 transition-opacity duration-1000 ease-in-out">
+      <div class="absolute inset-0 bg-black/40 z-[2]"></div>
+      <img 
+        src="/gold-sculpted-evening-gown.1.jpg" 
+        alt="Gold Sculpted Evening Gown" 
+        referrerpolicy="no-referrer"
+        class="absolute inset-0 w-full h-full object-contain md:object-cover bg-[#0a0908]"
+      />
+      <div class="absolute inset-x-0 bottom-24 lg:bottom-28 z-10 text-center px-4 max-w-4xl mx-auto flex flex-col items-center">
+        <span class="text-[10px] md:text-xs uppercase tracking-[0.5em] text-luxury-gold mb-3 font-sans font-semibold">Sculptural Mastery</span>
+        <h2 class="text-4xl md:text-6xl lg:text-8xl font-thin tracking-wide text-luxury-cream font-editorial mb-4 leading-tight italic">
+          Gold Sculpted Gown
+        </h2>
+        <p class="text-xs md:text-sm tracking-[0.15em] text-luxury-cream/80 max-w-lg mx-auto font-sans font-light leading-relaxed">
+          Liquid Gold Metallic Accents Encased in Premium Silhouette Styling
+        </p>
+      </div>
+    </div>
+
+    <!-- Slide 3: Photo Slide (Emerald Gown Cover) -->
+    <div class="hero-slide absolute inset-0 w-full h-full opacity-0 transition-opacity duration-1000 ease-in-out">
+      <div class="absolute inset-0 bg-black/40 z-[2]"></div>
+      <img 
+        src="/emerald-beaded-couture-gown.1.jpg" 
+        alt="Emerald Beaded Couture Gown" 
+        referrerpolicy="no-referrer"
+        class="absolute inset-0 w-full h-full object-contain md:object-cover bg-[#050605]"
+      />
+      <div class="absolute inset-x-0 bottom-24 lg:bottom-28 z-10 text-center px-4 max-w-4xl mx-auto flex flex-col items-center">
+        <span class="text-[10px] md:text-xs uppercase tracking-[0.5em] text-luxury-gold mb-3 font-sans font-semibold">High Couture Archive</span>
+        <h2 class="text-4xl md:text-6xl lg:text-8xl font-thin tracking-wide text-luxury-cream font-editorial mb-4 leading-tight italic">
+          Emerald Beaded Gown
+        </h2>
+        <p class="text-xs md:text-sm tracking-[0.15em] text-luxury-cream/80 max-w-lg mx-auto font-sans font-light leading-relaxed">
+          Deep Emerald Crystal Draping Crafted for Maximum Elegance
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Slider Controls & Dots -->
+  <div class="absolute right-6 lg:right-12 top-1/2 -translate-y-1/2 z-30 flex flex-col space-y-6 items-center">
+    <button class="hero-dot active-dot w-2 h-2 rounded-full border border-luxury-gold/80 transition-all duration-300 bg-luxury-gold" data-index="0" aria-label="Go to slide 1"></button>
+    <button class="hero-dot w-2 h-2 rounded-full border border-luxury-gold/50 transition-all duration-300 hover:bg-luxury-gold/40" data-index="1" aria-label="Go to slide 2"></button>
+    <button class="hero-dot w-2 h-2 rounded-full border border-luxury-gold/50 transition-all duration-300 hover:bg-luxury-gold/40" data-index="2" aria-label="Go to slide 3"></button>
+  </div>
+
+  <!-- Visual Breathing Space Indicator -->
+  <div class="absolute left-6 lg:left-12 bottom-6 z-30 text-[9px] uppercase tracking-[0.3em] text-luxury-cream/50 flex items-center space-x-2">
+    <span>Lagos</span>
+    <span class="w-1.5 h-1.5 rounded-full bg-luxury-gold/60 inline-block"></span>
+    <span>London</span>
+    <span class="w-1.5 h-1.5 rounded-full bg-luxury-gold/60 inline-block"></span>
+    <span>Paris</span>
+  </div>
+</section>
+
+<!-- Infinite Marquee Strip -->
+<div class="bg-[#0b0a09] border-y border-luxury-gold/20 py-4.5 overflow-hidden w-full select-none z-20 relative">
+  <div class="flex whitespace-nowrap uppercase tracking-[0.25em] text-[10px] lg:text-xs text-luxury-cream/90 font-light items-center gap-12" id="marquee-content">
+    <div class="flex shrink-0 gap-12 items-center animate-marquee">
+      <span>Bridal</span>
+      <span class="text-luxury-gold text-sm">♦</span>
+      <span>Custom Couture</span>
+      <span class="text-luxury-gold text-sm">♦</span>
+      <span>Eveningwear</span>
+      <span class="text-luxury-gold text-sm">♦</span>
+      <span>Ready-to-Wear</span>
+      <span class="text-luxury-gold text-sm">♦</span>
+      <span>Fashion Academy</span>
+      <span class="text-luxury-gold text-sm">♦</span>
+      <span>Worldwide Shipping</span>
+      <span class="text-luxury-gold text-sm">♦</span>
+      <span>Lagos</span>
+      <span class="text-luxury-gold text-sm">♦</span>
+      <span>Menswear</span>
+      <span class="text-luxury-gold text-sm">♦</span>
+      <span>Seven Star Rated</span>
+      <span class="text-luxury-gold text-sm">♦</span>
+      <span>Made to Order</span>
+      <span class="text-luxury-gold text-sm">♦</span>
+    </div>
+    <div class="flex shrink-0 gap-12 items-center aria-hidden animate-marquee">
+      <span>Bridal</span>
+      <span class="text-luxury-gold text-sm">♦</span>
+      <span>Custom Couture</span>
+      <span class="text-luxury-gold text-sm">♦</span>
+      <span>Eveningwear</span>
+      <span class="text-luxury-gold text-sm">♦</span>
+      <span>Ready-to-Wear</span>
+      <span class="text-luxury-gold text-sm">♦</span>
+      <span>Fashion Academy</span>
+      <span class="text-luxury-gold text-sm">♦</span>
+      <span>Worldwide Shipping</span>
+      <span class="text-luxury-gold text-sm">♦</span>
+      <span>Lagos</span>
+      <span class="text-luxury-gold text-sm">♦</span>
+      <span>Menswear</span>
+      <span class="text-luxury-gold text-sm">♦</span>
+      <span>Seven Star Rated</span>
+      <span class="text-luxury-gold text-sm">♦</span>
+      <span>Made to Order</span>
+      <span class="text-luxury-gold text-sm">♦</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 35s linear infinite;
+  }
+
+  /* Custom styling for the slider overlay transitions */
+  .hero-slide {
+    pointer-events: none;
+    z-index: 1;
+  }
+  .hero-slide.active {
+    pointer-events: auto;
+    z-index: 10;
+  }
+</style>
+
+<script>
+  // Hero Carousel Logic
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot');
+  let currentSlide = 0;
+  let slideInterval: number;
+
+  function showSlide(index: number) {
+    if (index === currentSlide) return;
+    
+    // Deactivate previous
+    slides[currentSlide].classList.remove('active');
+    slides[currentSlide].classList.add('opacity-0');
+    slides[currentSlide].classList.remove('opacity-100');
+    dots[currentSlide].classList.remove('active-dot', 'bg-luxury-gold');
+    dots[currentSlide].classList.add('hover:bg-luxury-gold/40');
+
+    // Activate new
+    currentSlide = index;
+    slides[currentSlide].classList.add('active');
+    slides[currentSlide].classList.remove('opacity-0');
+    slides[currentSlide].classList.add('opacity-100');
+    dots[currentSlide].classList.add('active-dot', 'bg-luxury-gold');
+    dots[currentSlide].classList.remove('hover:bg-luxury-gold/40');
+  }
+
+  function nextSlide() {
+    let next = (currentSlide + 1) % slides.length;
+    showSlide(next);
+  }
+
+  function startSlideTimer() {
+    stopSlideTimer();
+    slideInterval = window.setInterval(nextSlide, 7000); // Progress every 7 seconds
+  }
+
+  function stopSlideTimer() {
+    if (slideInterval) {
+      clearInterval(slideInterval);
+    }
+  }
+
+  // Set initial dot colored
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      showSlide(index);
+      startSlideTimer(); // Reset timer upon user click
+    });
+  });
+
+  // Autoplay start
+  startSlideTimer();
+
+  // Mobile Menu Drawer Logic
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  function toggleMobileMenu() {
+    const isExpanded = toggleBtn?.getAttribute('aria-expanded') === 'true';
+    toggleBtn?.setAttribute('aria-expanded', (!isExpanded).toString());
+    
+    // Toggle burger classes
+    const spans = toggleBtn?.querySelectorAll('span');
+    if (spans && spans.length === 3) {
+      if (!isExpanded) {
+        spans[0].style.transform = 'translateY(6px) rotate(45deg)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'translateY(-6px) rotate(-45deg)';
+        mobileNav?.classList.remove('-translate-y-full');
+      } else {
+        spans[0].style.transform = '';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = '';
+        mobileNav?.classList.add('-translate-y-full');
+      }
+    }
+  }
+
+  toggleBtn?.addEventListener('click', toggleMobileMenu);
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      // Close menu when link is clicked
+      toggleMobileMenu();
+    });
+  });
+</script>

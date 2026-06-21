@@ -1,0 +1,117 @@
+---
+// EditorialSection.astro
+---
+
+<section id="signature" class="py-24 lg:py-36 bg-[#070605] text-luxury-cream px-6 lg:px-12 border-b border-luxury-gold/10 overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+    <!-- Editorial Title & Visual Intro -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-20 lg:mb-32">
+      <div class="lg:col-span-8">
+        <span class="text-[10px] uppercase tracking-[0.6em] text-luxury-gold font-sans font-semibold inline-block mb-3">La Haute Couture</span>
+        <h2 class="text-5xl lg:text-8xl font-thin tracking-tight font-editorial leading-none">
+          Signature <br />
+          <span class="italic text-luxury-gold font-light">Masterpieces</span>
+        </h2>
+      </div>
+      <div class="lg:col-span-4 flex items-end">
+        <p class="text-sm font-sans font-light tracking-wide text-luxury-cream/70 leading-relaxed border-l border-luxury-gold/30 pl-6 pb-2">
+          Step into our curated gallery of architectural luxury. Each garment is a masterclass in shape, material manipulation, and the rigorous discipline of haute couture—designed and hand-crafted entirely in our high-end Lagos studio.
+        </p>
+      </div>
+    </div>
+
+    <!-- Asymmetrical Spread 1: The Butterfly Gown -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center mb-32 lg:mb-48">
+      <!-- Media Module -->
+      <div class="lg:col-span-7 relative group">
+        <div class="absolute -inset-1.5 bg-gradient-to-r from-luxury-gold/5 to-transparent blur opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+        <div class="relative overflow-hidden bg-[#0d0c10] border border-luxury-gold/15 aspect-[3/4]">
+          <img 
+            src="/butterfly-beaded-evening-gown.1.jpg" 
+            alt="The Butterfly Gown Portrait close-up" 
+            referrerpolicy="no-referrer"
+            class="w-full h-full object-contain md:object-cover transform group-hover:scale-102 transition-transform duration-[20002ms] ease-out"
+          />
+        </div>
+        <div class="absolute bottom-4 left-4 z-10 hidden lg:block">
+          <span class="font-display text-4xl font-light text-luxury-gold/10 tracking-widest uppercase">
+            No. 01
+          </span>
+        </div>
+      </div>
+      
+      <!-- Copy Module -->
+      <div class="lg:col-span-5 flex flex-col justify-center lg:pl-6">
+        <span class="text-[9px] uppercase tracking-[0.45em] text-luxury-gold font-sans font-semibold mb-4 inline-block">Bespoke Eveningwear</span>
+        <h3 class="text-3xl lg:text-5xl font-light tracking-wide font-editorial mb-6">
+          The Butterfly <br class="hidden lg:block"/>
+          <span class="italic font-light">Beaded Gown</span>
+        </h3>
+        <p class="text-sm font-sans font-light text-luxury-cream/80 leading-relaxed mb-8">
+          A sculptural silhouette detailed with three-dimensional beaded wings that flutter organically with movement. Over 450 hours of hand-guided stitchwork by master artisans, overlaying premium French silk tulle with fine crystal dust and hand-molded embellishments.
+        </p>
+        <div class="space-y-4 border-t border-luxury-gold/20 pt-8 text-xs font-sans font-light tracking-wider uppercase text-luxury-cream/70">
+          <div class="flex justify-between">
+            <span class="text-luxury-gold/80">Silhouette</span>
+            <span>Structured Mermaid / High Slit</span>
+          </div>
+          <div class="flex justify-between border-t border-luxury-gold/10 pt-4">
+            <span class="text-luxury-gold/80">Couture Detailing</span>
+            <span>3D Organza Wings & Glass Beads</span>
+          </div>
+          <div class="flex justify-between border-t border-luxury-gold/10 pt-4">
+            <span class="text-luxury-gold/80">Time to Complete</span>
+            <span>Approximately 480 Hours</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Asymmetrical Spread 2: Liquid Gold (Reversed Layout) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+      <!-- Copy Module (Order first on mobile, second on desktop) -->
+      <div class="lg:col-span-5 order-2 lg:order-1 flex flex-col justify-center lg:pr-6">
+        <span class="text-[9px] uppercase tracking-[0.45em] text-luxury-gold font-sans font-semibold mb-4 inline-block">The Sculptural Line</span>
+        <h3 class="text-3xl lg:text-5xl font-light tracking-wide font-editorial mb-6">
+          The Gold <br class="hidden lg:block"/>
+          <span class="italic font-light">Sculpted Evening Gown</span>
+        </h3>
+        <p class="text-sm font-sans font-light text-luxury-cream/80 leading-relaxed mb-8">
+          Presenting a dazzling study of anatomical curvature and fluid metallics. Crafted from structural laminates bathed in true-gold finish, wrapping the wearer in a physical armor of sheer elegance. A visual marvel created for the modern connoisseur of luxury.
+        </p>
+        <div class="space-y-4 border-t border-luxury-gold/20 pt-8 text-xs font-sans font-light tracking-wider uppercase text-luxury-cream/70">
+          <div class="flex justify-between">
+            <span class="text-luxury-gold/80">Materialization</span>
+            <span>Gold-Infused Satin & Molded Plating</span>
+          </div>
+          <div class="flex justify-between border-t border-luxury-gold/10 pt-4">
+            <span class="text-luxury-gold/80">Artistry Techniques</span>
+            <span>Thermal Shaping & Seamless Drapery</span>
+          </div>
+          <div class="flex justify-between border-t border-luxury-gold/10 pt-4">
+            <span class="text-luxury-gold/80">Inspirational Essence</span>
+            <span>Futuristic Nigerian Regal Wear</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Media Module (Order second on mobile, first on desktop) -->
+      <div class="lg:col-span-7 order-1 lg:order-2 relative group">
+        <div class="absolute -inset-1.5 bg-gradient-to-l from-luxury-gold/5 to-transparent blur opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+        <div class="relative overflow-hidden bg-[#100e0a] border border-luxury-gold/15 aspect-[3/4]">
+          <img 
+            src="/gold-sculpted-evening-gown.1.jpg" 
+            alt="Gold Sculpted Evening Gown Studio spread" 
+            referrerpolicy="no-referrer"
+            class="w-full h-full object-contain md:object-cover transform group-hover:scale-102 transition-transform duration-[20002ms] ease-out"
+          />
+        </div>
+        <div class="absolute bottom-4 right-4 z-10 hidden lg:block">
+          <span class="font-display text-4xl font-light text-luxury-gold/10 tracking-widest uppercase">
+            No. 02
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

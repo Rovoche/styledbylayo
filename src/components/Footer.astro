@@ -1,0 +1,160 @@
+---
+// Footer.astro
+---
+
+<section id="craft" class="py-24 lg:py-32 bg-[#0b0a09] border-t border-luxury-gold/15 text-luxury-cream px-6 lg:px-12 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+    <!-- Our Craft Details -->
+    <div class="lg:col-span-6">
+      <span class="text-[9px] uppercase tracking-[0.6em] text-luxury-gold font-sans font-semibold mb-3 block">High Standards</span>
+      <h2 class="text-4xl lg:text-6xl font-thin tracking-tight font-editorial leading-none mb-8">
+        Crafted to Last <br />
+        <span class="italic text-luxury-gold font-light">Generations</span>
+      </h2>
+      <p class="text-sm font-sans font-light tracking-wide text-luxury-cream/70 leading-relaxed mb-8">
+        We subscribe to the classical rules of tailoring, updated for modern silhouettes. Every curve is mapped, every seam is lined, and every thread is selected to create a bespoke piece that feels like a natural physical extension of self.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs font-sans font-light tracking-wider uppercase text-luxury-cream/60">
+        <div class="border-l border-luxury-gold/30 pl-4">
+          <span class="block text-luxury-gold font-medium mb-1">True Bespoke</span>
+          <span>Millimeter Fittings & Custom Templates</span>
+        </div>
+        <div class="border-l border-luxury-gold/30 pl-4">
+          <span class="block text-luxury-gold font-medium mb-1">Ethical</span>
+          <span>Artisans Employed Under Fair Wages</span>
+        </div>
+        <div class="border-l border-luxury-gold/30 pl-4">
+          <span class="block text-luxury-gold font-medium mb-1">Sourcing</span>
+          <span>Lace from Paris, Silks from Como</span>
+        </div>
+        <div class="border-l border-luxury-gold/30 pl-4">
+          <span class="block text-luxury-gold font-medium mb-1">Global Shipping</span>
+          <span>Delivered Safely Worldwide via DHL</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inquiry Form -->
+    <div id="contact" class="lg:col-span-6 bg-[#070605] border border-luxury-gold/15 p-8 lg:p-12 relative group">
+      <span class="text-[9px] uppercase tracking-[0.5em] text-luxury-gold font-sans font-semibold mb-2 block">Couture Inquiries</span>
+      <h3 class="font-editorial text-2xl lg:text-3xl font-light tracking-wide mb-8 text-luxury-cream">Book a Private Appointment</h3>
+      
+      <form id="inquiry-form" class="space-y-6">
+        <div>
+          <label for="name" class="block text-[8px] uppercase tracking-[0.3em] text-luxury-gold mb-2 font-sans font-semibold">Your Name *</label>
+          <input 
+            type="text" 
+            id="name" 
+            required 
+            class="w-full bg-[#0d0c0a] border border-luxury-gold/15 px-4 py-3 text-xs tracking-wider text-luxury-cream focus:outline-none focus:border-luxury-gold/50 transition-colors"
+            placeholder="e.g. Adebayo Alao"
+          />
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="email" class="block text-[8px] uppercase tracking-[0.3em] text-luxury-gold mb-2 font-sans font-semibold">Email Address *</label>
+            <input 
+              type="email" 
+              id="email" 
+              required 
+              class="w-full bg-[#0d0c0a] border border-luxury-gold/15 px-4 py-3 text-xs tracking-wider text-luxury-cream focus:outline-none focus:border-luxury-gold/50 transition-colors"
+              placeholder="e.g. adebayo@example.com"
+            />
+          </div>
+          <div>
+            <label for="service" class="block text-[8px] uppercase tracking-[0.3em] text-luxury-gold mb-2 font-sans font-semibold">Interest Category</label>
+            <select 
+              id="service" 
+              class="w-full bg-[#0d0c0a] border border-luxury-gold/15 px-4 py-3 text-xs tracking-wider text-luxury-cream focus:outline-none focus:border-luxury-gold/50 transition-colors cursor-pointer"
+            >
+              <option value="eveningwear">Custom Eveningwear</option>
+              <option value="bridal">Bespoke Bridal Artistry</option>
+              <option value="menswear">Tailored Menswear</option>
+              <option value="academy">SBL Fashion Academy Enrollment</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="message" class="block text-[8px] uppercase tracking-[0.3em] text-luxury-gold mb-2 font-sans font-semibold">Message / Fitting Details *</label>
+          <textarea 
+            id="message" 
+            rows="4" 
+            required
+            class="w-full bg-[#0d0c0a] border border-luxury-gold/15 px-4 py-3 text-xs tracking-wider text-luxury-cream focus:outline-none focus:border-luxury-gold/50 transition-colors resize-none"
+            placeholder="Introduce your required styling dates, colors, or curriculum requests..."
+          ></textarea>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full bg-luxury-gold hover:bg-luxury-cream hover:text-black border border-transparent text-black py-4 uppercase tracking-[0.25em] text-xs font-sans font-semibold transition-all duration-500"
+        >
+          Request Private Fitting
+        </button>
+      </form>
+
+      <!-- Successful message notification -->
+      <div id="success-notification" class="hidden absolute inset-0 bg-[#070605] border border-luxury-gold/25 flex flex-col justify-center items-center text-center p-8 z-10">
+        <div class="text-luxury-gold text-4xl mb-4">♦</div>
+        <h4 class="font-editorial text-2xl tracking-wide mb-3">Inquiry Received</h4>
+        <p class="text-xs font-sans font-light tracking-wide text-luxury-cream/70 max-w-sm mb-6 leading-relaxed">
+          An SBL client relations coordinator will review your custom requests and contact you back within 24 hours to schedule your session.
+        </p>
+        <button id="reset-form-btn" class="border border-luxury-gold/30 px-6 py-2 text-[10px] uppercase tracking-[0.2em] font-sans text-luxury-cream hover:bg-luxury-gold hover:text-black transition-colors">
+          Back
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footnote / Credits -->
+<footer class="bg-[#070605] py-16 px-6 lg:px-12 border-t border-luxury-gold/10 text-center text-luxury-cream/50 relative z-10">
+  <div class="max-w-7xl mx-auto flex flex-col items-center space-y-6">
+    <span class="font-display text-xl lg:text-2xl font-light tracking-[0.2em] text-luxury-cream/90 uppercase">
+      STYLED BY LAYO
+    </span>
+    
+    <div class="h-[1px] w-12 bg-luxury-gold/20"></div>
+
+    <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-[10px] uppercase tracking-[0.25em] font-sans text-luxury-cream/60">
+      <a href="#signature" class="hover:text-luxury-gold transition-colors">Featured</a>
+      <a href="#archive" class="hover:text-luxury-gold transition-colors">Archive</a>
+      <a href="#academy" class="hover:text-luxury-gold transition-colors">SBLFA Academy</a>
+      <a href="#craft" class="hover:text-luxury-gold transition-colors">Our Ethos</a>
+    </div>
+
+    <!-- Mandatory Luxury Attribution -->
+    <div class="pt-8 border-t border-luxury-gold/5 w-full flex flex-col items-center space-y-3">
+      <p class="text-[10px] font-sans font-light tracking-widest text-luxury-cream/40">
+        © {new Date().getFullYear()} STYLED BY LAYO. ALL RIGHTS RESERVED.
+      </p>
+      <p class="text-[9px] uppercase tracking-[0.35em] text-luxury-gold/65 font-sans font-medium">
+        Demo concept inspired by ROVOCHÉ aesthetic direction
+      </p>
+      <p class="text-[9px] tracking-[0.25em] text-luxury-cream/25 font-sans">
+        Concept inspired by ROVOCHÉ
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Form submission handler
+  const form = document.getElementById('inquiry-form');
+  const notification = document.getElementById('success-notification');
+  const resetBtn = document.getElementById('reset-form-btn');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    notification?.classList.remove('hidden');
+  });
+
+  resetBtn?.addEventListener('click', () => {
+    notification?.classList.add('hidden');
+    if (form) (form as HTMLFormElement).reset();
+  });
+</script>

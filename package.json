@@ -1,14 +1,17 @@
 {
-  "name": "styledbylayo-static",
+  "name": "styledbylayo-astro",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --port 3000 --host 0.0.0.0",
-    "build": "mkdir -p dist && cp index.html dist/index.html",
-    "lint": "echo 'No linting required for static sites.'"
+    "dev": "astro dev --port 3000 --host 0.0.0.0",
+    "build": "astro build",
+    "preview": "astro preview --port 3000 --host 0.0.0.0",
+    "lint": "echo 'No lint check needed'"
   },
-  "devDependencies": {
-    "vite": "^6.2.3"
+  "dependencies": {
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^6.4.8",
+    "tailwindcss": "^3.4.14"
   }
 }
