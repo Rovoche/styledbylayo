@@ -2,116 +2,209 @@
 // EditorialSection.astro
 ---
 
-<section id="signature" class="py-24 lg:py-36 bg-[#070605] text-luxury-cream px-6 lg:px-12 border-b border-luxury-gold/10 overflow-hidden">
+<section id="signature" class="py-24 lg:py-36 bg-luxury-ivory text-luxury-ink px-6 lg:px-16 border-b border-luxury-gold/20 overflow-hidden relative">
   <div class="max-w-7xl mx-auto">
-    <!-- Editorial Title & Visual Intro -->
+    
+    <!-- Museum Exhibition / Editorial Header -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-20 lg:mb-32">
       <div class="lg:col-span-8">
         <span class="text-[10px] uppercase tracking-[0.6em] text-luxury-gold font-sans font-semibold inline-block mb-3">La Haute Couture</span>
-        <h2 class="text-5xl lg:text-8xl font-thin tracking-tight font-editorial leading-none">
+        <h2 class="text-5xl lg:text-8xl font-thin tracking-tight font-editorial leading-none text-luxury-ink">
           Signature <br />
           <span class="italic text-luxury-gold font-light">Masterpieces</span>
         </h2>
       </div>
       <div class="lg:col-span-4 flex items-end">
-        <p class="text-sm font-sans font-light tracking-wide text-luxury-cream/70 leading-relaxed border-l border-luxury-gold/30 pl-6 pb-2">
-          Step into our curated gallery of architectural luxury. Each garment is a masterclass in shape, material manipulation, and the rigorous discipline of haute couture—designed and hand-crafted entirely in our high-end Lagos studio.
+        <p class="text-sm font-sans font-light tracking-wide text-luxury-ink/80 leading-relaxed border-l-2 border-luxury-gold pl-6 pb-2">
+          We treat bespoke garment design as gallery-grade editorial art. Experience our signature masterpieces, structured to celebrate craftsmanship, alternative architectural views, and Lagosian hand-built expertise.
         </p>
       </div>
     </div>
 
-    <!-- Asymmetrical Spread 1: The Butterfly Gown -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center mb-32 lg:mb-48">
-      <!-- Media Module -->
-      <div class="lg:col-span-7 relative group">
-        <div class="absolute -inset-1.5 bg-gradient-to-r from-luxury-gold/5 to-transparent blur opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
-        <div class="relative overflow-hidden bg-[#0d0c10] border border-luxury-gold/15 aspect-[3/4]">
+    <!-- Masterpiece 1: The Butterfly Beaded Gown (Asymmetrical Spread) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-stretch mb-32 lg:mb-48">
+      
+      <!-- Dominant Image Showcase (Left) -->
+      <div class="lg:col-span-7 flex flex-col space-y-6">
+        <div class="relative overflow-hidden bg-luxury-dark/5 border border-luxury-gold/25 aspect-[4/5] group">
+          <!-- Main view img -->
           <img 
+            id="butterfly-main-display"
             src={`${import.meta.env.BASE_URL}butterfly-beaded-evening-gown.1.jpg`} 
-            alt="The Butterfly Gown Portrait close-up" 
+            alt="The Butterfly Gown Portrait dominant view" 
+            width="1080"
+            height="1350"
             referrerpolicy="no-referrer"
-            class="w-full h-full object-contain md:object-cover transform group-hover:scale-102 transition-transform duration-[20002ms] ease-out"
+            class="w-full h-full object-contain md:object-cover transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
           />
+          <div class="absolute bottom-6 left-6 z-20">
+            <span class="font-editorial text-5xl font-light text-luxury-ink/15 tracking-widest uppercase block select-none">
+              N° 01
+            </span>
+          </div>
         </div>
-        <div class="absolute bottom-4 left-4 z-10 hidden lg:block">
-          <span class="font-display text-4xl font-light text-luxury-gold/10 tracking-widest uppercase">
-            No. 01
-          </span>
+
+        <!-- Asymmetric Alternative Angles Navigation -->
+        <div class="grid grid-cols-2 gap-4">
+          <button 
+            class="butterfly-angle-trigger group text-left border-t-2 border-luxury-gold pt-3 transition-all duration-500"
+            data-target="butterfly-main-display"
+            data-image={`${import.meta.env.BASE_URL}butterfly-beaded-evening-gown.1.jpg`}
+          >
+            <span class="block text-[8px] uppercase tracking-[0.3em] text-luxury-gold font-sans font-bold">Angle A</span>
+            <span class="block text-xs uppercase tracking-wider font-sans font-light text-luxury-ink/75 group-hover:text-luxury-gold">Primary Silhouette</span>
+          </button>
+          
+          <button 
+            class="butterfly-angle-trigger group text-left border-t border-luxury-ink/10 pt-3 transition-all duration-500"
+            data-target="butterfly-main-display"
+            data-image={`${import.meta.env.BASE_URL}butterfly-beaded-evening-gown-detail-2.jpg`}
+          >
+            <span class="block text-[8px] uppercase tracking-[0.3em] text-luxury-gold font-sans font-bold">Angle B</span>
+            <span class="block text-xs uppercase tracking-wider font-sans font-light text-luxury-ink/75 group-hover:text-luxury-gold">Insect-Wing Crystals</span>
+          </button>
         </div>
       </div>
       
-      <!-- Copy Module -->
-      <div class="lg:col-span-5 flex flex-col justify-center lg:pl-6">
-        <span class="text-[9px] uppercase tracking-[0.45em] text-luxury-gold font-sans font-semibold mb-4 inline-block">Bespoke Eveningwear</span>
-        <h3 class="text-3xl lg:text-5xl font-light tracking-wide font-editorial mb-6">
-          The Butterfly <br class="hidden lg:block"/>
-          <span class="italic font-light">Beaded Gown</span>
-        </h3>
-        <p class="text-sm font-sans font-light text-luxury-cream/80 leading-relaxed mb-8">
-          A sculptural silhouette detailed with three-dimensional beaded wings that flutter organically with movement. Over 450 hours of hand-guided stitchwork by master artisans, overlaying premium French silk tulle with fine crystal dust and hand-molded embellishments.
-        </p>
-        <div class="space-y-4 border-t border-luxury-gold/20 pt-8 text-xs font-sans font-light tracking-wider uppercase text-luxury-cream/70">
+      <!-- Museum Exhibition Placard Details (Right) -->
+      <div class="lg:col-span-5 flex flex-col justify-between py-2 lg:pl-6 bg-luxury-ivory">
+        <div class="flex flex-col">
+          <span class="text-[9px] uppercase tracking-[0.45em] text-luxury-gold font-sans font-semibold mb-3 inline-block">Atelier Masterwork</span>
+          <h3 class="text-3xl lg:text-5xl font-light tracking-wide font-editorial mb-6 text-luxury-ink">
+            The Butterfly <br />
+            <span class="italic font-light text-luxury-gold">Beaded Gown</span>
+          </h3>
+          <p class="text-sm font-sans font-light text-luxury-ink/90 leading-relaxed mb-8">
+            An ethereal evening masterwork meticulously engineered on nude French mesh. The garment features 3D embellished silk organza butterfly appliqués that flutter organically in stride, balanced by custom structured shoulder contours and thousands of glass micro-beads.
+          </p>
+        </div>
+
+        <div class="space-y-4 border-t border-luxury-ink/10 pt-8 text-xs font-sans font-light tracking-wider uppercase text-luxury-ink">
           <div class="flex justify-between">
-            <span class="text-luxury-gold/80">Silhouette</span>
-            <span>Structured Mermaid / High Slit</span>
+            <span class="text-luxury-gold font-medium">Silhouette Profile</span>
+            <span class="font-medium text-luxury-ink/80">Structured Mermaid</span>
           </div>
-          <div class="flex justify-between border-t border-luxury-gold/10 pt-4">
-            <span class="text-luxury-gold/80">Couture Detailing</span>
-            <span>3D Organza Wings & Glass Beads</span>
+          <div class="flex justify-between border-t border-luxury-ink/5 pt-4">
+            <span class="text-luxury-gold font-medium">Atelier Detailing</span>
+            <span class="font-medium text-luxury-ink/80">Tambour Crystal Stitching</span>
           </div>
-          <div class="flex justify-between border-t border-luxury-gold/10 pt-4">
-            <span class="text-luxury-gold/80">Time to Complete</span>
-            <span>Approximately 480 Hours</span>
+          <div class="flex justify-between border-t border-luxury-ink/5 pt-4">
+            <span class="text-luxury-gold font-medium">Time To Build</span>
+            <span class="font-medium text-luxury-ink/80">Approximately 480 Hours</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Asymmetrical Spread 2: Liquid Gold (Reversed Layout) -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
-      <!-- Copy Module (Order first on mobile, second on desktop) -->
-      <div class="lg:col-span-5 order-2 lg:order-1 flex flex-col justify-center lg:pr-6">
-        <span class="text-[9px] uppercase tracking-[0.45em] text-luxury-gold font-sans font-semibold mb-4 inline-block">The Sculptural Line</span>
-        <h3 class="text-3xl lg:text-5xl font-light tracking-wide font-editorial mb-6">
-          The Gold <br class="hidden lg:block"/>
-          <span class="italic font-light">Sculpted Evening Gown</span>
-        </h3>
-        <p class="text-sm font-sans font-light text-luxury-cream/80 leading-relaxed mb-8">
-          Presenting a dazzling study of anatomical curvature and fluid metallics. Crafted from structural laminates bathed in true-gold finish, wrapping the wearer in a physical armor of sheer elegance. A visual marvel created for the modern connoisseur of luxury.
-        </p>
-        <div class="space-y-4 border-t border-luxury-gold/20 pt-8 text-xs font-sans font-light tracking-wider uppercase text-luxury-cream/70">
+    <!-- Masterpiece 2: The Gold Sculpted Gown (Asymmetrical Spread - Reversed Layout) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-stretch">
+      
+      <!-- Museum Exhibition Placard Details (Left on desktop, bottom on mobile) -->
+      <div class="lg:col-span-5 order-2 lg:order-1 flex flex-col justify-between py-2 lg:pr-6 bg-luxury-ivory">
+        <div class="flex flex-col">
+          <span class="text-[9px] uppercase tracking-[0.45em] text-luxury-gold font-sans font-semibold mb-3 inline-block">Anatomical Curvatures</span>
+          <h3 class="text-3xl lg:text-5xl font-light tracking-wide font-editorial mb-6 text-luxury-ink">
+            The Gold Sculpted <br />
+            <span class="italic font-light text-luxury-gold">Evening Gown</span>
+          </h3>
+          <p class="text-sm font-sans font-light text-luxury-ink/90 leading-relaxed mb-8">
+            Expanding the boundaries of wearable art. Styled as a physical study of liquid gold drapes, this breathtaking gown encases the feminine frame in structured thermal laminates with true-gold reflective finishes. A futuristic metallic armor representing pure Lagos couture distinction.
+          </p>
+        </div>
+
+        <div class="space-y-4 border-t border-luxury-ink/10 pt-8 text-xs font-sans font-light tracking-wider uppercase text-luxury-ink">
           <div class="flex justify-between">
-            <span class="text-luxury-gold/80">Materialization</span>
-            <span>Gold-Infused Satin & Molded Plating</span>
+            <span class="text-luxury-gold font-medium">Materialization</span>
+            <span class="font-medium text-luxury-ink/80">Metallic Infused laminates</span>
           </div>
-          <div class="flex justify-between border-t border-luxury-gold/10 pt-4">
-            <span class="text-luxury-gold/80">Artistry Techniques</span>
-            <span>Thermal Shaping & Seamless Drapery</span>
+          <div class="flex justify-between border-t border-luxury-ink/5 pt-4">
+            <span class="text-luxury-gold font-medium">Lining Support</span>
+            <span class="font-medium text-luxury-ink/80">Internal Bone Corsetry</span>
           </div>
-          <div class="flex justify-between border-t border-luxury-gold/10 pt-4">
-            <span class="text-luxury-gold/80">Inspirational Essence</span>
-            <span>Futuristic Nigerian Regal Wear</span>
+          <div class="flex justify-between border-t border-luxury-ink/5 pt-4">
+            <span class="text-luxury-gold font-medium">Inspirational Soul</span>
+            <span class="font-medium text-luxury-ink/80">Contemporary Royal Nigeria</span>
           </div>
         </div>
       </div>
 
-      <!-- Media Module (Order second on mobile, first on desktop) -->
-      <div class="lg:col-span-7 order-1 lg:order-2 relative group">
-        <div class="absolute -inset-1.5 bg-gradient-to-l from-luxury-gold/5 to-transparent blur opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
-        <div class="relative overflow-hidden bg-[#100e0a] border border-luxury-gold/15 aspect-[3/4]">
+      <!-- Dominant Image Showcase (Right on desktop, top on mobile) -->
+      <div class="lg:col-span-7 order-1 lg:order-2 flex flex-col space-y-6">
+        <div class="relative overflow-hidden bg-luxury-dark/5 border border-luxury-gold/25 aspect-[4/5] group">
+          <!-- Main view img -->
           <img 
+            id="gold-main-display"
             src={`${import.meta.env.BASE_URL}gold-sculpted-evening-gown.1.jpg`} 
-            alt="Gold Sculpted Evening Gown Studio spread" 
+            alt="The Gold Sculpted Gown Portrait dominant view" 
+            width="1080"
+            height="1350"
             referrerpolicy="no-referrer"
-            class="w-full h-full object-contain md:object-cover transform group-hover:scale-102 transition-transform duration-[20002ms] ease-out"
+            class="w-full h-full object-contain md:object-cover transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
           />
+          <div class="absolute bottom-6 right-6 z-20">
+            <span class="font-editorial text-5xl font-light text-luxury-ink/15 tracking-widest uppercase block select-none">
+              N° 02
+            </span>
+          </div>
         </div>
-        <div class="absolute bottom-4 right-4 z-10 hidden lg:block">
-          <span class="font-display text-4xl font-light text-luxury-gold/10 tracking-widest uppercase">
-            No. 02
-          </span>
+
+        <!-- Asymmetric Alternative Angles Navigation -->
+        <div class="grid grid-cols-2 gap-4">
+          <button 
+            class="gold-angle-trigger group text-left border-t-2 border-luxury-gold pt-3 transition-all duration-500"
+            data-target="gold-main-display"
+            data-image={`${import.meta.env.BASE_URL}gold-sculpted-evening-gown.1.jpg`}
+          >
+            <span class="block text-[8px] uppercase tracking-[0.3em] text-luxury-gold font-sans font-bold">Angle A</span>
+            <span class="block text-xs uppercase tracking-wider font-sans font-light text-luxury-ink/75 group-hover:text-luxury-gold">Anatomical Front drapes</span>
+          </button>
+          
+          <button 
+            class="gold-angle-trigger group text-left border-t border-luxury-ink/10 pt-3 transition-all duration-500"
+            data-target="gold-main-display"
+            data-image={`${import.meta.env.BASE_URL}gold-sculpted-evening-gown-back-3.jpg`}
+          >
+            <span class="block text-[8px] uppercase tracking-[0.3em] text-luxury-gold font-sans font-bold">Angle B</span>
+            <span class="block text-xs uppercase tracking-wider font-sans font-light text-luxury-ink/75 group-hover:text-luxury-gold">Sculptural Spine view</span>
+          </button>
         </div>
       </div>
+
     </div>
+
   </div>
 </section>
+
+<script>
+  // Bind alternate angle buttons to crossfade/transition main displays smoothly!
+  const angleTriggers = document.querySelectorAll('.butterfly-angle-trigger, .gold-angle-trigger');
+
+  angleTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const targetId = trigger.getAttribute('data-target') || '';
+      const newImgSrc = trigger.getAttribute('data-image') || '';
+      const displayImg = document.getElementById(targetId) as HTMLImageElement;
+
+      if (displayImg && displayImg.src !== newImgSrc) {
+        // Smoothly fade out, switch image, and rebuild/fade in
+        displayImg.style.opacity = '0.3';
+        displayImg.style.transform = 'scale(0.98)';
+        
+        setTimeout(() => {
+          displayImg.src = newImgSrc;
+          displayImg.style.opacity = '1';
+          displayImg.style.transform = 'scale(1)';
+        }, 220);
+
+        // Update active underlines
+        const siblings = trigger.parentElement?.querySelectorAll('button');
+        siblings?.forEach(sibling => {
+          sibling.classList.remove('border-t-2', 'border-luxury-gold');
+          sibling.classList.add('border-t', 'border-luxury-ink/10');
+        });
+        trigger.classList.remove('border-t', 'border-luxury-ink/10');
+        trigger.classList.add('border-t-2', 'border-luxury-gold');
+      }
+    });
+  });
+</script>

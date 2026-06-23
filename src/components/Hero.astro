@@ -1,268 +1,454 @@
 ---
 // Hero.astro
-const base = import.meta.env.BASE_URL;
-
 const slides = [
   {
-    image: `${base}emerald-beaded-couture-gown.1.jpg`,
-    caption: "The Emerald Couture Gown",
-    w: 1080, h: 1350,
-    glowA: "rgba(20,110,75,0.32)",
-    glowB: "rgba(130,95,45,0.16)",
+    image: "butterfly-beaded-evening-gown.1.jpg",
+    title: "The Butterfly Gown",
+    eyebrow: "Maison Presentation",
+    subline: "Intricately Hand-Beaded Three-Dimensional Evening Silhouette",
+    gradient: "radial-gradient(circle, rgba(140,95,45,0.30) 0%, rgba(70,45,20,0.15) 70%, rgba(7,6,5,1) 100%)"
   },
   {
-    image: `${base}butterfly-beaded-evening-gown.1.jpg`,
-    caption: "The Butterfly Beaded Gown",
-    w: 1080, h: 1350,
-    glowA: "rgba(140,95,45,0.30)",
-    glowB: "rgba(70,45,20,0.20)",
+    image: "emerald-beaded-couture-gown.1.jpg",
+    title: "The Emerald Gown",
+    eyebrow: "Lagos Atelier",
+    subline: "Deep Emerald Crystal Draping Crafted for Maximum Elegance",
+    gradient: "radial-gradient(circle, rgba(20,110,75,0.32) 0%, rgba(130,95,45,0.12) 70%, rgba(7,6,5,1) 100%)"
   },
   {
-    image: `${base}gold-sculpted-evening-gown.1.jpg`,
-    caption: "The Gold Sculpted Gown",
-    w: 1080, h: 1349,
-    glowA: "rgba(210,140,70,0.32)",
-    glowB: "rgba(110,50,18,0.20)",
+    image: "gold-sculpted-evening-gown.1.jpg",
+    title: "The Gold Sculpted Gown",
+    eyebrow: "Sculptural Mastery",
+    subline: "Liquid Gold Metallic Accents Encased in Premium Silhouette Styling",
+    gradient: "radial-gradient(circle, rgba(210,140,70,0.32) 0%, rgba(110,50,18,0.12) 70%, rgba(7,6,5,1) 100%)"
   },
   {
-    image: `${base}black-embroidered-menswear-suit.1.jpg`,
-    caption: "Black Embroidered Menswear",
-    w: 1080, h: 1349,
-    glowA: "rgba(124,25,35,0.26)",
-    glowB: "rgba(50,25,20,0.20)",
+    image: "black-embroidered-menswear-suit.1.jpg",
+    title: "Bespoke Menswear Suit",
+    eyebrow: "Modern Distinctions",
+    subline: "Tailored velvet embroidered look hand-built in Lagos",
+    gradient: "radial-gradient(circle, rgba(124,25,35,0.26) 0%, rgba(50,25,20,0.12) 70%, rgba(7,6,5,1) 100%)"
   },
   {
-    image: `${base}pink-green-beaded-mini-dress.2.jpg`,
-    caption: "Pink & Green Beaded Dress",
-    w: 1080, h: 1350,
-    glowA: "rgba(195,70,120,0.26)",
-    glowB: "rgba(35,75,90,0.22)",
-  },
+    image: "pink-green-beaded-mini-dress.2.jpg",
+    title: "Pink & Green Beaded Dress",
+    eyebrow: "Couture Playgrounds",
+    subline: "Vibrant hand-threaded bugle beads crafted for high impact",
+    gradient: "radial-gradient(circle, rgba(195,70,120,0.26) 0%, rgba(35,75,90,0.12) 70%, rgba(7,6,5,1) 100%)"
+  }
 ];
 ---
 
-<!-- Branded Header -->
-<header class="absolute top-0 left-0 w-full z-40 px-6 py-6 lg:px-12 lg:py-8 flex justify-between items-center hero-fade-in" style="animation-delay: 0.1s">
-  <a href="#top" class="flex items-center gap-3 group">
-    <img
-      src={`${base}SBL-Transperant-logo.png`}
-      alt="Styledbylayo crest"
-      width="40" height="40"
-      class="w-8 h-8 lg:w-10 lg:h-10 object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity duration-300"
-    />
-    <div class="flex flex-col leading-none">
-      <span class="font-display text-base lg:text-xl font-light tracking-[0.2em] text-luxury-cream group-hover:text-luxury-gold transition-colors duration-300">
-        STYLEDBYLAYO
-      </span>
-      <span class="text-[7px] lg:text-[8px] uppercase tracking-[0.3em] text-luxury-gold/70 font-sans font-medium mt-1">
-        Seven Star Fashion Designer
-      </span>
-    </div>
-  </a>
-
-  <button id="menu-trigger" aria-label="Open menu" aria-expanded="false" class="flex items-center gap-3 text-luxury-cream hover:text-luxury-gold transition-colors duration-300 group">
-    <span class="text-[10px] uppercase tracking-[0.35em] font-sans font-medium hidden sm:inline">Menu</span>
-    <span class="flex flex-col justify-between h-3 w-5">
-      <span class="w-full h-[1px] bg-current"></span>
-      <span class="w-full h-[1px] bg-current"></span>
-    </span>
-  </button>
-</header>
-
-<!-- Small top scrim, just for header legibility over a full-bleed image -->
-<div class="absolute top-0 left-0 w-full h-28 z-30 bg-gradient-to-b from-black/45 to-transparent pointer-events-none"></div>
-
-<!-- Full-Screen Nav Overlay -->
-<div id="nav-overlay" class="fixed inset-0 z-50 bg-[#070605] flex flex-col justify-center items-center gap-7 lg:gap-9 uppercase tracking-[0.35em] font-editorial text-2xl lg:text-4xl font-light text-luxury-cream opacity-0 pointer-events-none transition-opacity duration-500">
-  <button id="close-nav" aria-label="Close menu" class="absolute top-7 right-6 lg:top-9 lg:right-12 text-luxury-cream hover:text-luxury-gold transition-colors text-2xl font-sans">×</button>
-  <a href="#signature" class="nav-link hover:text-luxury-gold transition-colors duration-300">Masterpieces</a>
-  <a href="#archive" class="nav-link hover:text-luxury-gold transition-colors duration-300">Archive</a>
-  <a href="#academy" class="nav-link hover:text-luxury-gold transition-colors duration-300">SBLFA Academy</a>
-  <a href="#craft" class="nav-link hover:text-luxury-gold transition-colors duration-300">Our Ethos</a>
-  <a href="#contact" class="nav-link border border-luxury-gold/40 px-8 py-3 text-sm lg:text-base tracking-[0.3em] text-luxury-gold hover:bg-luxury-gold hover:text-black transition-all duration-300 mt-2">Private Consultation</a>
-</div>
-
-<section id="top" class="relative min-h-screen w-full bg-[#070605] overflow-hidden">
-
-  <!-- Dynamic atmospheric backgrounds — one per garment, crossfaded -->
-  <div class="absolute inset-0 z-0">
-    {slides.map((slide, i) => (
-      <div
-        class="ambient-glow absolute inset-0 transition-opacity duration-[1800ms] ease-in-out"
-        data-slide-index={i}
-        style={`opacity:${i === 0 ? 1 : 0}; background: radial-gradient(ellipse 60% 50% at 20% 25%, ${slide.glowA}, transparent 65%), radial-gradient(ellipse 55% 45% at 80% 75%, ${slide.glowB}, transparent 65%);`}
+<!-- Elegant Luxury Header -->
+<header id="house-header" class="absolute top-0 left-0 w-full z-40 px-6 py-6 lg:px-16 flex justify-between items-center bg-gradient-to-b from-black/80 via-black/20 to-transparent">
+  <div class="flex items-center">
+    <a href="#" class="group flex items-center gap-4">
+      <img 
+        src={`${import.meta.env.BASE_URL}SBL-Transperant-logo.png`} 
+        alt="SBL Crest" 
+        class="h-10 w-10 object-contain brightness-0 invert transition-transform duration-700 group-hover:rotate-180" 
+        referrerpolicy="no-referrer"
       />
-    ))}
+      <div class="flex flex-col">
+        <span class="font-display text-lg lg:text-2xl font-light tracking-[0.25em] text-luxury-cream transition-colors duration-300 group-hover:text-luxury-gold">
+          STYLEDBYLAYO
+        </span>
+        <span class="text-[8px] uppercase tracking-[0.3em] text-luxury-gold/75 font-sans">
+          LAGOS · SEVEN-STAR COUTURE
+        </span>
+      </div>
+    </a>
   </div>
 
-  <div class="relative z-10 max-w-7xl mx-auto w-full lg:min-h-screen grid grid-cols-1 lg:grid-cols-12 lg:items-center">
+  <!-- Single Menu Toggle Trigger - No Horizontal Nav Bar strictly per constraints -->
+  <div>
+    <button 
+      id="menu-trigger" 
+      class="group flex items-center space-x-3 text-luxury-cream hover:text-luxury-gold transition-colors duration-500 z-50 relative pointer-events-auto"
+      aria-label="Open navigation menu"
+    >
+      <span class="text-[10px] uppercase font-sans tracking-[0.3em] font-medium">Menu</span>
+      <div class="flex flex-col justify-between h-2.5 w-6 overflow-hidden">
+        <span class="menu-bar w-full h-[1px] bg-luxury-cream origin-right transition-transform duration-300 group-hover:translate-x-1"></span>
+        <span class="menu-bar w-3/4 h-[1px] bg-luxury-cream self-end origin-right transition-transform duration-300 group-hover:translate-x-0 w-full"></span>
+      </div>
+    </button>
+  </div>
+</header>
 
-    <!-- IMAGE — full-bleed on mobile (order-1, on top), right column on desktop (order-2) -->
-    <div class="order-1 lg:order-2 lg:col-span-7 relative">
-      <div id="image-reveal-wrapper" class="hero-reveal-clip relative w-full aspect-[4/5] lg:aspect-auto lg:h-[78vh] overflow-hidden">
-        <div id="parallax-frame" class="relative w-full h-full">
-          {slides.map((slide, i) => (
-            <img
-              src={slide.image}
-              alt={slide.caption}
-              width={slide.w}
-              height={slide.h}
-              fetchpriority={i === 0 ? "high" : "low"}
-              referrerpolicy="no-referrer"
-              class="hero-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-[1500ms] ease-in-out"
-              data-slide-index={i}
-              style={i === 0 ? "opacity:1" : "opacity:0"}
-            />
+<!-- Full-Screen Luxury Overlay Navigation -->
+<div 
+  id="fullscreen-nav" 
+  class="fixed inset-0 z-45 bg-luxury-dark/95 backdrop-blur-xl flex flex-col justify-center items-center pointer-events-none opacity-0 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+>
+  <div class="flex flex-col items-center space-y-8 uppercase tracking-[0.35em] text-sm lg:text-base font-light text-luxury-cream max-w-xl text-center">
+    <img 
+      src={`${import.meta.env.BASE_URL}SBL-Transperant-logo.png`} 
+      alt="SBL Crest Large" 
+      class="h-16 w-16 object-contain brightness-0 invert opacity-40 mb-4" 
+      referrerpolicy="no-referrer"
+    />
+    <a href="#signature" class="nav-overlay-link hover:text-luxury-gold transition-colors duration-300">Masterpieces</a>
+    <a href="#archive" class="nav-overlay-link hover:text-luxury-gold transition-colors duration-300">Couture Archive</a>
+    <a href="#academy" class="nav-overlay-link hover:text-luxury-gold transition-colors duration-300">SBLFA Academy</a>
+    <a href="#craft" class="nav-overlay-link hover:text-luxury-gold transition-colors duration-300">Our Ethos</a>
+    <a href="#contact" class="nav-overlay-link hover:text-luxury-gold transition-colors duration-300">Private Consultation</a>
+    
+    <div class="h-[1px] w-12 bg-luxury-gold/30 my-6"></div>
+    <span class="text-[8px] uppercase tracking-[0.3em] text-luxury-gold/60 font-sans">
+      Atelier Lagos · London · Paris Commission
+    </span>
+  </div>
+</div>
+
+<!-- Asymmetric Hero Section -->
+<section id="hero-section" class="relative h-screen min-h-[650px] w-full bg-luxury-dark overflow-hidden flex flex-col lg:flex-row items-stretch select-none">
+  
+  <!-- Left Panel: Padded/Contained Text (Moves into Overlay on Mobile) -->
+  <div class="w-full lg:w-[42%] flex flex-col justify-end lg:justify-center px-6 py-12 lg:py-24 lg:px-16 z-20 relative pointer-events-none select-none">
+    
+    <!-- Mobile background scrim for legibility, only visible below lg -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent lg:hidden z-[-1] pointer-events-none"></div>
+
+    <div class="max-w-md lg:max-w-lg mt-auto lg:mt-0 flex flex-col items-start translate-y-6 opacity-0 animate-fade-up text-left pointer-events-auto">
+      
+      <!-- Fixed Position Active Slide Label -->
+      <div class="flex items-center space-x-2 text-[9px] uppercase tracking-[0.45em] text-luxury-gold font-sans font-semibold mb-3">
+        <span id="active-eyebrow">{slides[0].eyebrow}</span>
+        <span class="w-1 h-1 rounded-full bg-luxury-gold/50"></span>
+        <span>Atelier</span>
+      </div>
+
+      <!-- Fixed Core Brand Position Headline -->
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-thin tracking-wide text-luxury-cream font-editorial mb-4 leading-normal select-none">
+        This Is Not <br />Ready-To-Wear. <br />
+        <span class="italic text-luxury-gold font-normal">This Is Couture.</span>
+      </h1>
+
+      <!-- Active Slide subdescription -->
+      <p id="slide-subline" class="text-xs lg:text-sm tracking-widest text-luxury-cream/80 font-sans font-light leading-relaxed mb-8 max-w-sm">
+        {slides[0].subline}
+      </p>
+
+      <!-- Fixed Call to Action -->
+      <div class="flex items-center space-x-6 z-30">
+        <a 
+          href="#contact" 
+          class="inline-block bg-luxury-gold hover:bg-luxury-cream hover:text-black text-black px-6 py-3.5 text-[10px] uppercase tracking-[0.3em] font-sans font-medium transition-all duration-500"
+        >
+          Enter the Atelier →
+        </a>
+
+        <!-- Slide Indicators / Switch Dots -->
+        <div class="flex items-center space-x-3" id="dot-navigation">
+          {slides.map((_, i) => (
+            <button 
+              class={`dot-switch w-2 h-2 rounded-full border border-luxury-gold/50 transition-all duration-300 ${i === 0 ? 'bg-luxury-gold scale-125' : 'hover:bg-luxury-gold/30'}`}
+              data-index={i}
+              aria-label={`Show Couture item ${i + 1}`}
+            ></button>
           ))}
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- TEXT — below the photo on mobile (order-2), left column on desktop (order-1) -->
-    <div class="order-2 lg:order-1 lg:col-span-5 px-6 lg:px-12 py-9 lg:py-0 text-left hero-fade-in" style="animation-delay: 0.55s">
-      <span class="text-[10px] lg:text-xs uppercase tracking-[0.5em] text-luxury-gold font-sans font-semibold mb-4 flex items-center gap-3">
-        <span class="w-6 h-px bg-luxury-gold/60"></span>
-        Lagos &middot; Seven-Star Couture
-      </span>
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-thin font-editorial leading-[1.08] text-luxury-cream max-w-md">
-        This Is Not Ready-To-Wear.<br />
-        <span class="italic text-luxury-gold font-light">This Is Couture.</span>
-      </h1>
-      <p class="text-xs lg:text-sm font-sans font-light tracking-wide text-luxury-cream/60 mt-4 max-w-sm">
-        Seven-star craftsmanship, hand-built in Lagos for women who demand distinction.
-      </p>
+  <!-- Right Panel: True Full-Bleed Slide Images (Breaks contain limits on Desktop) -->
+  <div 
+    id="hero-images-container" 
+    class="absolute lg:relative top-0 right-0 w-full lg:w-[58%] h-full overflow-hidden bg-black z-10 cursor-pointer"
+    title="Press and hold to view full image"
+  >
+    <!-- Dynamic Atmospheric Background Glow Layers (Sync-crossfaded) -->
+    <div id="glow-ambient-back" class="absolute inset-0 transition-all duration-[1200ms] pointer-events-none" style={{ backgroundImage: slides[0].gradient }}></div>
 
-      <a href="#signature" class="group inline-flex items-center gap-3 text-xs uppercase tracking-[0.3em] font-sans font-medium text-luxury-cream hover:text-luxury-gold transition-colors duration-300 mt-7">
-        <span class="border-b border-luxury-gold/50 pb-1 group-hover:border-luxury-gold transition-colors">Enter the Atelier</span>
-        <span class="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
-      </a>
-
-      <!-- Slide indicators — auto-advance, but clickable too -->
-      <div class="flex items-center gap-3 mt-8">
-        {slides.map((_, i) => (
-          <button
-            class="slide-dot w-1.5 h-1.5 rounded-full transition-all duration-300"
-            data-slide-index={i}
-            class:list={[i === 0 ? "bg-luxury-gold w-4" : "bg-luxury-cream/30"]}
-            aria-label={`Show slide ${i + 1}`}
+    <!-- Active Slide Images View -->
+    {slides.map((slide, index) => (
+      <div 
+        class={`slide-image-wrapper absolute inset-0 w-full h-full flex justify-center items-center transition-opacity duration-[1200ms] ease-in-out select-none ${index === 0 ? 'opacity-100 z-10 scale-aperture' : 'opacity-0 z-1'}`}
+        data-index={index}
+      >
+        <!-- Absolute Contained Fit Layout for true preservation of 4:5 silhouette details! -->
+        <div class="relative w-full h-full max-h-full max-w-full flex items-center justify-center p-2 lg:p-8">
+          <img 
+            src={`${import.meta.env.BASE_URL}${slide.image}`} 
+            alt={slide.title}
+            width="1080"
+            height="1350"
+            fetchpriority={index === 0 ? "high" : "low"}
+            referrerpolicy="no-referrer"
+            class="h-full w-full max-h-full max-w-full object-contain select-none shadow-[0_24px_80px_rgba(0,0,0,0.8)] duration-[8000ms] ease-linear ken-burns"
           />
-        ))}
+        </div>
       </div>
-    </div>
+    ))}
 
+    <!-- Dynamic Overlay Banner for Desktop touch feedback -->
+    <div class="hidden lg:flex absolute bottom-6 right-6 z-25 text-[8px] uppercase tracking-[0.4em] text-luxury-cream/40 items-center space-x-2 pointer-events-none">
+      <span>Hold viewport to expand artwork</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-luxury-gold animate-ping"></span>
+    </div>
+  </div>
+
+  <!-- Intimate Location Beats Indicator strictly per design principles -->
+  <div class="absolute left-6 lg:left-16 bottom-6 z-35 text-[9px] uppercase tracking-[0.3em] text-luxury-cream/40 hidden lg:flex items-center space-x-2 pointer-events-none">
+    <span>Lagos</span>
+    <span class="w-1.2 h-1.2 rounded-full bg-luxury-gold/50"></span>
+    <span>London</span>
+    <span class="w-1.2 h-1.2 rounded-full bg-luxury-gold/50"></span>
+    <span>Paris</span>
   </div>
 </section>
 
 <style>
-  .hero-fade-in {
-    opacity: 0;
-    transform: translateY(12px);
-    animation: heroFadeIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-  @keyframes heroFadeIn {
-    to { opacity: 1; transform: translateY(0); }
+  /* Aperture entry effect for active-loaded slide */
+  .scale-aperture {
+    animation: apertureAnimation 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  /* Creative reveal — the photo opens like an aperture, then settles */
-  .hero-reveal-clip {
-    clip-path: inset(42% 0 42% 0);
-    animation: heroClipReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    animation-delay: 0.15s;
-  }
-  .hero-reveal-clip #parallax-frame {
-    transform: scale(1.08);
-    animation: heroImageSettle 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    animation-delay: 0.15s;
-  }
-  @keyframes heroClipReveal {
-    to { clip-path: inset(0 0 0 0); }
-  }
-  @keyframes heroImageSettle {
-    to { transform: scale(1); }
+  @keyframes apertureAnimation {
+    0% {
+      clip-path: inset(42% 0 42% 0);
+      transform: scale(1.08);
+    }
+    100% {
+      clip-path: inset(0 0 0 0);
+      transform: scale(1);
+    }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .hero-fade-in { animation: none; opacity: 1; transform: none; }
-    .hero-reveal-clip { animation: none; clip-path: inset(0 0 0 0); }
-    .hero-reveal-clip #parallax-frame { animation: none; transform: none; }
-    .hero-slide, .ambient-glow { transition: none !important; }
+  /* Ken Burns Slow Panning/Scaling Effect */
+  .active .ken-burns {
+    animation: kenBurnsFade 8s linear infinite alternate;
+  }
+
+  @keyframes kenBurnsFade {
+    0% {
+      transform: scale(1.01) translate(0px, 0px);
+    }
+    100% {
+      transform: scale(1.06) translate(-10px, -5px);
+    }
+  }
+
+  /* One-time delayed entrance anim for titles */
+  .animate-fade-up {
+    animation: fadeInUpWithDelay 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.6s;
+  }
+
+  @keyframes fadeInUpWithDelay {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Full screen Navigation States */
+  #fullscreen-nav.active {
+    pointer-events: auto;
+    opacity: 1;
   }
 </style>
 
 <script>
-  const trigger = document.getElementById('menu-trigger');
-  const overlay = document.getElementById('nav-overlay');
-  const closeBtn = document.getElementById('close-nav');
-  const navLinks = overlay?.querySelectorAll('.nav-link');
+  // Slide list metadata for JS syncing
+  const slideList = [
+    {
+      eyebrow: "Maison Presentation",
+      subline: "Intricately Hand-Beaded Three-Dimensional Evening Silhouette",
+      gradient: "radial-gradient(circle, rgba(140,95,45,0.30) 0%, rgba(70,45,20,0.15) 70%, rgba(7,6,5,1) 100%)"
+    },
+    {
+      eyebrow: "Lagos Atelier",
+      subline: "Deep Emerald Crystal Draping Crafted for Maximum Elegance",
+      gradient: "radial-gradient(circle, rgba(20,110,75,0.32) 0%, rgba(130,95,45,0.12) 70%, rgba(7,6,5,1) 100%)"
+    },
+    {
+      eyebrow: "Sculptural Mastery",
+      subline: "Liquid Gold Metallic Accents Encased in Premium Silhouette Styling",
+      gradient: "radial-gradient(circle, rgba(210,140,70,0.32) 0%, rgba(110,50,18,0.12) 70%, rgba(7,6,5,1) 100%)"
+    },
+    {
+      eyebrow: "Modern Distinctions",
+      subline: "Tailored velvet embroidered look hand-built in Lagos",
+      gradient: "radial-gradient(circle, rgba(124,25,35,0.26) 0%, rgba(50,25,20,0.12) 70%, rgba(7,6,5,1) 100%)"
+    },
+    {
+      eyebrow: "Couture Playgrounds",
+      subline: "Vibrant hand-threaded bugle beads crafted for high impact",
+      gradient: "radial-gradient(circle, rgba(195,70,120,0.26) 0%, rgba(35,75,90,0.12) 70%, rgba(7,6,5,1) 100%)"
+    }
+  ];
 
-  function openNav() {
-    overlay?.classList.remove('pointer-events-none', 'opacity-0');
-    overlay?.classList.add('opacity-100');
-    trigger?.setAttribute('aria-expanded', 'true');
-  }
-  function closeNav() {
-    overlay?.classList.add('pointer-events-none', 'opacity-0');
-    overlay?.classList.remove('opacity-100');
-    trigger?.setAttribute('aria-expanded', 'false');
-  }
-  trigger?.addEventListener('click', openNav);
-  closeBtn?.addEventListener('click', closeNav);
-  navLinks?.forEach(link => link.addEventListener('click', closeNav));
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeNav(); });
-
-  // Slideshow — auto-advance every 4.5s, crossfade image + ambient glow together
-  const slideEls = document.querySelectorAll('.hero-slide');
-  const glowEls = document.querySelectorAll('.ambient-glow');
-  const dots = document.querySelectorAll('.slide-dot');
-  let current = 0;
+  let activeIndex = 0;
   let timer: number;
+  const slideWrappers = document.querySelectorAll('.slide-image-wrapper');
+  const dotSwitches = document.querySelectorAll('.dot-switch');
+  const activeEyebrowText = document.getElementById('active-eyebrow');
+  const activeSublineText = document.getElementById('slide-subline');
+  const ambientBackground = document.getElementById('glow-ambient-back');
 
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function triggerSlide(index: number) {
+    if (index === activeIndex) return;
+    if (index < 0 || index >= slideWrappers.length) return;
 
-  function showSlide(index: number) {
-    slideEls.forEach(el => {
-      (el as HTMLElement).style.opacity = el.getAttribute('data-slide-index') === String(index) ? '1' : '0';
-    });
-    glowEls.forEach(el => {
-      (el as HTMLElement).style.opacity = el.getAttribute('data-slide-index') === String(index) ? '1' : '0';
-    });
-    dots.forEach(dot => {
-      const isActive = dot.getAttribute('data-slide-index') === String(index);
-      dot.classList.toggle('bg-luxury-gold', isActive);
-      dot.classList.toggle('w-4', isActive);
-      dot.classList.toggle('bg-luxury-cream/30', !isActive);
-    });
-    current = index;
+    // Remove active and ken burns class from current slide
+    if (slideWrappers[activeIndex]) {
+      slideWrappers[activeIndex].classList.remove('opacity-100', 'z-10', 'active');
+      slideWrappers[activeIndex].classList.add('opacity-0', 'z-1');
+    }
+    if (dotSwitches[activeIndex]) {
+      dotSwitches[activeIndex].classList.remove('bg-luxury-gold', 'scale-125');
+    }
+
+    // Sync new Index
+    activeIndex = index;
+
+    // Apply classes to new slide
+    if (slideWrappers[activeIndex]) {
+      slideWrappers[activeIndex].classList.remove('opacity-0', 'z-1');
+      slideWrappers[activeIndex].classList.add('opacity-100', 'z-10', 'active');
+    }
+    if (dotSwitches[activeIndex]) {
+      dotSwitches[activeIndex].classList.add('bg-luxury-gold', 'scale-125');
+    }
+
+    // Deep text crossfades
+    if (activeEyebrowText && slideList[activeIndex]) activeEyebrowText.textContent = slideList[activeIndex].eyebrow;
+    if (activeSublineText && slideList[activeIndex]) activeSublineText.textContent = slideList[activeIndex].subline;
+    if (ambientBackground && slideList[activeIndex]) ambientBackground.style.backgroundImage = slideList[activeIndex].gradient;
   }
 
-  function nextSlide() {
-    showSlide((current + 1) % slideEls.length);
+  function advanceSlide() {
+    if (slideWrappers.length === 0) return;
+    let nextIndex = (activeIndex + 1) % slideWrappers.length;
+    triggerSlide(nextIndex);
   }
 
-  function startAutoplay() {
-    if (prefersReducedMotion) return;
-    stopAutoplay();
-    timer = window.setInterval(nextSlide, 4500);
-  }
-  function stopAutoplay() {
-    if (timer) clearInterval(timer);
+  function runSlideInterval() {
+    clearInterval(timer);
+    if (slideWrappers.length === 0) return;
+    // Auto cycle every 7.5 seconds
+    timer = window.setInterval(advanceSlide, 7500);
   }
 
-  dots.forEach(dot => {
+  // Bind Dots
+  dotSwitches.forEach(dot => {
     dot.addEventListener('click', () => {
-      showSlide(Number(dot.getAttribute('data-slide-index')));
-      startAutoplay();
+      const idx = parseInt(dot.getAttribute('data-index') || '0', 10);
+      triggerSlide(idx);
+      runSlideInterval(); // Reset timer upon individual click
     });
   });
 
-  startAutoplay();
-
-  // Subtle scroll parallax on the image frame
-  const parallaxFrame = document.getElementById('parallax-frame');
-  if (!prefersReducedMotion && parallaxFrame) {
-    window.addEventListener('scroll', () => {
-      const offset = Math.min(window.scrollY * 0.06, 30);
-      parallaxFrame.style.transform = `translateY(${offset}px)`;
-    }, { passive: true });
+  // Start sequence
+  runSlideInterval();
+  // Ensure the first slide shows active to trigger Ken Burns animation right away
+  if (slideWrappers && slideWrappers[0]) {
+    slideWrappers[0].classList.add('active');
   }
+
+  // Interactive full-screen Menu Toggle (Desktop + Mobile overlay)
+  const menuTrigger = document.getElementById('menu-trigger');
+  const fullscreenNav = document.getElementById('fullscreen-nav');
+  const navLinks = document.querySelectorAll('.nav-overlay-link');
+
+  function toggleMenu() {
+    const isOverlayOpen = fullscreenNav?.classList.contains('active');
+    const toggleSpans = menuTrigger?.querySelectorAll('.menu-bar');
+
+    if (!isOverlayOpen) {
+      fullscreenNav?.classList.add('active');
+      if (menuTrigger) {
+        const textSpan = menuTrigger.querySelector('span');
+        if (textSpan) textSpan.textContent = 'Close';
+      }
+      if (toggleSpans && toggleSpans.length === 2) {
+        const span1 = toggleSpans[0] as HTMLElement;
+        const span2 = toggleSpans[1] as HTMLElement;
+        if (span1 && span1.style) span1.style.transform = 'translateY(4px) rotate(45deg)';
+        if (span2 && span2.style) span2.style.transform = 'translateY(-4px) rotate(-45deg)';
+      }
+    } else {
+      fullscreenNav?.classList.remove('active');
+      if (menuTrigger) {
+        const textSpan = menuTrigger.querySelector('span');
+        if (textSpan) textSpan.textContent = 'Menu';
+      }
+      if (toggleSpans && toggleSpans.length === 2) {
+        const span1 = toggleSpans[0] as HTMLElement;
+        const span2 = toggleSpans[1] as HTMLElement;
+        if (span1 && span1.style) span1.style.transform = '';
+        if (span2 && span2.style) span2.style.transform = '';
+      }
+    }
+  }
+
+  menuTrigger?.addEventListener('click', toggleMenu);
+  navLinks.forEach(link => {
+    link.addEventListener('click', toggleMenu);
+  });
+
+  // Mobile/Desktop Interactive PRESS-AND-HOLD to reveal full image
+  // While pressing, current titles/text fades out seamlessly!
+  const imagesContainer = document.getElementById('hero-images-container');
+  const textContainers = document.querySelectorAll('.pointer-events-none'); // Selecting text panels
+
+  function fadeTextOut() {
+    textContainers.forEach(container => {
+      const htmlElem = container as HTMLElement;
+      if (htmlElem && htmlElem.style) {
+        htmlElem.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+        htmlElem.style.opacity = '0';
+      }
+    });
+    // scale up image slightly for immersion
+    if (slideWrappers && slideWrappers[activeIndex]) {
+      const currentActiveImg = slideWrappers[activeIndex].querySelector('img') as HTMLElement;
+      if (currentActiveImg && currentActiveImg.style) {
+        currentActiveImg.style.transform = 'scale(1.05)';
+      }
+    }
+  }
+
+  function fadeTextIn() {
+    textContainers.forEach(container => {
+      const htmlElem = container as HTMLElement;
+      if (htmlElem && htmlElem.style) {
+        htmlElem.style.opacity = '1';
+      }
+    });
+    if (slideWrappers && slideWrappers[activeIndex]) {
+      const currentActiveImg = slideWrappers[activeIndex].querySelector('img') as HTMLElement;
+      if (currentActiveImg && currentActiveImg.style) {
+        currentActiveImg.style.transform = '';
+      }
+    }
+  }
+
+  // Touch & Pointer event bindings
+  imagesContainer?.addEventListener('pointerdown', (e) => {
+    // Left-click or touch only
+    if (e.button === 0) {
+      fadeTextOut();
+    }
+  });
+
+  imagesContainer?.addEventListener('pointerup', fadeTextIn);
+  imagesContainer?.addEventListener('pointercancel', fadeTextIn);
+  imagesContainer?.addEventListener('pointerleave', fadeTextIn);
+
+  // Parallax Scroll Tracking on Slide Images
+  window.addEventListener('scroll', () => {
+    const depth = window.pageYOffset;
+    if (depth <= window.innerHeight && slideWrappers && slideWrappers[activeIndex]) {
+      const activeImg = slideWrappers[activeIndex].querySelector('img') as HTMLElement;
+      if (activeImg && activeImg.style) {
+        // Subtle drift max 35px
+        const yOffset = Math.min(depth * 0.08, 35);
+        activeImg.style.transform = `translateY(${yOffset}px)`;
+      }
+    }
+  });
 </script>

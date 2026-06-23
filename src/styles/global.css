@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom active classes and scroll behavior */
+html {
+  scroll-behavior: smooth;
+}

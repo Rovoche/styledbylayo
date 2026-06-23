@@ -9,8 +9,6 @@ export default {
           cream: '#f7f0e6',
           gold: '#c9a96e',
           card: '#12100e',
-          ivory: '#F2EBDC',
-          ink: '#221B14',
         }
       },
       fontFamily: {
